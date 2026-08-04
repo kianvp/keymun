@@ -342,6 +342,59 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .railbar .bar{position:relative;flex:1;height:3px;background:var(--line-soft);max-width:320px}
 .railbar .bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:var(--ember)}
 
+/* ============ THE BOOK'S PAGES (StPageFlip) ============
+   StPageFlip forces display:block on the page roots and controls their
+   visibility, so the page element keeps its own layout and all content
+   lives in an absolutely-positioned .pf-in wrapper inside it. */
+.pf-page{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 6L6 0M0 0L6 6' stroke='rgba(8,8,10,0.85)' stroke-width='0.55'/%3E%3C/svg%3E"),
+  radial-gradient(rgba(8,8,10,.13) 22%,transparent 23%) 0 0/6px 6px,
+  linear-gradient(168deg,#fbfbfd 0%,#dcdce1 100%);
+  background-size:6px 6px,6px 6px,100% 100%;background-blend-mode:soft-light,normal,normal;
+  border:3px solid var(--ink);color:var(--ink);overflow:hidden;box-sizing:border-box}
+.pf-in{position:absolute;inset:0;display:flex;flex-direction:column;padding:6%;box-sizing:border-box}
+.pf-cover .pf-in{justify-content:center;align-items:center;text-align:center;gap:.45em}
+.pf-page .pgn{position:absolute;bottom:3%;left:0;right:0;text-align:center;
+  font-family:var(--display);font-size:.5rem;letter-spacing:.2em;color:rgba(8,8,10,.5)}
+/* hard covers */
+.pf-cover{color:var(--paper);
+  background:radial-gradient(rgba(8,8,10,.26) 22%,transparent 23%) 0 0/7px 7px,
+    repeating-conic-gradient(from 0deg at 50% 40%,rgba(244,244,246,.10) 0deg 3deg,transparent 3deg 9deg),
+    linear-gradient(160deg,var(--red-lit) 0%,var(--red-deep) 58%,#2a040a 100%)}
+.pf-cover .cbar{position:absolute;top:0;left:0;right:0;height:10%;background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;padding:0 6%;
+  font-family:var(--display);font-size:.5rem;letter-spacing:.14em;color:var(--paper);text-transform:uppercase}
+.pf-cover .cv-issue{font-family:var(--display);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  border:2px solid var(--paper);padding:.24em .6em;margin-top:9%}
+.pf-cover .cv-logo{font-family:var(--comic);font-size:clamp(1.9rem,4.4vw,3.4rem);line-height:.95;
+  -webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
+.pf-cover .cv-tag{font-family:var(--display);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(244,244,246,.9)}
+/* the comic panel printed on each officer's left-hand sheet */
+.pf-art,.st-art{position:relative;overflow:hidden;display:grid;place-items:center}
+.pf-art{flex:1;border:2px solid var(--ink);min-height:0}
+.pf-art .halo,.st-art .halo{position:absolute;inset:0;
+  background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(244,244,246,.26) 0deg 2deg,transparent 2deg 8deg)}
+.pf-art b{font-family:var(--comic);font-size:clamp(2rem,5vw,3.6rem);color:var(--paper);
+  -webkit-text-stroke:2px var(--ink);paint-order:stroke fill;z-index:1}
+.pf-sfx{position:absolute;top:5%;left:6%;font-family:var(--comic);font-size:clamp(1rem,2.2vw,1.7rem);
+  color:var(--paper);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;
+  text-shadow:3px 3px 0 var(--red);transform:rotate(-8deg);z-index:3}
+.pf-cap{background:var(--ink);color:var(--paper);font-family:var(--display);font-size:.55rem;
+  letter-spacing:.14em;text-transform:uppercase;padding:.5em .7em;margin-top:5%;text-align:center}
+/* the right-hand sheet: role, name, and a speech bubble */
+.pf-role{font-family:var(--display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.pf-name{font-family:var(--comic);font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:.95;
+  text-transform:uppercase;margin:.25em 0 .5em}
+.pf-bub{position:relative;background:#ffffff;border:2px solid var(--ink);border-radius:12px;
+  padding:.8em .9em;font-size:clamp(.7rem,1.1vw,.86rem);line-height:1.5;color:#1b1b20}
+.pf-bub::after{content:'';position:absolute;left:16%;bottom:-10px;border:9px solid transparent;
+  border-top-color:#ffffff;border-bottom:0}
+.pf-bub::before{content:'';position:absolute;left:15.4%;bottom:-13px;border:10px solid transparent;
+  border-top-color:var(--ink);border-bottom:0}
+.pf-tag{margin-top:auto;font-family:var(--display);font-size:.5rem;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(8,8,10,.55)}
+
 /* ============ SECRETARIAT — pinned, scroll-driven StPageFlip ============ */
 .fb-pin{position:relative;height:600vh}
 .fb-stage{position:sticky;top:0;height:100svh;display:grid;grid-template-rows:auto 1fr auto;
