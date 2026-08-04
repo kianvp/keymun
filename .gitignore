@@ -1,0 +1,11 @@
+# Working files — not part of the published site
+*.mp4
+intro.html
+intro-replit.html
+index.space-backup.html
+unnamed*.png
+
+# OS / editor cruft
+Thumbs.db
+desktop.ini
+.DS_Store
