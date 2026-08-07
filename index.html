@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Keystone Model United Nations</title>
-<meta name="description" content="Keystone School, Hyderabad — Model United Nations. Annual Session 2025." />
+<meta name="description" content="Keystone School, Hyderabad — Model United Nations. Annual Session, 2–4 October 2026." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -315,8 +315,12 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .cmt:focus-visible{outline:3px solid var(--ember);outline-offset:6px}
 
 .medal{width:118px;height:118px;margin:0 auto 1.2rem;border-radius:50%;display:grid;place-items:center;
-  background:var(--red);border:var(--ink-b) solid var(--ink);box-shadow:var(--sh);
+  background:var(--red);border:var(--ink-b) solid var(--ink);box-shadow:var(--sh);overflow:hidden;
   font-family:var(--comic);font-size:1.5rem;color:var(--paper);transition:.35s var(--ease)}
+/* the emblem inherits the medal's colour, so it flips to ink on hover too */
+.medal svg{width:60%;height:60%;color:inherit}
+.medal.has-logo{background:var(--paper);padding:8px}
+.medal.has-logo img{width:100%;height:100%;object-fit:contain}
 .cmt:hover .medal{transform:rotate(-8deg) scale(1.07);background:var(--ember);color:var(--ink)}
 .cmt .code{font-family:var(--comic);font-size:1.7rem;line-height:1.05;color:var(--paper);
   -webkit-text-stroke:1.6px var(--ink);paint-order:stroke fill}
@@ -680,9 +684,9 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <span class="l"><span class="w" data-h>United</span></span>
         <span class="l"><span class="w nat" data-h>Nations</span></span>
       </h1>
-      <p class="sub" data-h>Three days. Five chambers. One room where the world gets argued over — and rewritten.</p>
+      <p class="sub" data-h>Three days. Seven committees. One room where the world gets argued over — and rewritten.</p>
       <div class="hero-cta" data-h>
-        <a class="btn btn-red" data-form target="_blank" rel="noopener">Register a Delegation ▶</a>
+        <a class="btn btn-red" data-form target="_blank" rel="noopener">Register for Delegation Now ▶</a>
         <a href="#/committees" class="btn btn-paper" data-r="committees">Explore Committees</a>
       </div>
       <div class="scrollcue" data-h>Scroll ▼</div>
@@ -700,28 +704,22 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   <!-- ABOUT -->
   <div class="page pagetop" id="p-about"><section class="sec"><div class="wrap about">
     <div>
-      <span class="cap" data-rev>The Institution of Debate</span>
-      <h2 class="h2" data-rev>What is <em>MUN?</em></h2>
-      <p data-rev>Model United Nations is an academic simulation of the UN in which students become delegates — representing nations they have never lived in, negotiating crises they did not create.</p>
-      <p data-rev>Behind every placard is someone learning to build coalitions across difference, and to write policy that could, in another life, move the world.</p>
+      <span class="cap" data-rev>Our Conference</span>
+      <h2 class="h2" data-rev>What is <em>KeyMUN?</em></h2>
+      <p data-rev>KeyMUN is the Model United Nations conference of Keystone School, Hyderabad — three days in which the school becomes a working simulation of the United Nations, run entirely by its students.</p>
+      <p data-rev>Delegates take on the seat of a country or a figure they have never been, argue a crisis they did not create, and try to get a resolution past a room that has every reason to say no. Seven committees run at once, from disarmament to a joint crisis cabinet.</p>
       <div class="pull" data-rev>"We prepare students not merely to <em>win the room</em> — but to understand it."</div>
-      <p data-rev>At Keystone it is our proudest tradition: three days where the school becomes a chamber of the world.</p>
+      <p data-rev>It is our proudest tradition: a weekend where learning to listen matters as much as learning to speak, and where two hundred delegates leave arguing better than they arrived.</p>
     </div>
     <div class="tl" id="tl" data-rev><div class="tl-fill" id="tlFill"></div></div>
-  </div></section>
-  <section class="sec"><div class="wrap">
-    <span class="cap" data-rev>The Engine Room</span>
-    <h2 class="h2" data-rev>Organising <em>Committee</em></h2>
-    <p class="lede" data-rev>The quiet architects — logistics, hospitality, design and press — who turn a timetable into a conference.</p>
-    <div class="gal" id="ocGrid" style="margin-top:1.6rem"></div>
   </div></section></div>
 
   <!-- COMMITTEES -->
   <div class="page pagetop" id="p-committees">
     <section class="sec"><div class="wrap">
-      <span class="cap" data-rev>Councils &amp; Chambers</span>
+      <span class="cap" data-rev>Councils &amp; Cabinets</span>
       <h2 class="h2" data-rev>Our <em>Committees</em></h2>
-      <p class="lede" data-rev>Five chambers, each with its own crisis and cadence. Click any card to flip it over.</p>
+      <p class="lede" data-rev>Seven committees, each with its own crisis and cadence. Click any card to flip it over.</p>
     </div></section>
     <div class="pin" id="pin"><div class="stage">
       <div class="track" id="track"></div>
@@ -792,7 +790,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <div class="panel reg-note"><h4>Delegate fee</h4>
           <p>₹1,200 per delegate. Group rates for delegations of 15+. Fee waivers available on request — no student is turned away for cost.</p></div>
         <div class="panel reg-note"><h4>Deadline</h4>
-          <p>Registration closes two weeks before the conference, or once chambers are full — whichever comes first.</p></div>
+          <p>Registration closes two weeks before the conference, or once committees are full — whichever comes first.</p></div>
       </div>
     </div>
   </div></section></div>
@@ -908,9 +906,9 @@ const DATA={
        "Register" button on the site follows it. */
   formUrl:'https://docs.google.com/forms/d/e/1FAIpQLScXBT_zgpbrE0dbws1MC3DEDz2syAjaNr4nEBRCWp68lywCIQ/viewform',
   announcements:['Registration is now open','Background guides released','Country matrix live now','Early-bird rates end soon','First-timers briefing added'],
-  stats:[['25–28','September 2025'],['500+','Young Diplomats'],['5','Committees'],['2025','Annual Session']],
+  stats:[['2–4','October 2026'],['200','Delegate Seats'],['7','Committees'],['2026','Annual Session']],
   pillars:[
-    {h:'Chambers With Real Stakes',p:'No filler committees. Every chamber runs a live agenda with a crisis arc, so debate has consequences instead of running out of steam.'},
+    {h:'Committees With Real Stakes',p:'No filler committees. Every one runs a live agenda with a crisis arc, so debate has consequences instead of running out of steam.'},
     {h:'A Board That Actually Chairs',p:'Our executive board is trained before the gavel falls — on procedure, marking, and drawing out the quiet delegate.'},
     {h:'Recognition That Travels',p:'Awards judged on research, diplomacy and resolutions — not volume. Certificates you can put on an application.'},
     {h:'Prepared, Not Thrown In',p:'Guides, a rules primer and a first-timers briefing go out well before the conference.'}],
@@ -921,35 +919,54 @@ const DATA={
     {d:'Day Two',h:'Crisis & Negotiation',p:'Directives, breaking news, and the frantic corridor diplomacy of unmoderated caucus.'},
     {d:'Day Three · AM',h:'Drafting Resolutions',p:'Sponsors, signatories, and the delicate art of the amendment.'},
     {d:'Day Three · PM',h:'Closing & Awards',p:'Final votes, the fall of the gavel, and recognition of the weekend’s finest diplomats.'}],
-  /* m = the two/three letters on the medal · b = the short description on the card back */
+  /* k = slug, used to look for an optional logos/<k>.png that overrides the emblem
+     · s = inline emblem drawn for this committee · b = the description on the card back.
+     The emblems are original drawings, not the real organisations' trademarks. */
   committees:[
-    {c:'DISEC',m:'DI',f:'Disarmament & International Security',lv:'Advanced',
+    {c:'DISEC',k:'disec',f:'Disarmament & International Security',lv:'Advanced',
+     s:`<path d="M32 6l20 7v16c0 12-8 21-20 29C20 50 12 41 12 29V13z"/>
+        <circle cx="32" cy="28" r="9"/>
+        <path d="M23 28h18M32 19c4 5 4 13 0 18M32 19c-4 5-4 13 0 18"/>`,
      b:'The First Committee of the General Assembly. Non-proliferation, emerging weapons, and the fragile logic of deterrence — argued by delegates who have to make security sound survivable.',
      a:'Governance of autonomous weapons and lethal AI systems.'},
-    {c:'Lok Sabha',m:'LS',f:'House of the People · Parliament of India',lv:'Intermediate',
+    {c:'Lok Sabha',k:'loksabha',f:'House of the People · Parliament of India',lv:'Intermediate',
+     s:`<path d="M32 7v6"/><path d="M14 30a18 18 0 0 1 36 0"/><path d="M9 30h46"/>
+        <path d="M17 35v15M27 35v15M37 35v15M47 35v15"/><path d="M9 54h46"/>`,
      b:'The lower house of Parliament. Domestic policy fought out across the aisle, with the Speaker holding the floor and every member answerable to a constituency.',
      a:'Electoral reform and the conduct of free and fair elections.'},
-    {c:'World Bank',m:'WB',f:'International Bank for Reconstruction & Development',lv:'Intermediate',
+    {c:'World Bank',k:'worldbank',f:'International Bank for Reconstruction & Development',lv:'Intermediate',
+     s:`<circle cx="32" cy="32" r="22"/><path d="M10 32h44"/>
+        <path d="M23 41V33M32 41V25M41 41V29" stroke-width="4"/>`,
      b:'Where development is priced. Loans, conditions and debt — the committee that decides which futures get funded and what they cost.',
      a:'Debt sustainability and development financing for low-income economies.'},
-    {c:'TFI',m:'TFI',f:'Telugu Film Industry',lv:'Beginner–Intermediate',
+    {c:'TFI',k:'tfi',f:'Telugu Film Industry',lv:'Beginner–Intermediate',
+     s:`<rect x="9" y="26" width="46" height="28" rx="2"/>
+        <path d="M9 26l4-9 44-4-4 9z"/>
+        <path d="M22 17l-3 8M34 15l-3 9M46 13l-3 9"/>`,
      b:'Hyderabad’s own industry, put in committee. Producers, directors, actors and studios argue over what gets made, who gets paid, and who gets remembered — the lightest room to speak in, and the hardest to win.',
      a:'Fair pay, credit and working conditions across the industry.'},
-    {c:'JCC',m:'JCC',f:'Joint Crisis Committee',lv:'Advanced · Invite',
+    {c:'JCC',k:'jcc',f:'Joint Crisis Committee',lv:'Advanced · Invite',
+     s:`<rect x="6" y="20" width="20" height="24" rx="2"/>
+        <rect x="38" y="20" width="20" height="24" rx="2"/>
+        <path d="M34 11l-6 16h8l-6 16"/>`,
      b:'Two linked cabinets, one escalating crisis. Every directive passed in one room lands in the other — so a win here can become a disaster there.',
      a:'A regional conflict that escalates in real time.'}],
-  /* n = name (replace the placeholders) · r = role · g = which board · b = one-line bio */
+  /* The Secretariat. n = name(s) · r = role · g = core team or under-secretaries
+     · b = what the role does. Chairs and vice-chairs sit on the Executive Board,
+     not here, so they are listed separately when their names are confirmed. */
   people:[
-    {n:'A. Delegate',r:'Secretary-General',g:'The Secretariat',b:'Presides over the conference and the secretariat; the ceremonial and executive head of the session.'},
-    {n:'B. Delegate',r:'Deputy Secretary-General',g:'The Secretariat',b:'Second in command, overseeing substantive matters and the flow of committee affairs.'},
-    {n:'C. Delegate',r:'Director-General',g:'The Secretariat',b:'Guardian of academic quality — background guides, chair training, and rules of procedure.'},
-    {n:'D. Delegate',r:'Chargé d’Affaires',g:'The Secretariat',b:'The bridge between delegates and the secretariat; hospitality, logistics and diplomacy off the floor.'},
-    {n:'E. Delegate',r:'Chairperson · DISEC',g:'Executive Board',b:'Directs the disarmament committee and adjudicates points of order in its most heated moments.'},
-    {n:'F. Delegate',r:'Speaker · Lok Sabha',g:'Executive Board',b:'Holds the floor of the house, recognises members, and keeps the debate inside the rules.'},
-    {n:'G. Delegate',r:'Chairperson · World Bank',g:'Executive Board',b:'Chairs the development table and keeps the numbers honest when the money gets argued over.'},
-    {n:'H. Delegate',r:'Chairperson · TFI',g:'Executive Board',b:'Runs the industry room — the lightest committee to sit in and the hardest to chair well.'},
-    {n:'I. Delegate',r:'Crisis Director · JCC',g:'Executive Board',b:'Author of the crisis — feeds both cabinets the news that changes everything.'}],
-  oc:['Logistics','Hospitality','Technology','Design','Press Corps','Delegate Affairs','Finance','Ceremonies'],
+    {n:'Pranav & Lasya',r:'Secretary-General',g:'Core Secretariat',b:'Presides over the conference and the secretariat — the ceremonial and executive head of the session.'},
+    {n:'Darsheel',r:'Director-General',g:'Core Secretariat',b:'Guardian of academic quality: background guides, chair training, and the rules of procedure.'},
+    {n:'Brihati & Tanushya',r:'Chargé d’Affaires',g:'Core Secretariat',b:'The bridge between delegates and the secretariat — hospitality and diplomacy off the committee floor.'},
+    {n:'Saqib & Kevin',r:'Head of Organising Committee',g:'Core Secretariat',b:'Runs the conference on the ground, and everything that has to happen before the first gavel falls.'},
+    {n:'Anvika',r:'Delegate Affairs',g:'Core Secretariat',b:'Looks after the delegates themselves — allocations, queries, and the experience of the weekend.'},
+    {n:'Urvi',r:'USG · Finance',g:'Under-Secretaries-General',b:'Holds the budget: fees, costs, and keeping the conference solvent from first plan to final receipt.'},
+    {n:'Vaishnavi',r:'USG · Policy',g:'Under-Secretaries-General',b:'Shapes the agendas and the substance — what each committee debates and how deep it goes.'},
+    {n:'Aayaan & Yogita',r:'USG · Design',g:'Under-Secretaries-General',b:'Everything the conference looks like: placards, guides, the brand, and this website.'},
+    {n:'Pranav (Grade 10) & Surarchit',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Gets the word out and keeps it interesting — campaigns, socials, and the conference’s public voice.'},
+    {n:'Dhegan & Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in — invitations, delegations, and the relationships behind them.'},
+    {n:'Lipika & Aadya',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Finds the partners who make the conference possible and looks after them once they say yes.'},
+    {n:'David & Gauthami',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Rooms, timings, materials, and the hundred moving parts that have to land in the right place.'}],
   gallery:[
     {t:'Opening Ceremony',s:'BOOM!',tall:false},{t:'Committee Floor',s:'ORDER!',tall:true},
     {t:'Crisis Night',s:'ALERT!',tall:false},{t:'Unmoderated Caucus',s:'DEBATE!',tall:false},
@@ -980,7 +997,7 @@ const DATA={
     {h:'Rules of Procedure',p:'The parliamentary rulebook — motions, points and the choreography of debate.',m:'PDF · rulebook',u:'https://docs.google.com/document/d/REPLACE_ROP'},
     {h:'Position Paper Format',p:'Template and marking rubric for your position papers.',m:'Google Doc · template',u:'https://docs.google.com/document/d/REPLACE_POSITION'}],
   faq:[
-    {q:'Who can attend?',a:'Any student in grades 8–12 from any school. Both first-timers and veterans are welcome — chambers are graded by difficulty so you can pick your level.'},
+    {q:'Who can attend?',a:'Any student in grades 8–12 from any school. Both first-timers and veterans are welcome — committees are graded by difficulty so you can pick your level.'},
     {q:'Do I need experience?',a:'No. Several committees are explicitly beginner-friendly, and every registered delegate gets a rules primer plus an optional first-timers briefing before the conference.'},
     {q:'What should I bring?',a:'Formal western or traditional attire, a notebook and pen, a printed copy of your position paper, and a laptop if you have one. Placards and delegate kits are provided.'},
     {q:'What is the registration fee?',a:'₹1,200 per delegate, with group rates for delegations of 15 or more. Fee waivers are available on request — no student is turned away for cost.'},
@@ -1012,7 +1029,10 @@ qs('#tl').insertAdjacentHTML('beforeend',DATA.timeline.map(t=>
 qs('#track').innerHTML=DATA.committees.map(c=>
   `<div class="cmt" role="button" tabindex="0" aria-label="${c.c} — flip for details"><div class="cmt-inner">
      <article class="panel cmt-face cmt-front">
-       <div class="medal">${c.m||c.c.slice(0,2)}</div>
+       <div class="medal"${c.logo?` data-logo-k="${c.k}"`:''}>${c.s
+         ? `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${c.s}</svg>`
+         : c.c.slice(0,2).toUpperCase()}</div>
        <div class="code">${c.c}</div>
        ${c.f?`<div class="full">${c.f}</div>`:''}
        <div class="lvl">${c.lv}</div>
@@ -1035,9 +1055,12 @@ qs('#track').innerHTML=DATA.committees.map(c=>
 qs('#railTot').textContent=String(DATA.committees.length).padStart(2,'0');
 /* every Register button points at the one URL in DATA.formUrl */
 qsa('[data-form]').forEach(a=>{a.href=DATA.formUrl;});
-qs('#ocGrid').innerHTML=DATA.oc.map((o,i)=>
-  `<article class="panel" style="padding:1.2rem;text-align:center"><div class="medal" style="width:70px;height:70px;font-size:.95rem;margin-bottom:.7rem">${o.slice(0,2).toUpperCase()}</div>
-   <div style="font-family:var(--display);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper)">${o}</div></article>`).join('');
+/* To use a real committee logo instead of the drawn emblem: save the image as
+   logos/<k>.png (e.g. logos/disec.png) and add  logo:true  to that committee in
+   DATA. It stays off by default so the page isn't chasing files that don't exist. */
+qsa('[data-logo-k]').forEach(m=>{ const src='logos/'+m.dataset.logoK+'.png';
+  const im=new Image(); im.onload=()=>{ m.classList.add('has-logo');
+    m.innerHTML=`<img src="${src}" alt="">`; }; im.src=src; });
 qs('#gal').innerHTML=DATA.gallery.map((g,i)=>
   `<figure class="panel gitem${g.tall?' tall':''}" data-i="${i}"><span class="gart" style="${artBG(i)}"></span>
    <span class="gsfx">${g.s}</span><figcaption class="gcap">${g.t}</figcaption></figure>`).join('');
@@ -1055,13 +1078,18 @@ let fbGo=null;
 (function(){
   const host=qs('#fbBook'), pin=qs('#fbPin'); if(!host)return;
   const P=DATA.people, N=P.length;
-  const ini=n=>n.split(/[\s.]+/).filter(Boolean).slice(0,2).map(w=>w[0]).join('');
+  /* initials for the panel: drop any "(Grade 10)" note, then take the first letter
+     of up to two names — "Pranav & Lasya" -> PL, "Darsheel" -> D */
+  const ini=n=>n.replace(/\(.*?\)/g,'').split(/[\s.&,]+/).filter(Boolean)
+                .slice(0,2).map(w=>w[0].toUpperCase()).join('');
   const SFX=['POW!','ZAP!','BAM!','WHAM!','ZOWIE!','KAPOW!','BOOM!'];
 
   /* If the flip library never loaded, lay the board out flat rather than
      leaving the route blank — that empty section is what looked "not there". */
   function flat(){
     pin.classList.add('fb-flat');
+    pin.style.height='';                 // drop the pinned run; the grid sets its own
+
     host.innerHTML=P.map((p,i)=>
       `<article class="panel pf-static">
          <div class="st-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
@@ -1117,6 +1145,9 @@ let fbGo=null;
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
 
   const SPREADS=N+2;                       // cover + one per officer + end
+  /* the pinned run has to grow with the board — one screen to enter, then a
+     scroll-length per spread. Pure vh, so it works while the page is hidden. */
+  pin.style.height=(100+(SPREADS-1)*70)+'vh';
   const pageOf=s=>s<=0?0:Math.min((pf?pf.getPageCount():16)-1,s*2-1);
   let cur=0,busy=false;
   function goSpread(s){ s=Math.max(0,Math.min(SPREADS-1,s));
@@ -1293,13 +1324,16 @@ qsa('[data-r],[data-form]').forEach(a=>a.addEventListener('click',()=>closeMobil
     const t=[];
     DATA.people.forEach((p,i)=>{ if(/^[A-Z]\.\s*Delegate$/i.test(p.n))
       t.push(['Secretariat',p.r,'Real name + a one-line bio']); });
+    if(DATA.committees.length<7)
+      t.push(['Committees',`${7-DATA.committees.length} still missing`,
+              'Name, agenda and description for each']);
     DATA.committees.forEach(c=>{ if(!c.f)
       t.push(['Committee',c.c,'Full name of the committee']); });
     DATA.committees.forEach(c=>{ if(/background guides\.$/i.test(c.a))
       t.push(['Committee',c.c,'Agenda / topic']); });
+    t.push(['Executive Board','Chairs & vice-chairs','Names for each committee']);
     DATA.resources.forEach(r=>{ if(/REPLACE_/.test(r.u))
       t.push(['Resource',r.h,'Real Google Doc or Sheet link']); });
-    DATA.oc.forEach(o=>t.push(['Organising Cttee',o,'Who heads it']));
     if(/mun@keystoneeducation\.in/.test(document.body.innerHTML))
       t.push(['Contact','Email address','Confirm the real MUN inbox']);
     if(!MUN_PHOTOS.some(u=>!/^https?:\/\/images\.unsplash/.test(u)))
