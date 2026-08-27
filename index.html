@@ -11,8 +11,8 @@
 
 <style>
 :root{
-  --ink:#08080a;
-  --ink-2:#131316;
+  --ink:#0e0e12;
+  --ink-2:#17171e;
   --paper:#f4f4f6;
   --paper-2:#d9d9de;
   --red:#C0111F;
@@ -374,6 +374,9 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   -webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
 .pf-cover .cv-tag{font-family:var(--display);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;
   color:rgba(244,244,246,.9)}
+.pf-cover-img .pf-in{padding:0}
+.cv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.pf-cover-img .cbar,.pf-cover-img .cv-issue,.pf-cover-img .cv-logo,.pf-cover-img .cv-tag{display:none}
 /* the comic panel printed on each officer's left-hand sheet */
 .pf-art,.st-art{position:relative;overflow:hidden;display:grid;place-items:center}
 .pf-art{flex:1;border:2px solid var(--ink);min-height:0}
@@ -522,6 +525,19 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .reg-note h4{font-family:var(--display);font-size:.9rem;text-transform:uppercase;color:var(--paper);margin-bottom:.5rem}
 .reg-note p,.reg-note li{font-size:.86rem;color:var(--muted)}
 .reg-note ul{padding-left:1.1rem;margin-top:.4rem}
+.fee-table{width:100%;border-collapse:collapse;margin-top:.4rem;font-size:.86rem}
+.fee-table th{font-family:var(--display);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  text-align:left;color:var(--ember);padding:.4rem .5rem;border-bottom:2px solid var(--red)}
+.fee-table td{padding:.45rem .5rem;color:var(--muted);border-bottom:1px solid rgba(244,244,246,.08)}
+.fee-table tr:last-child td{border-bottom:none}
+/* ============ EXECUTIVE BOARD ============ */
+.eb-grid{display:grid;gap:1.3rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:2rem}
+.eb-card{padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.8rem}
+.eb-com{font-family:var(--comic);font-size:1.3rem;color:var(--ember);
+  -webkit-text-stroke:1px var(--ink);paint-order:stroke fill}
+.eb-row{display:flex;flex-direction:column;gap:.15rem}
+.eb-label{font-family:var(--display);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+.eb-name{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--paper)}
 @media(max-width:900px){.reg{grid-template-columns:1fr}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-9px)}75%{transform:translateX(7px)}}
 .shake{animation:shake .45s}
@@ -657,6 +673,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <a href="#/about" data-r="about">About</a>
     <a href="#/committees" data-r="committees">Committees</a>
     <a href="#/secretariat" data-r="secretariat">Secretariat</a>
+    <a href="#/eb" data-r="eb">Executive Board</a>
     <a href="#/gallery" data-r="gallery">Gallery</a>
     <a href="#/schedule" data-r="schedule">Schedule</a>
     <a href="#/resources" data-r="resources">Resources</a>
@@ -668,7 +685,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 <div class="mobile" id="mobile">
   <a href="#/home" data-r="home">Home</a><a href="#/about" data-r="about">About</a>
   <a href="#/committees" data-r="committees">Committees</a><a href="#/secretariat" data-r="secretariat">Secretariat</a>
-  <a href="#/gallery" data-r="gallery">Gallery</a><a href="#/schedule" data-r="schedule">Schedule</a>
+  <a href="#/eb" data-r="eb">Executive Board</a><a href="#/gallery" data-r="gallery">Gallery</a><a href="#/schedule" data-r="schedule">Schedule</a>
   <a href="#/resources" data-r="resources">Resources</a><a data-form target="_blank" rel="noopener">Register</a>
   <a href="#/contact" data-r="contact">Contact</a>
 </div>
@@ -684,7 +701,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <span class="l"><span class="w" data-h>United</span></span>
         <span class="l"><span class="w nat" data-h>Nations</span></span>
       </h1>
-      <p class="sub" data-h>Three days. Seven committees. One room where the world gets argued over — and rewritten.</p>
+      <p class="sub" data-h>Three days. Six committees. One room where the world gets argued over — and rewritten.</p>
       <div class="hero-cta" data-h>
         <a class="btn btn-red" data-form target="_blank" rel="noopener">Register for Delegation Now ▶</a>
         <a href="#/committees" class="btn btn-paper" data-r="committees">Explore Committees</a>
@@ -707,7 +724,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       <span class="cap" data-rev>Our Conference</span>
       <h2 class="h2" data-rev>What is <em>KeyMUN?</em></h2>
       <p data-rev>KeyMUN is the Model United Nations conference of Keystone School, Hyderabad — three days in which the school becomes a working simulation of the United Nations, run entirely by its students.</p>
-      <p data-rev>Delegates take on the seat of a country or a figure they have never been, argue a crisis they did not create, and try to get a resolution past a room that has every reason to say no. Seven committees run at once, from disarmament to a joint crisis cabinet.</p>
+      <p data-rev>Delegates take on the seat of a country or a figure they have never been, argue a crisis they did not create, and try to get a resolution past a room that has every reason to say no. Six committees run at once, from disarmament to a joint crisis cabinet.</p>
       <div class="pull" data-rev>"We prepare students not merely to <em>win the room</em> — but to understand it."</div>
       <p data-rev>It is our proudest tradition: a weekend where learning to listen matters as much as learning to speak, and where two hundred delegates leave arguing better than they arrived.</p>
     </div>
@@ -719,7 +736,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <section class="sec"><div class="wrap">
       <span class="cap" data-rev>Councils &amp; Cabinets</span>
       <h2 class="h2" data-rev>Our <em>Committees</em></h2>
-      <p class="lede" data-rev>Seven committees, each with its own crisis and cadence. Click any card to flip it over.</p>
+      <p class="lede" data-rev>Six committees, each with its own crisis and cadence. Click any card to flip it over.</p>
     </div></section>
     <div class="pin" id="pin"><div class="stage">
       <div class="track" id="track"></div>
@@ -741,6 +758,14 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       </div>
     </div></div>
   </div>
+
+  <!-- EXECUTIVE BOARD -->
+  <div class="page pagetop" id="p-eb"><section class="sec"><div class="wrap">
+    <span class="cap" data-rev>The Chairs</span>
+    <h2 class="h2" data-rev>Executive <em>Board</em></h2>
+    <p class="lede" data-rev>The chairs and vice-chairs who run each committee — trained on procedure, marking and debate.</p>
+    <div class="eb-grid" id="ebGrid"></div>
+  </div></section></div>
 
   <!-- GALLERY -->
   <div class="page pagetop" id="p-gallery"><section class="sec"><div class="wrap">
@@ -787,8 +812,15 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <div class="panel reg-note"><h4>What's included</h4><ul>
           <li>Three days of committee sessions</li><li>Background guide &amp; rules primer</li>
           <li>Delegate kit and placard</li><li>Lunch and refreshments</li><li>Certificate &amp; award eligibility</li></ul></div>
-        <div class="panel reg-note"><h4>Delegate fee</h4>
-          <p>₹1,200 per delegate. Group rates for delegations of 15+. Fee waivers available on request — no student is turned away for cost.</p></div>
+        <div class="panel reg-note"><h4>Delegate Fees</h4>
+          <table class="fee-table">
+            <tr><th>Round</th><th>Per Delegate</th></tr>
+            <tr><td>Early Bird</td><td>₹1,000</td></tr>
+            <tr><td>Round 1</td><td>₹1,200</td></tr>
+            <tr><td>Round 2</td><td>₹1,400</td></tr>
+            <tr><td>On-Spot</td><td>₹1,600</td></tr>
+          </table>
+          <p style="margin-top:.6rem;font-size:.82rem;color:var(--muted)">Group rates for delegations of 15+. Fee waivers available on request — no student is turned away for cost.</p></div>
         <div class="panel reg-note"><h4>Deadline</h4>
           <p>Registration closes two weeks before the conference, or once committees are full — whichever comes first.</p></div>
       </div>
@@ -802,9 +834,9 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <div class="contact">
       <div data-rev>
         <div class="ci"><span class="ic">◉</span><div><div class="lb">Campus</div><div class="vl">Keystone School<br>Sy. No. 340, Keystone School Road, Puppalguda<br>Financial District, Nanakramguda<br>Hyderabad, Telangana 500032</div></div></div>
-        <div class="ci"><span class="ic">✉</span><div><div class="lb">Email</div><a class="vl" href="mailto:mun@keystoneeducation.in">mun@keystoneeducation.in</a></div></div>
-        <div class="ci"><span class="ic">☎</span><div><div class="lb">Phone</div><a class="vl" href="tel:+917306304444">+91 730 630 4444</a></div></div>
-        <div class="ci"><span class="ic">◎</span><div><div class="lb">Instagram</div><a class="vl" href="#" target="_blank" rel="noopener">@keystone.mun</a></div></div>
+        <div class="ci"><span class="ic">✉</span><div><div class="lb">Email</div><a class="vl" href="mailto:keymun@keystoneeducation.in">keymun@keystoneeducation.in</a></div></div>
+        <div class="ci"><span class="ic">☎</span><div><div class="lb">Phone</div><a class="vl" href="tel:+919951915268">+91 99519 15268</a></div></div>
+        <div class="ci"><span class="ic">◎</span><div><div class="lb">Instagram</div><a class="vl" href="https://instagram.com/keymun.2026" target="_blank" rel="noopener">@keymun.2026</a></div></div>
       </div>
       <div data-rev>
         <div class="map"><iframe title="Keystone School, Hyderabad" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
@@ -858,9 +890,9 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <p>A student-led simulation of the United Nations, hosted annually at Keystone School, Hyderabad.</p>
       </div>
       <div class="f-cols">
-        <div class="f-col"><h5>Conference</h5><a href="#/about" data-r="about">About</a><a href="#/committees" data-r="committees">Committees</a><a href="#/secretariat" data-r="secretariat">Secretariat</a><a href="#/schedule" data-r="schedule">Schedule</a></div>
+        <div class="f-col"><h5>Conference</h5><a href="#/about" data-r="about">About</a><a href="#/committees" data-r="committees">Committees</a><a href="#/secretariat" data-r="secretariat">Secretariat</a><a href="#/eb" data-r="eb">Executive Board</a><a href="#/schedule" data-r="schedule">Schedule</a></div>
         <div class="f-col"><h5>Delegates</h5><a href="#/resources" data-r="resources">Guides &amp; FAQ</a><a href="#/gallery" data-r="gallery">Gallery</a><a href="#/register" data-r="register">Register</a><a href="#/contact" data-r="contact">Contact</a></div>
-        <div class="f-col"><h5>Connect</h5><a href="mailto:mun@keystoneeducation.in">Email</a><a href="#" target="_blank" rel="noopener">Instagram</a><a href="#" target="_blank" rel="noopener">LinkedIn</a></div>
+        <div class="f-col"><h5>Connect</h5><a href="mailto:keymun@keystoneeducation.in">Email</a><a href="https://instagram.com/keymun.2026" target="_blank" rel="noopener">Instagram</a></div>
       </div>
     </div>
     <div class="f-bot"><span>© <span id="yr"></span> Keystone School · Model United Nations</span><span>Showcase build · placeholder content</span></div>
@@ -906,7 +938,7 @@ const DATA={
        "Register" button on the site follows it. */
   formUrl:'https://docs.google.com/forms/d/e/1FAIpQLScXBT_zgpbrE0dbws1MC3DEDz2syAjaNr4nEBRCWp68lywCIQ/viewform',
   announcements:['Registration is now open','Background guides released','Country matrix live now','Early-bird rates end soon','First-timers briefing added'],
-  stats:[['2–4','October 2026'],['200','Delegate Seats'],['7','Committees'],['2026','Annual Session']],
+  stats:[['2–4','October 2026'],['200','Delegate Seats'],['6','Committees'],['2026','Annual Session']],
   pillars:[
     {h:'Committees With Real Stakes',p:'No filler committees. Every one runs a live agenda with a crisis arc, so debate has consequences instead of running out of steam.'},
     {h:'A Board That Actually Chairs',p:'Our executive board is trained before the gavel falls — on procedure, marking, and drawing out the quiet delegate.'},
@@ -934,17 +966,22 @@ const DATA={
         <path d="M17 35v15M27 35v15M37 35v15M47 35v15"/><path d="M9 54h46"/>`,
      b:'The lower house of Parliament. Domestic policy fought out across the aisle, with the Speaker holding the floor and every member answerable to a constituency.',
      a:'Electoral reform and the conduct of free and fair elections.'},
-    {c:'World Bank',k:'worldbank',f:'International Bank for Reconstruction & Development',lv:'Intermediate',
+    {c:'WTO',k:'wto',f:'World Trade Organization',lv:'Intermediate',
      s:`<circle cx="32" cy="32" r="22"/><path d="M10 32h44"/>
         <path d="M23 41V33M32 41V25M41 41V29" stroke-width="4"/>`,
-     b:'Where development is priced. Loans, conditions and debt — the committee that decides which futures get funded and what they cost.',
-     a:'Debt sustainability and development financing for low-income economies.'},
+     b:'The arbiter of global commerce. Tariffs, trade disputes and the rulebook that decides who trades what — and at what price.',
+     a:'Reforming dispute settlement and navigating trade tensions in a multipolar economy.'},
     {c:'TFI',k:'tfi',f:'Telugu Film Industry',lv:'Beginner–Intermediate',
      s:`<rect x="9" y="26" width="46" height="28" rx="2"/>
         <path d="M9 26l4-9 44-4-4 9z"/>
         <path d="M22 17l-3 8M34 15l-3 9M46 13l-3 9"/>`,
      b:'Hyderabad’s own industry, put in committee. Producers, directors, actors and studios argue over what gets made, who gets paid, and who gets remembered — the lightest room to speak in, and the hardest to win.',
      a:'Fair pay, credit and working conditions across the industry.'},
+    {c:'UNHRC',k:'unhrc',f:'United Nations Human Rights Council',lv:'Intermediate–Advanced',
+     s:`<circle cx="32" cy="26" r="8"/><path d="M18 46c0-8 6-14 14-14s14 6 14 14"/>
+        <path d="M32 6v8M6 26h8M50 26h8M14 12l5.6 5.6M50 12l-5.6 5.6"/>`,
+     b:'The UN body charged with protecting human rights worldwide. Investigations, resolutions and the tension between sovereignty and accountability.',
+     a:'Digital surveillance, privacy rights and the ethics of state monitoring.'},
     {c:'JCC',k:'jcc',f:'Joint Crisis Committee',lv:'Advanced · Invite',
      s:`<rect x="6" y="20" width="20" height="24" rx="2"/>
         <rect x="38" y="20" width="20" height="24" rx="2"/>
@@ -967,40 +1004,44 @@ const DATA={
     {n:'Dhegan & Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in — invitations, delegations, and the relationships behind them.'},
     {n:'Lipika & Aadya',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Finds the partners who make the conference possible and looks after them once they say yes.'},
     {n:'David & Gauthami',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Rooms, timings, materials, and the hundred moving parts that have to land in the right place.'}],
+  eb:[
+    {committee:'DISEC',chair:'TBA',vice:'TBA'},
+    {committee:'Lok Sabha',chair:'TBA',vice:'TBA'},
+    {committee:'WTO',chair:'TBA',vice:'TBA'},
+    {committee:'TFI',chair:'TBA',vice:'TBA'},
+    {committee:'UNHRC',chair:'TBA',vice:'TBA'},
+    {committee:'JCC',chair:'TBA',vice:'TBA'}],
   gallery:[
     {t:'Opening Ceremony',s:'BOOM!',tall:false},{t:'Committee Floor',s:'ORDER!',tall:true},
     {t:'Crisis Night',s:'ALERT!',tall:false},{t:'Unmoderated Caucus',s:'DEBATE!',tall:false},
     {t:'Press Corps',s:'SCOOP!',tall:true},{t:'The Gavel Falls',s:'BANG!',tall:false},
     {t:'Awards Evening',s:'BRAVO!',tall:false},{t:'Delegates at Work',s:'DRAFT!',tall:false}],
   schedule:[
-    {day:'Day One',slots:[
-      {t:'08:30',h:'Registration & Check-in',p:'Placards, delegate kits and committee assignments.',g:'Logistics'},
-      {t:'10:00',h:'Opening Ceremony',p:'Address from the Secretary-General beneath the assembly of flags.',g:'Ceremony'},
-      {t:'11:30',h:'Committee Session I',p:'Roll call, setting the agenda, opening speeches.',g:'Session'},
-      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'Break'},
-      {t:'14:00',h:'Committee Session II',p:'Moderated and unmoderated caucus begins.',g:'Session'}]},
-    {day:'Day Two',slots:[
-      {t:'09:00',h:'Committee Session III',p:'Working papers and bloc formation.',g:'Session'},
-      {t:'11:00',h:'Crisis Break',p:'Directives drop. Cabinets convene.',g:'Crisis'},
-      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'Break'},
-      {t:'14:00',h:'Committee Session IV',p:'Draft resolutions, sponsors and signatories.',g:'Session'},
-      {t:'19:00',h:'Social Evening',p:'Delegate mixer and press awards.',g:'Social'}]},
-    {day:'Day Three',slots:[
-      {t:'09:00',h:'Committee Session V',p:'Amendments and final debate.',g:'Session'},
-      {t:'11:30',h:'Voting Procedure',p:'The floor divides. Resolutions rise or fall.',g:'Session'},
-      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'Break'},
-      {t:'14:30',h:'Closing Ceremony & Awards',p:'Final gavel and recognition of the weekend’s finest.',g:'Ceremony'}]}],
+    {day:'Day One · 2 Oct',slots:[
+      {t:'08:30',h:'Registration & Check-in',p:'Placards, delegate kits and committee assignments.',g:'All'},
+      {t:'10:00',h:'Opening Ceremony',p:'Address from the Secretary-General beneath the assembly of flags.',g:'All'},
+      {t:'11:30',h:'Committee Session I',p:'Roll call, setting the agenda, opening speeches.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC'},
+      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
+      {t:'14:00',h:'Committee Session II',p:'Moderated and unmoderated caucus begins.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC'}]},
+    {day:'Day Two · 3 Oct',slots:[
+      {t:'09:00',h:'Committee Session III',p:'Working papers and bloc formation.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC'},
+      {t:'11:00',h:'Crisis Break',p:'Directives drop. Cabinets convene.',g:'JCC'},
+      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
+      {t:'14:00',h:'Committee Session IV',p:'Draft resolutions, sponsors and signatories.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC'},
+      {t:'18:00',h:'Socials',p:'Delegate mixer, games and informal networking — the part everyone remembers.',g:'All'}]},
+    {day:'Day Three · 4 Oct',slots:[
+      {t:'09:00',h:'Committee Session V',p:'Amendments and final debate.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC'},
+      {t:'11:30',h:'Voting Procedure',p:'The floor divides. Resolutions rise or fall.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC'},
+      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
+      {t:'14:30',h:'Closing Ceremony & Awards',p:'Final gavel and recognition of the weekend\'s finest.',g:'All'}]}],
   resources:[
     {h:'Background Guides',p:'Committee-by-committee study guides — context, key questions and bloc positions.',m:'Google Doc · per committee',u:'https://docs.google.com/document/d/REPLACE_GUIDES'},
-    {h:'Conference Schedule',p:'The full three-day programme, session by session.',m:'Google Sheet · live',u:'https://docs.google.com/spreadsheets/d/REPLACE_SCHEDULE'},
-    {h:'Country Matrix',p:'Every committee and allocation — find your nation and your seat.',m:'Google Sheet · allocations',u:'https://docs.google.com/spreadsheets/d/REPLACE_MATRIX'},
-    {h:'Rules of Procedure',p:'The parliamentary rulebook — motions, points and the choreography of debate.',m:'PDF · rulebook',u:'https://docs.google.com/document/d/REPLACE_ROP'},
-    {h:'Position Paper Format',p:'Template and marking rubric for your position papers.',m:'Google Doc · template',u:'https://docs.google.com/document/d/REPLACE_POSITION'}],
+    {h:'Rules of Procedure',p:'The parliamentary rulebook — motions, points and the choreography of debate.',m:'PDF · rulebook',u:'https://docs.google.com/document/d/REPLACE_ROP'}],
   faq:[
     {q:'Who can attend?',a:'Any student in grades 8–12 from any school. Both first-timers and veterans are welcome — committees are graded by difficulty so you can pick your level.'},
     {q:'Do I need experience?',a:'No. Several committees are explicitly beginner-friendly, and every registered delegate gets a rules primer plus an optional first-timers briefing before the conference.'},
     {q:'What should I bring?',a:'Formal western or traditional attire, a notebook and pen, a printed copy of your position paper, and a laptop if you have one. Placards and delegate kits are provided.'},
-    {q:'What is the registration fee?',a:'₹1,200 per delegate, with group rates for delegations of 15 or more. Fee waivers are available on request — no student is turned away for cost.'},
+    {q:'What is the registration fee?',a:'Fees depend on when you register: Early Bird ₹1,000, Round 1 ₹1,200, Round 2 ₹1,400, On-Spot ₹1,600. Group rates for delegations of 15+. Fee waivers available on request — no student is turned away for cost.'},
     {q:'How are allocations decided?',a:'You rank committee preferences at registration. Allocations balance experience level and delegation size, and go out with the country matrix roughly three weeks before.'},
     {q:'Are awards given?',a:'Yes — Best Delegate, High Commendation and Special Mention per committee, plus Best Position Paper. Judged on research, diplomacy and resolution quality.'}]
 };
@@ -1069,6 +1110,12 @@ qs('#res').innerHTML=DATA.resources.map(r=>
 qs('#faq').innerHTML=DATA.faq.map(f=>
   `<div class="panel q"><button class="q-head">${f.q}<i>+</i></button><div class="q-body"><div><p>${f.a}</p></div></div></div>`).join('');
 qsa('.q-head').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
+qs('#ebGrid').innerHTML=DATA.eb.map((e,i)=>
+  `<div class="panel eb-card" data-rev>
+     <div class="eb-com">${e.committee}</div>
+     <div class="eb-row"><div class="eb-label">Chairperson</div><div class="eb-name">${e.chair}</div></div>
+     <div class="eb-row"><div class="eb-label">Vice-Chairperson</div><div class="eb-name">${e.vice}</div></div>
+   </div>`).join('');
 qs('#yr').textContent=new Date().getFullYear();
 
 /* ===================== SECRETARIAT — StPageFlip, scroll-driven =====================
@@ -1104,7 +1151,9 @@ let fbGo=null;
     d.className='pf-page'+(cls?' '+cls:''); if(hard)d.setAttribute('data-density','hard');
     d.innerHTML='<div class="pf-in">'+html+'</div>'; host.appendChild(d); };
 
-  add('pf-cover',`<div class="cbar"><span>Keystone Comics</span><span>The Board</span></div>
+  add('pf-cover pf-cover-img',`<img class="cv-img" src="cover.png" alt="The Secretariat"
+    onerror="var p=this.closest('.pf-cover-img');this.remove();if(p)p.classList.remove('pf-cover-img')">
+    <div class="cbar"><span>Keystone Comics</span><span>The Board</span></div>
     <span class="cv-issue">Keystone School</span><span class="cv-logo">The<br>Secretariat</span>
     <span class="cv-tag">Model United Nations</span>`,true);
   P.forEach((p,i)=>{
@@ -1147,13 +1196,15 @@ let fbGo=null;
   const SPREADS=N+2;                       // cover + one per officer + end
   /* the pinned run has to grow with the board — one screen to enter, then a
      scroll-length per spread. Pure vh, so it works while the page is hidden. */
-  pin.style.height=(100+(SPREADS-1)*70)+'vh';
+  pin.style.height=(100+(SPREADS-1)*110)+'vh';
   const pageOf=s=>s<=0?0:Math.min((pf?pf.getPageCount():16)-1,s*2-1);
   let cur=0,busy=false;
   function goSpread(s){ s=Math.max(0,Math.min(SPREADS-1,s));
-    if(s===cur||busy||!pf)return; cur=s; busy=true;
+    if(s===cur||busy||!pf)return;
+    s=cur+(s>cur?1:-1);
+    cur=s; busy=true;
     try{ pf.flip(pageOf(s)); }catch(e){}
-    setTimeout(()=>busy=false,720);
+    setTimeout(()=>busy=false,800);
     qsa('#fbDots button').forEach((d,j)=>d.classList.toggle('active',j===s)); }
   /* called by the router when this page becomes visible — that's the only moment
      the container actually has a size, so it's when the book can be built */
@@ -1182,9 +1233,9 @@ let fbGo=null;
       const step=total/(SPREADS-1);
       const target=Math.round(top+Math.round(rel/step)*step);
       if(Math.abs(target-scrollY)>6){
-        if(lenis) lenis.scrollTo(target,{duration:0.6}); else scrollTo({top:target,behavior:'smooth'});
+        if(lenis) lenis.scrollTo(target,{duration:0.8}); else scrollTo({top:target,behavior:'smooth'});
       }
-    },150);
+    },250);
   },{passive:true});
 
   const dw=qs('#fbDots');
@@ -1263,7 +1314,7 @@ inView(qs('.stats'),()=>{ if(RM)return;
 /* ===================== ROUTER ===================== */
 /* 'admin' is deliberately absent from the nav — it's reachable only by typing
    #/admin or pressing Ctrl+Shift+K. */
-const ROUTES=['home','about','committees','secretariat','gallery','schedule','resources','register','contact','admin'];
+const ROUTES=['home','about','committees','secretariat','eb','gallery','schedule','resources','register','contact','admin'];
 let shown=false,heroDone=false,firstDelay=0;
 const routeOf=()=>{const h=(location.hash||'').replace(/^#\/?/,'');return ROUTES.includes(h)?h:'home';};
 function heroIn(d=0){
@@ -1324,8 +1375,8 @@ qsa('[data-r],[data-form]').forEach(a=>a.addEventListener('click',()=>closeMobil
     const t=[];
     DATA.people.forEach((p,i)=>{ if(/^[A-Z]\.\s*Delegate$/i.test(p.n))
       t.push(['Secretariat',p.r,'Real name + a one-line bio']); });
-    if(DATA.committees.length<7)
-      t.push(['Committees',`${7-DATA.committees.length} still missing`,
+    if(DATA.committees.length<6)
+      t.push(['Committees',`${6-DATA.committees.length} still missing`,
               'Name, agenda and description for each']);
     DATA.committees.forEach(c=>{ if(!c.f)
       t.push(['Committee',c.c,'Full name of the committee']); });
