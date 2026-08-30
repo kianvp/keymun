@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Keystone Model United Nations</title>
 <meta name="description" content="Keystone School, Hyderabad — Model United Nations. Annual Session, 2–4 October 2026." />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.google.com https://docs.google.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.google.com https://docs.google.com; img-src 'self' data:; connect-src 'self'" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
 
 <style>
 :root{
@@ -26,6 +26,7 @@
   --line:rgba(176,31,47,0.30);
   --line-soft:rgba(176,31,47,0.16);
   --comic:'Archivo Black',Impact,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
   --display:'Archivo Black',Impact,sans-serif;
   --sans:'Inter',system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -238,7 +239,6 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   text-shadow:clamp(4px,.9vw,9px) clamp(4px,.9vw,9px) 0 var(--red)}
 .hero h1 .l{display:block;overflow:hidden}
 .hero h1 .w{display:inline-block}
-.hero h1 .nat{color:var(--ember)}
 .hero .sub{margin-top:1.8rem;font-size:clamp(1rem,1.35vw,1.16rem);color:var(--muted);max-width:50ch}
 .hero-cta{margin-top:2.2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
 .hero-badge{position:absolute;top:14%;right:6%;width:clamp(84px,11vw,130px);aspect-ratio:1;
@@ -385,8 +385,8 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   letter-spacing:.14em;text-transform:uppercase;padding:.5em .7em;margin-top:5%;text-align:center}
 /* the right-hand sheet: role, name, and a speech bubble */
 .pf-role{font-family:var(--display);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
-.pf-name{font-family:var(--comic);font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:.95;
-  text-transform:uppercase;margin:.25em 0 .5em}
+.pf-name{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.05;
+  margin:.25em 0 .5em;-webkit-text-stroke:0;paint-order:normal;text-transform:none}
 .pf-bub{position:relative;background:#ffffff;border:2px solid var(--ink);border-radius:12px;
   padding:.8em .9em;font-size:clamp(.7rem,1.1vw,.86rem);line-height:1.5;color:#1b1b20}
 .pf-bub::after{content:'';position:absolute;left:16%;bottom:-10px;border:9px solid transparent;
@@ -402,13 +402,14 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .pf-solo-art b{font-family:var(--comic);font-size:1.6rem;color:var(--paper);
   -webkit-text-stroke:1.6px var(--ink);paint-order:stroke fill;z-index:1}
 .pf-solo .pf-role{text-align:center;margin-top:.2em}
-.pf-solo .pf-name{text-align:center;font-size:clamp(1.1rem,2.6vw,1.8rem);margin:.2em 0 .4em}
-.pf-bio{font-size:clamp(.65rem,.95vw,.78rem);line-height:1.5;color:#3a3a42;text-align:center;padding:0 4%}
+.pf-solo .pf-name{text-align:center;font-family:var(--serif);font-size:clamp(1.3rem,3vw,2.1rem);
+  margin:.15em 0 .4em;-webkit-text-stroke:0;paint-order:normal;text-transform:none}
+.pf-bio{font-size:clamp(.74rem,1.05vw,.86rem);line-height:1.6;color:#3a3a42;text-align:center;padding:0 6%}
 
 /* ============ SECRETARIAT — pinned, scroll-driven StPageFlip ============ */
-.fb-pin{position:relative;height:600vh}
-.fb-stage{position:sticky;top:0;height:100svh;display:grid;grid-template-rows:auto 1fr auto;
-  align-items:center;justify-items:center;gap:.7rem;padding:4.6rem 1rem 1.4rem;overflow:hidden}
+.fb-pin{position:relative}
+.fb-stage{display:grid;grid-template-rows:auto 1fr auto;
+  align-items:center;justify-items:center;gap:.7rem;padding:clamp(5rem,10vh,7rem) 1rem 2rem;min-height:90svh}
 .fb-head{text-align:center}
 .fb-head .cap{margin-bottom:.45rem}
 .fb-head .h2{font-size:clamp(1.6rem,3.6vw,2.8rem)}
@@ -423,6 +424,14 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .fb-dots button{width:12px;height:12px;padding:0;background:transparent;border:2px solid var(--red);
   transform:rotate(45deg);transition:.2s}
 .fb-dots button.active{background:var(--ember);transform:rotate(45deg) scale(1.25)}
+.fb-nav{display:flex;gap:1rem;align-items:center;justify-content:center}
+.fb-btn{display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--display);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.6rem 1.2rem;background:var(--red);color:var(--paper);
+  border:var(--ink-b) solid var(--ink);box-shadow:var(--sh-sm);transition:.2s;cursor:pointer}
+.fb-btn:hover{background:var(--ember);transform:translate(-2px,-2px);box-shadow:var(--sh)}
+.fb-btn:disabled{opacity:.3;pointer-events:none}
+.fb-counter{font-family:var(--display);font-size:.58rem;letter-spacing:.2em;color:var(--muted);min-width:6ch;text-align:center}
 
 /* ── flat fallback: used when the page-flip library can't load (offline, blocked
       CDN, embedded preview). Without this the section renders empty. ── */
@@ -440,14 +449,16 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   -webkit-text-stroke:2px var(--ink);paint-order:stroke fill;z-index:1}
 .pf-static .st-role{font-family:var(--display);font-size:.56rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--ember)}
-.pf-static .st-name{font-family:var(--comic);font-size:1.5rem;color:var(--paper);
-  -webkit-text-stroke:1.4px var(--ink);paint-order:stroke fill;margin:.25rem 0 .6rem}
+.pf-static .st-name{font-family:var(--serif);font-size:1.5rem;color:var(--paper);margin:.25rem 0 .6rem}
 .pf-static .st-bio{font-size:.85rem;color:var(--muted)}
 /* ============ GALLERY ============ */
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;margin-top:2.4rem}
-.gitem{position:relative;cursor:pointer;overflow:hidden;aspect-ratio:4/3}
-.gitem.tall{aspect-ratio:3/4}
-.gart{position:absolute;inset:0}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:.5rem;margin-top:2.4rem}
+.gitem:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gitem:nth-child(3){grid-row:span 2}
+.gitem:nth-child(6){grid-column:span 2}
+@media(max-width:700px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}}
+.gitem{position:relative;cursor:pointer;overflow:hidden}
+.gart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .gitem .gcap{position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);
   font-family:var(--display);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
   padding:.55rem .8rem;border-top:2px solid var(--red);z-index:2}
@@ -703,7 +714,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       <h1 aria-label="Model United Nations">
         <span class="l"><span class="w" data-h>Model</span></span>
         <span class="l"><span class="w" data-h>United</span></span>
-        <span class="l"><span class="w nat" data-h>Nations</span></span>
+        <span class="l"><span class="w" data-h>Nations</span></span>
       </h1>
       <p class="sub" data-h>Three days. Six committees. One room where the world gets argued over — and rewritten.</p>
       <div class="hero-cta" data-h>
@@ -757,8 +768,12 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       </div>
       <div id="fbBook"></div>
       <div class="fb-foot">
+        <div class="fb-nav">
+          <button class="fb-btn" id="fbPrev">&#9664; Prev</button>
+          <span class="fb-counter" id="fbCount"></span>
+          <button class="fb-btn" id="fbNext">Next &#9654;</button>
+        </div>
         <div class="fb-dots" id="fbDots"></div>
-        <div class="fb-hint">Scroll to turn the page ▼</div>
       </div>
     </div></div>
   </div>
@@ -970,7 +985,7 @@ const DATA={
         <path d="M25 22l7 16 7-16" stroke-width="2"/>
         <path d="M25 38l7-16 7 16" stroke-width="2"/>`,
      b:'The First Committee of the General Assembly. Non-proliferation, emerging weapons, and the fragile logic of deterrence — argued by delegates who have to make security sound survivable.',
-     a:'Governance of autonomous weapons and lethal AI systems.'},
+     a:'Yet to be released.'},
     {c:'Lok Sabha',k:'loksabha',logo:'circle-badges/lok-sabha.png',f:'House of the People · Parliament of India',lv:'Intermediate',
      s:`<path d="M32 8v4" stroke-width="2"/>
         <circle cx="32" cy="16" r="5" stroke-width="1.8"/>
@@ -981,7 +996,7 @@ const DATA={
         <path d="M20 48h24" stroke-width="2.5"/>
         <path d="M18 52h28" stroke-width="2.5"/>`,
      b:'The lower house of Parliament. Domestic policy fought out across the aisle, with the Speaker holding the floor and every member answerable to a constituency.',
-     a:'Electoral reform and the conduct of free and fair elections.'},
+     a:'Yet to be released.'},
     {c:'WTO',k:'wto',logo:'circle-badges/world-globe.png',f:'World Trade Organization',lv:'Intermediate',
      s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
         <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
@@ -993,7 +1008,7 @@ const DATA={
         <path d="M16 28h32" stroke-width="1.5"/>
         <path d="M18 21h28M18 35h28" stroke-width="1.2"/>`,
      b:'The arbiter of global commerce. Tariffs, trade disputes and the rulebook that decides who trades what — and at what price.',
-     a:'Reforming dispute settlement and navigating trade tensions in a multipolar economy.'},
+     a:'Yet to be released.'},
     {c:'TFI',k:'tfi',logo:'circle-badges/film-committee.png',f:'Telugu Film Industry',lv:'Beginner–Intermediate',
      s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
         <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
@@ -1013,7 +1028,7 @@ const DATA={
         <circle cx="42" cy="37" r="1.5" fill="currentColor" stroke="none"/>
         <circle cx="42" cy="43" r="1.5" fill="currentColor" stroke="none"/>`,
      b:'Hyderabad\'s own industry, put in committee. Producers, directors, actors and studios argue over what gets made, who gets paid, and who gets remembered — the lightest room to speak in, and the hardest to win.',
-     a:'Fair pay, credit and working conditions across the industry.'},
+     a:'Yet to be released.'},
     {c:'UNHRC',k:'unhrc',logo:'circle-badges/hrc-flame.png',f:'United Nations Human Rights Council',lv:'Intermediate–Advanced',
      s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
         <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
@@ -1025,7 +1040,7 @@ const DATA={
         <path d="M32 14v-4" stroke-width="2"/>
         <path d="M28 12h8" stroke-width="2"/>`,
      b:'The UN body charged with protecting human rights worldwide. Investigations, resolutions and the tension between sovereignty and accountability.',
-     a:'Digital surveillance, privacy rights and the ethics of state monitoring.'},
+     a:'Yet to be released.'},
     {c:'JCC',k:'jcc',logo:'circle-badges/globe-map.png',f:'Joint Crisis Committee',lv:'Advanced · Invite',
      s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
         <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
@@ -1039,23 +1054,31 @@ const DATA={
         <path d="M42 16c-3 4-5 8-5 12s2 8 5 12" stroke-width="1.3"/>
         <ellipse cx="32" cy="28" rx="4" ry="12" stroke-width="1.2"/>`,
      b:'Two linked cabinets, one escalating crisis. Every directive passed in one room lands in the other — so a win here can become a disaster there.',
-     a:'A regional conflict that escalates in real time.'}],
+     a:'Yet to be released.'}],
   /* The Secretariat. n = name(s) · r = role · g = core team or under-secretaries
      · b = what the role does. Chairs and vice-chairs sit on the Executive Board,
      not here, so they are listed separately when their names are confirmed. */
   people:[
-    {n:'Pranav & Lasya',r:'Secretary-General',g:'Core Secretariat',b:'Presides over the conference and the secretariat — the ceremonial and executive head of the session.'},
+    {n:'Pranav',r:'Secretary-General',g:'Core Secretariat',b:'Presides over the conference and the secretariat — the ceremonial and executive head of the session.'},
+    {n:'Lasya',r:'Secretary-General',g:'Core Secretariat',b:'Co-leads the conference alongside the Secretary-General, steering the session from opening gavel to close.'},
     {n:'Darsheel',r:'Director-General',g:'Core Secretariat',b:'Guardian of academic quality: background guides, chair training, and the rules of procedure.'},
-    {n:'Brihati & Tanushya',r:'Chargé d\'Affaires',g:'Core Secretariat',b:'The bridge between delegates and the secretariat — hospitality and diplomacy off the committee floor.'},
-    {n:'Saqib & Kevin',r:'Head of Organising Committee',g:'Core Secretariat',b:'Runs the conference on the ground, and everything that has to happen before the first gavel falls.'},
+    {n:'Brihati',r:'Chargé d\'Affaires',g:'Core Secretariat',b:'The bridge between delegates and the secretariat — hospitality and diplomacy off the committee floor.'},
+    {n:'Tanushya',r:'Chargé d\'Affaires',g:'Core Secretariat',b:'Works alongside the Chargé to ensure every delegate feels heard and every query is answered.'},
+    {n:'Saqib',r:'Head of Organising Committee',g:'Core Secretariat',b:'Runs the conference on the ground, and everything that has to happen before the first gavel falls.'},
+    {n:'Kevin',r:'Head of Organising Committee',g:'Core Secretariat',b:'Co-leads the organising committee — turning plans into a three-day reality.'},
     {n:'Anvika',r:'Delegate Affairs',g:'Core Secretariat',b:'Looks after the delegates themselves — allocations, queries, and the experience of the weekend.'},
     {n:'Urvi',r:'USG · Finance',g:'Under-Secretaries-General',b:'Holds the budget: fees, costs, and keeping the conference solvent from first plan to final receipt.'},
     {n:'Vaishnavi',r:'USG · Policy',g:'Under-Secretaries-General',b:'Shapes the agendas and the substance — what each committee debates and how deep it goes.'},
-    {n:'Aayaan & Yogita',r:'USG · Design',g:'Under-Secretaries-General',b:'Everything the conference looks like: placards, guides, the brand, and this website.'},
-    {n:'Pranav (Grade 10) & Surarchit',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Gets the word out and keeps it interesting — campaigns, socials, and the conference\'s public voice.'},
-    {n:'Dhegan & Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in — invitations, delegations, and the relationships behind them.'},
-    {n:'Lipika & Aadya',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Finds the partners who make the conference possible and looks after them once they say yes.'},
-    {n:'David & Gauthami',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Rooms, timings, materials, and the hundred moving parts that have to land in the right place.'}],
+    {n:'Aayaan',r:'USG · Design',g:'Under-Secretaries-General',b:'Everything the conference looks like: placards, guides, the brand, and this website.'},
+    {n:'Yogita',r:'USG · Design',g:'Under-Secretaries-General',b:'Shapes the visual identity of KeyMUN — from the logo to the delegate kit.'},
+    {n:'Pranav',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Gets the word out and keeps it interesting — campaigns and the conference\'s public voice.'},
+    {n:'Surarchit',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Runs social media and outreach campaigns that put KeyMUN on every school\'s radar.'},
+    {n:'Dhegan',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in — invitations, delegations, and the relationships behind them.'},
+    {n:'Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Builds and maintains the delegate pipeline — from first contact to confirmed registration.'},
+    {n:'Lipika',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Finds the partners who make the conference possible and looks after them once they say yes.'},
+    {n:'Aadya',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Manages sponsor relationships and ensures every partner sees the value they were promised.'},
+    {n:'David',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Rooms, timings, materials, and the hundred moving parts that have to land in the right place.'},
+    {n:'Gauthami',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Coordinates the behind-the-scenes operations that keep every session running on time.'}],
   eb:[
     {committee:'DISEC',chair:'TBA',vice:'TBA'},
     {committee:'Lok Sabha',chair:'TBA',vice:'TBA'},
@@ -1064,10 +1087,9 @@ const DATA={
     {committee:'UNHRC',chair:'TBA',vice:'TBA'},
     {committee:'JCC',chair:'TBA',vice:'TBA'}],
   gallery:[
-    {t:'Opening Ceremony',s:'BOOM!',tall:false},{t:'Committee Floor',s:'ORDER!',tall:true},
-    {t:'Crisis Night',s:'ALERT!',tall:false},{t:'Unmoderated Caucus',s:'DEBATE!',tall:false},
-    {t:'Press Corps',s:'SCOOP!',tall:true},{t:'The Gavel Falls',s:'BANG!',tall:false},
-    {t:'Awards Evening',s:'BRAVO!',tall:false},{t:'Delegates at Work',s:'DRAFT!',tall:false}],
+    {src:'photos/gallery-1.jpg'},{src:'photos/gallery-2.jpg'},{src:'photos/gallery-3.jpg'},
+    {src:'photos/gallery-4.jpg'},{src:'photos/gallery-5.jpg'},{src:'photos/gallery-6.jpg'},
+    {src:'photos/gallery-7.jpg'},{src:'photos/gallery-8.jpg'},{src:'photos/gallery-9.jpg'}],
   schedule:[
     {day:'Day One · 2 Oct',slots:[
       {t:'08:30',h:'Registration & Check-in',p:'Placards, delegate kits and committee assignments.',g:'All'},
@@ -1156,8 +1178,7 @@ qsa('[data-logo-k]').forEach(m=>{ const src='logos/'+m.dataset.logoK+'.png';
   const im=new Image(); im.onload=()=>{ m.classList.add('has-logo');
     m.innerHTML=`<img src="${src}" alt="">`; }; im.src=src; });
 qs('#gal').innerHTML=DATA.gallery.map((g,i)=>
-  `<figure class="panel gitem${g.tall?' tall':''}" data-i="${i}"><span class="gart" style="${artBG(i)}"></span>
-   <span class="gsfx">${g.s}</span><figcaption class="gcap">${g.t}</figcaption></figure>`).join('');
+  `<figure class="panel gitem" data-i="${i}"><img class="gart" src="${g.src}" alt="Gallery photo ${i+1}" loading="lazy"></figure>`).join('');
 qs('#res').innerHTML=DATA.resources.map(r=>{
   const safe=/^https?:\/\//i.test(r.u)?r.u:'#';
   return `<a class="panel res" href="${safe}" target="_blank" rel="noopener"><h4>${r.h}</h4><p>${r.p}</p><div class="meta">${r.m} ▶</div></a>`;}).join('');
@@ -1172,25 +1193,16 @@ qs('#ebGrid').innerHTML=DATA.eb.map((e,i)=>
    </div>`).join('');
 qs('#yr').textContent=new Date().getFullYear();
 
-/* ===================== SECRETARIAT — StPageFlip, scroll-driven =====================
-   A pinned section: scrolling down turns the pages. Spread pairing with showCover:
-   page0 = cover, then (1,2)=officer 1, (3,4)=officer 2 … portrait left, bio right. */
+/* ===================== SECRETARIAT ===================== */
 let fbGo=null;
 (function(){
   const host=qs('#fbBook'), pin=qs('#fbPin'); if(!host)return;
   const P=DATA.people, N=P.length;
-  /* initials for the panel: drop any "(Grade 10)" note, then take the first letter
-     of up to two names — "Pranav & Lasya" -> PL, "Darsheel" -> D */
   const ini=n=>n.replace(/\(.*?\)/g,'').split(/[\s.&,]+/).filter(Boolean)
                 .slice(0,2).map(w=>w[0].toUpperCase()).join('');
-  const SFX=['POW!','ZAP!','BAM!','WHAM!','ZOWIE!','KAPOW!','BOOM!'];
 
-  /* If the flip library never loaded, lay the board out flat rather than
-     leaving the route blank — that empty section is what looked "not there". */
   function flat(){
     pin.classList.add('fb-flat');
-    pin.style.height='';                 // drop the pinned run; the grid sets its own
-
     host.innerHTML=P.map((p,i)=>
       `<article class="panel pf-static">
          <div class="st-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
@@ -1220,19 +1232,15 @@ let fbGo=null;
   add('pf-cover',`<span class="cv-logo" style="font-size:clamp(1.2rem,2.6vw,2rem)">The End</span>
     <span class="cv-tag">…for now</span>`,true);
 
-  /* LAZY MOUNT — the whole reason the book came out tiny in the corner:
-     StPageFlip measures its container on construction, and this page is
-     display:none until you route to it, so it measured 0 and never recovered.
-     Build it on first reveal instead, and re-fit on resize. */
   let pf=null;
   function mount(){
-    if(!host.offsetParent) return false;              // still hidden — try later
+    if(!host.offsetParent) return false;
     if(pf){ try{ pf.update(); }catch(e){} return true; }
     const portrait = innerWidth < 900;
     const availH = Math.max(320, innerHeight - 250);
     const pageW  = Math.round(Math.min(
-      availH/1.4,                                    // fit the height
-      portrait ? innerWidth*0.86 : innerWidth*0.42,  // fit the width
+      availH/1.4,
+      portrait ? innerWidth*0.86 : innerWidth*0.42,
       560));
     try{
       pf = new St.PageFlip(host,{
@@ -1241,68 +1249,54 @@ let fbGo=null;
         flippingTime:700, usePortrait:portrait, mobileScrollSupport:false
       });
       pf.loadFromHTML(host.querySelectorAll('.pf-page'));
+      pf.on('flip',(e)=>{ cur=e.data; updateUI(); });
     }catch(e){ pf=null; flat(); return true; }
     return true;
   }
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
 
-  const PAGES=N+2;                          // cover + one per officer + end
-  pin.style.height=(100+(PAGES-1)*110)+'vh';
-  const pageOf=s=>Math.max(0,Math.min((pf?pf.getPageCount():N+2)-1,s));
-  let cur=0,busy=false;
-  function goSpread(s){ s=Math.max(0,Math.min(PAGES-1,s));
-    if(s===cur||busy||!pf)return;
-    s=cur+(s>cur?1:-1);
-    cur=s; busy=true;
-    try{ pf.flip(pageOf(s)); }catch(e){}
-    setTimeout(()=>busy=false,800);
-    qsa('#fbDots button').forEach((d,j)=>d.classList.toggle('active',j===s)); }
-  /* called by the router when this page becomes visible — that's the only moment
-     the container actually has a size, so it's when the book can be built */
+  const PAGES=N+2;
+  let cur=0;
+  const prevBtn=qs('#fbPrev'),nextBtn=qs('#fbNext'),counter=qs('#fbCount');
+
+  function updateUI(){
+    if(counter) counter.textContent=(cur+1)+' / '+PAGES;
+    if(prevBtn) prevBtn.disabled=(cur<=0);
+    if(nextBtn) nextBtn.disabled=(cur>=PAGES-1);
+    qsa('#fbDots button').forEach((d,j)=>d.classList.toggle('active',j===cur));
+  }
+
+  function goPage(idx){
+    idx=Math.max(0,Math.min(PAGES-1,idx));
+    if(idx===cur||!pf) return;
+    try{ pf.flip(idx); }catch(e){}
+    cur=idx; updateUI();
+  }
+
+  if(prevBtn) prevBtn.addEventListener('click',()=>goPage(cur-1));
+  if(nextBtn) nextBtn.addEventListener('click',()=>goPage(cur+1));
+
   fbGo=()=>{
-    if(!mount()) requestAnimationFrame(()=>mount());   // retry after layout flush
-    cur=-1;
-    requestAnimationFrame(()=>{ mount(); goSpread(0); });
-    /* last resort: if the book still has no size a beat later, lay it out flat */
+    if(!mount()) requestAnimationFrame(()=>mount());
+    cur=0;
+    requestAnimationFrame(()=>{ mount(); updateUI(); });
     setTimeout(()=>{ if(!pin.classList.contains('fb-flat') &&
       (!pf || host.getBoundingClientRect().height < 80)) flat(); },400);
   };
-  function onScroll(){ const total=pin.offsetHeight-innerHeight; if(total<=0)return;
-    const p=Math.max(0,Math.min(1,-pin.getBoundingClientRect().top/total));
-    goSpread(Math.round(p*(PAGES-1))); }
-  addEventListener('scroll',onScroll,{passive:true});   // pin height is pure CSS (600vh)
-
-  /* once the wheel settles, glide to the nearest officer so you always land on a spread */
-  let snapT=null;
-  addEventListener('scroll',()=>{
-    if(!document.body.classList.contains('r-secretariat'))return;
-    clearTimeout(snapT);
-    snapT=setTimeout(()=>{
-      const total=pin.offsetHeight-innerHeight; if(total<=0)return;
-      const top=pin.offsetTop, rel=scrollY-top;
-      if(rel<-40||rel>total+40)return;                 // outside the book, leave it alone
-      const step=total/(PAGES-1);
-      const target=Math.round(top+Math.round(rel/step)*step);
-      if(Math.abs(target-scrollY)>6){
-        if(lenis) lenis.scrollTo(target,{duration:0.8}); else scrollTo({top:target,behavior:'smooth'});
-      }
-    },250);
-  },{passive:true});
 
   const dw=qs('#fbDots');
   for(let s=0;s<PAGES;s++){ const b=document.createElement('button');
     b.setAttribute('aria-label',s===0?'Cover':'Officer '+s);
-    b.addEventListener('click',()=>{ const total=pin.offsetHeight-innerHeight;
-      const y=pin.offsetTop+total*(s/(PAGES-1));
-      lenis?lenis.scrollTo(y,{duration:1}):scrollTo({top:y,behavior:'smooth'}); });
+    b.addEventListener('click',()=>goPage(s));
     dw.appendChild(b); }
   qsa('#fbDots button')[0].classList.add('active');
+  updateUI();
 })();
 
 /* ===================== GALLERY LIGHTBOX ===================== */
 const lb=qs('#lightbox');
 qsa('.gitem').forEach(g=>g.addEventListener('click',()=>{ const i=+g.dataset.i,d=DATA.gallery[i];
-  qs('#lbArt').setAttribute('style',artBG(i)); qs('#lbCap').textContent=d.t; lb.classList.add('open'); }));
+  qs('#lbArt').innerHTML='<img src="'+d.src+'" alt="" style="width:100%;height:100%;object-fit:contain">'; qs('#lbCap').textContent='Photo '+(i+1); lb.classList.add('open'); }));
 qs('#lbClose').addEventListener('click',()=>lb.classList.remove('open'));
 lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open');});
 addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open');});
@@ -1502,15 +1496,9 @@ function closeLoader(){ if(!loader||loader.dataset.done)return; loader.dataset.d
      'photos/mun1.jpg' work fine — the URLs below are stand-ins. Any panel
      whose photo is missing falls back to the red/black stripe automatically. */
 const MUN_PHOTOS = [
-  /* 1 */ "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80",
-  /* 2 */ "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80",
-  /* 3 */ "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=400&q=80",
-  /* 4 */ "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&q=80",
-  /* 5 */ "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80",
-  /* 6 */ "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&q=80",
-  /* 7 */ "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&q=80",
-  /* 8 */ "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=400&q=80",
-  /* 9 */ "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400&q=80",
+  "photos/gallery-1.jpg","photos/gallery-2.jpg","photos/gallery-3.jpg",
+  "photos/gallery-4.jpg","photos/gallery-5.jpg","photos/gallery-6.jpg",
+  "photos/gallery-7.jpg","photos/gallery-8.jpg","photos/gallery-9.jpg",
 ];
 
 /* TIMING (ms) — each value controls the step named in the comment */
