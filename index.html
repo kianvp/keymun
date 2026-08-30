@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Keystone Model United Nations</title>
 <meta name="description" content="Keystone School, Hyderabad — Model United Nations. Annual Session, 2–4 October 2026." />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.google.com https://docs.google.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self'" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -247,15 +248,6 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .scrollcue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);font-family:var(--display);
   font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted-2)}
 
-/* ticker */
-.ticker{background:var(--red);border-top:var(--ink-b) solid var(--ink);border-bottom:var(--ink-b) solid var(--ink);
-  overflow:hidden;padding:.6rem 0}
-.ticker-in{display:flex;gap:3rem;width:max-content;animation:marq 34s linear infinite}
-.ticker:hover .ticker-in{animation-play-state:paused}
-@keyframes marq{to{transform:translateX(-50%)}}
-.ticker span{font-family:var(--display);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--paper);white-space:nowrap;display:flex;align-items:center;gap:.7rem}
-.ticker span::before{content:'★';color:var(--ink)}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:var(--ink-b) solid var(--ink)}
@@ -319,9 +311,11 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   font-family:var(--comic);font-size:1.5rem;color:var(--paper);transition:.35s var(--ease)}
 /* the emblem inherits the medal's colour, so it flips to ink on hover too */
 .medal svg{width:60%;height:60%;color:inherit}
-.medal.has-logo{background:var(--paper);padding:8px}
-.medal.has-logo img{width:100%;height:100%;object-fit:contain}
+.medal.has-logo{background:none;border:none;padding:0;box-shadow:none}
+.medal.has-logo img{width:100%;height:100%;object-fit:cover;border-radius:50%;
+  box-shadow:5px 5px 0 var(--ink);transition:.35s var(--ease)}
 .cmt:hover .medal{transform:rotate(-8deg) scale(1.07);background:var(--ember);color:var(--ink)}
+.cmt:hover .medal.has-logo{background:none;border:none}
 .cmt .code{font-family:var(--comic);font-size:1.7rem;line-height:1.05;color:var(--paper);
   -webkit-text-stroke:1.6px var(--ink);paint-order:stroke fill}
 .cmt .full{font-family:var(--display);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;
@@ -401,6 +395,15 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   border-top-color:var(--ink);border-bottom:0}
 .pf-tag{margin-top:auto;font-family:var(--display);font-size:.5rem;letter-spacing:.16em;
   text-transform:uppercase;color:rgba(8,8,10,.55)}
+/* single-page officer layout */
+.pf-solo .pf-in{display:grid;grid-template-rows:auto auto auto 1fr auto;gap:0;padding:5% 6% 4%}
+.pf-solo-art{width:42%;aspect-ratio:3/4;border:2px solid var(--ink);position:relative;overflow:hidden;
+  display:grid;place-items:center;margin:0 auto .6em;border-radius:4px}
+.pf-solo-art b{font-family:var(--comic);font-size:1.6rem;color:var(--paper);
+  -webkit-text-stroke:1.6px var(--ink);paint-order:stroke fill;z-index:1}
+.pf-solo .pf-role{text-align:center;margin-top:.2em}
+.pf-solo .pf-name{text-align:center;font-size:clamp(1.1rem,2.6vw,1.8rem);margin:.2em 0 .4em}
+.pf-bio{font-size:clamp(.65rem,.95vw,.78rem);line-height:1.5;color:#3a3a42;text-align:center;padding:0 4%}
 
 /* ============ SECRETARIAT — pinned, scroll-driven StPageFlip ============ */
 .fb-pin{position:relative;height:600vh}
@@ -614,6 +617,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .panel::before{box-shadow:2px 2px 0 rgba(10,6,8,.55)}
 .cap,.btn,.nav-cta,.fb-btn,.day-btn,.submit{border-radius:220px 10px 200px 12px/12px 200px 10px 220px}
 .medal{border-radius:49% 51% 52% 48%/48% 49% 51% 52%}
+.medal.has-logo,.medal.has-logo img{border-radius:50%}
 .burst{filter:drop-shadow(3px 3px 0 var(--ink))}
 /* ink spatter in section corners */
 .sec::before{content:'';position:absolute;top:6%;right:3%;width:120px;height:120px;pointer-events:none;
@@ -708,7 +712,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       </div>
       <div class="scrollcue" data-h>Scroll ▼</div>
     </section>
-    <div class="ticker"><div class="ticker-in" id="ticker"></div></div>
+
     <div class="stats" id="stats"></div>
     <section class="sec"><div class="wrap">
       <span class="cap" data-rev>Why Delegates Return</span>
@@ -788,7 +792,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   <div class="page pagetop" id="p-resources"><section class="sec"><div class="wrap">
     <span class="cap" data-rev>The Delegate's Desk</span>
     <h2 class="h2" data-rev>Conference <em>Resources</em></h2>
-    <p class="lede" data-rev>Guides, schedules and procedure. Links are placeholders — swap them in the DATA block.</p>
+    <p class="lede" data-rev>Guides, schedules and procedure — everything a delegate needs before the gavel falls.</p>
     <div class="res-grid" id="res"></div>
     <span class="cap" style="margin-top:3rem" data-rev>Common Questions</span>
     <h2 class="h2" data-rev><em>FAQ</em></h2>
@@ -840,6 +844,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       </div>
       <div data-rev>
         <div class="map"><iframe title="Keystone School, Hyderabad" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          sandbox="allow-scripts allow-same-origin"
           src="https://www.google.com/maps?q=Keystone%20School%2C%20Keystone%20School%20Road%2C%20Puppalguda%2C%20Financial%20District%2C%20Hyderabad%2C%20Telangana%20500032&output=embed"></iframe></div>
         <a class="btn btn-paper" style="margin-top:1rem" href="https://www.google.com/maps/search/?api=1&query=Keystone+School+Puppalguda+Financial+District+Hyderabad+500032" target="_blank" rel="noopener">Open in Maps ▶</a>
       </div>
@@ -895,7 +900,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <div class="f-col"><h5>Connect</h5><a href="mailto:keymun@keystoneeducation.in">Email</a><a href="https://instagram.com/keymun.2026" target="_blank" rel="noopener">Instagram</a></div>
       </div>
     </div>
-    <div class="f-bot"><span>© <span id="yr"></span> Keystone School · Model United Nations</span><span>Showcase build · placeholder content</span></div>
+    <div class="f-bot"><span>© <span id="yr"></span> Keystone School · Model United Nations</span><span>Keystone School · Hyderabad</span></div>
     <div class="f-credit">Made by Kian Veer and Yashashwin Reddy · Grade 9A</div>
   </div></footer>
 </main>
@@ -918,7 +923,7 @@ setTimeout(function(){ if(window.__ready)return;
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 
 <script type="importmap">
-{"imports":{"animejs":"https://cdn.jsdelivr.net/npm/animejs@4/+esm","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.mjs"}}
+{"imports":{"animejs":"https://cdn.jsdelivr.net/npm/animejs@4.0.2/+esm","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.mjs"}}
 </script>
 
 <script type="module">
@@ -937,7 +942,7 @@ const DATA={
   /* ▶ THE REGISTRATION FORM LIVES HERE — change this one line and every
        "Register" button on the site follows it. */
   formUrl:'https://docs.google.com/forms/d/e/1FAIpQLScXBT_zgpbrE0dbws1MC3DEDz2syAjaNr4nEBRCWp68lywCIQ/viewform',
-  announcements:['Registration is now open','Background guides released','Country matrix live now','Early-bird rates end soon','First-timers briefing added'],
+  announcements:[],
   stats:[['2–4','October 2026'],['200','Delegate Seats'],['6','Committees'],['2026','Annual Session']],
   pillars:[
     {h:'Committees With Real Stakes',p:'No filler committees. Every one runs a live agenda with a crisis arc, so debate has consequences instead of running out of steam.'},
@@ -955,37 +960,84 @@ const DATA={
      · s = inline emblem drawn for this committee · b = the description on the card back.
      The emblems are original drawings, not the real organisations' trademarks. */
   committees:[
-    {c:'DISEC',k:'disec',f:'Disarmament & International Security',lv:'Advanced',
-     s:`<path d="M32 6l20 7v16c0 12-8 21-20 29C20 50 12 41 12 29V13z"/>
-        <circle cx="32" cy="28" r="9"/>
-        <path d="M23 28h18M32 19c4 5 4 13 0 18M32 19c-4 5-4 13 0 18"/>`,
+    {c:'DISEC',k:'disec',logo:'circle-badges/disarmament.png',f:'Disarmament & International Security',lv:'Advanced',
+     s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
+        <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
+        <path d="M54 58c2-8 2-16-2-23s-6-12-12-16" stroke-width="1.8"/>
+        <path d="M56 54c0-4-1-8-2-11M54 49c0-4-1-7-3-10M51 44c0-3-2-7-3-9M48 39c-1-3-2-6-4-8" stroke-width="1.4"/>
+        <path d="M28 58h8" stroke-width="1.5"/>
+        <circle cx="32" cy="30" r="13" stroke-width="2"/>
+        <path d="M25 22l7 16 7-16" stroke-width="2"/>
+        <path d="M25 38l7-16 7 16" stroke-width="2"/>`,
      b:'The First Committee of the General Assembly. Non-proliferation, emerging weapons, and the fragile logic of deterrence — argued by delegates who have to make security sound survivable.',
      a:'Governance of autonomous weapons and lethal AI systems.'},
-    {c:'Lok Sabha',k:'loksabha',f:'House of the People · Parliament of India',lv:'Intermediate',
-     s:`<path d="M32 7v6"/><path d="M14 30a18 18 0 0 1 36 0"/><path d="M9 30h46"/>
-        <path d="M17 35v15M27 35v15M37 35v15M47 35v15"/><path d="M9 54h46"/>`,
+    {c:'Lok Sabha',k:'loksabha',logo:'circle-badges/lok-sabha.png',f:'House of the People · Parliament of India',lv:'Intermediate',
+     s:`<path d="M32 8v4" stroke-width="2"/>
+        <circle cx="32" cy="16" r="5" stroke-width="1.8"/>
+        <path d="M27 16h10" stroke-width="1.2"/>
+        <path d="M32 16v-5" stroke-width="1.2"/>
+        <path d="M22 24h20v4H22z" stroke-width="1.5"/>
+        <path d="M24 28v20M30 28v20M34 28v20M40 28v20" stroke-width="2"/>
+        <path d="M20 48h24" stroke-width="2.5"/>
+        <path d="M18 52h28" stroke-width="2.5"/>`,
      b:'The lower house of Parliament. Domestic policy fought out across the aisle, with the Speaker holding the floor and every member answerable to a constituency.',
      a:'Electoral reform and the conduct of free and fair elections.'},
-    {c:'WTO',k:'wto',f:'World Trade Organization',lv:'Intermediate',
-     s:`<circle cx="32" cy="32" r="22"/><path d="M10 32h44"/>
-        <path d="M23 41V33M32 41V25M41 41V29" stroke-width="4"/>`,
+    {c:'WTO',k:'wto',logo:'circle-badges/world-globe.png',f:'World Trade Organization',lv:'Intermediate',
+     s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
+        <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
+        <path d="M54 58c2-8 2-16-2-23s-6-12-12-16" stroke-width="1.8"/>
+        <path d="M56 54c0-4-1-8-2-11M54 49c0-4-1-7-3-10M51 44c0-3-2-7-3-9M48 39c-1-3-2-6-4-8" stroke-width="1.4"/>
+        <path d="M28 58h8" stroke-width="1.5"/>
+        <circle cx="32" cy="28" r="16" stroke-width="2"/>
+        <ellipse cx="32" cy="28" rx="7" ry="16" stroke-width="1.5"/>
+        <path d="M16 28h32" stroke-width="1.5"/>
+        <path d="M18 21h28M18 35h28" stroke-width="1.2"/>`,
      b:'The arbiter of global commerce. Tariffs, trade disputes and the rulebook that decides who trades what — and at what price.',
      a:'Reforming dispute settlement and navigating trade tensions in a multipolar economy.'},
-    {c:'TFI',k:'tfi',f:'Telugu Film Industry',lv:'Beginner–Intermediate',
-     s:`<rect x="9" y="26" width="46" height="28" rx="2"/>
-        <path d="M9 26l4-9 44-4-4 9z"/>
-        <path d="M22 17l-3 8M34 15l-3 9M46 13l-3 9"/>`,
-     b:'Hyderabad’s own industry, put in committee. Producers, directors, actors and studios argue over what gets made, who gets paid, and who gets remembered — the lightest room to speak in, and the hardest to win.',
+    {c:'TFI',k:'tfi',logo:'circle-badges/film-committee.png',f:'Telugu Film Industry',lv:'Beginner–Intermediate',
+     s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
+        <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
+        <path d="M54 58c2-8 2-16-2-23s-6-12-12-16" stroke-width="1.8"/>
+        <path d="M56 54c0-4-1-8-2-11M54 49c0-4-1-7-3-10M51 44c0-3-2-7-3-9M48 39c-1-3-2-6-4-8" stroke-width="1.4"/>
+        <path d="M28 58h8" stroke-width="1.5"/>
+        <rect x="20" y="16" width="24" height="32" rx="2" stroke-width="2"/>
+        <path d="M20 22h24M20 28h24M20 34h24M20 40h24" stroke-width="1.2"/>
+        <circle cx="22" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="22" cy="25" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="22" cy="31" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="22" cy="37" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="22" cy="43" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="42" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="42" cy="25" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="42" cy="31" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="42" cy="37" r="1.5" fill="currentColor" stroke="none"/>
+        <circle cx="42" cy="43" r="1.5" fill="currentColor" stroke="none"/>`,
+     b:'Hyderabad\'s own industry, put in committee. Producers, directors, actors and studios argue over what gets made, who gets paid, and who gets remembered — the lightest room to speak in, and the hardest to win.',
      a:'Fair pay, credit and working conditions across the industry.'},
-    {c:'UNHRC',k:'unhrc',f:'United Nations Human Rights Council',lv:'Intermediate–Advanced',
-     s:`<circle cx="32" cy="26" r="8"/><path d="M18 46c0-8 6-14 14-14s14 6 14 14"/>
-        <path d="M32 6v8M6 26h8M50 26h8M14 12l5.6 5.6M50 12l-5.6 5.6"/>`,
+    {c:'UNHRC',k:'unhrc',logo:'circle-badges/hrc-flame.png',f:'United Nations Human Rights Council',lv:'Intermediate–Advanced',
+     s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
+        <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
+        <path d="M54 58c2-8 2-16-2-23s-6-12-12-16" stroke-width="1.8"/>
+        <path d="M56 54c0-4-1-8-2-11M54 49c0-4-1-7-3-10M51 44c0-3-2-7-3-9M48 39c-1-3-2-6-4-8" stroke-width="1.4"/>
+        <path d="M28 58h8" stroke-width="1.5"/>
+        <path d="M32 14c-6 4-12 10-12 22 4-2 8-2 12 0 4-2 8-2 12 0 0-12-6-18-12-22z" stroke-width="2"/>
+        <path d="M32 24c-3 3-6 7-6 12M32 24c3 3 6 7 6 12" stroke-width="1.3"/>
+        <path d="M32 14v-4" stroke-width="2"/>
+        <path d="M28 12h8" stroke-width="2"/>`,
      b:'The UN body charged with protecting human rights worldwide. Investigations, resolutions and the tension between sovereignty and accountability.',
      a:'Digital surveillance, privacy rights and the ethics of state monitoring.'},
-    {c:'JCC',k:'jcc',f:'Joint Crisis Committee',lv:'Advanced · Invite',
-     s:`<rect x="6" y="20" width="20" height="24" rx="2"/>
-        <rect x="38" y="20" width="20" height="24" rx="2"/>
-        <path d="M34 11l-6 16h8l-6 16"/>`,
+    {c:'JCC',k:'jcc',logo:'circle-badges/globe-map.png',f:'Joint Crisis Committee',lv:'Advanced · Invite',
+     s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
+        <path d="M8 54c0-4 1-8 2-11M10 49c0-4 1-7 3-10M13 44c0-3 2-7 3-9M16 39c1-3 2-6 4-8" stroke-width="1.4"/>
+        <path d="M54 58c2-8 2-16-2-23s-6-12-12-16" stroke-width="1.8"/>
+        <path d="M56 54c0-4-1-8-2-11M54 49c0-4-1-7-3-10M51 44c0-3-2-7-3-9M48 39c-1-3-2-6-4-8" stroke-width="1.4"/>
+        <path d="M28 58h8" stroke-width="1.5"/>
+        <circle cx="32" cy="28" r="16" stroke-width="2"/>
+        <path d="M32 12v32" stroke-width="1.5"/>
+        <path d="M16 28h32" stroke-width="1.5"/>
+        <path d="M22 16c3 4 5 8 5 12s-2 8-5 12" stroke-width="1.3"/>
+        <path d="M42 16c-3 4-5 8-5 12s2 8 5 12" stroke-width="1.3"/>
+        <ellipse cx="32" cy="28" rx="4" ry="12" stroke-width="1.2"/>`,
      b:'Two linked cabinets, one escalating crisis. Every directive passed in one room lands in the other — so a win here can become a disaster there.',
      a:'A regional conflict that escalates in real time.'}],
   /* The Secretariat. n = name(s) · r = role · g = core team or under-secretaries
@@ -994,13 +1046,13 @@ const DATA={
   people:[
     {n:'Pranav & Lasya',r:'Secretary-General',g:'Core Secretariat',b:'Presides over the conference and the secretariat — the ceremonial and executive head of the session.'},
     {n:'Darsheel',r:'Director-General',g:'Core Secretariat',b:'Guardian of academic quality: background guides, chair training, and the rules of procedure.'},
-    {n:'Brihati & Tanushya',r:'Chargé d’Affaires',g:'Core Secretariat',b:'The bridge between delegates and the secretariat — hospitality and diplomacy off the committee floor.'},
+    {n:'Brihati & Tanushya',r:'Chargé d\'Affaires',g:'Core Secretariat',b:'The bridge between delegates and the secretariat — hospitality and diplomacy off the committee floor.'},
     {n:'Saqib & Kevin',r:'Head of Organising Committee',g:'Core Secretariat',b:'Runs the conference on the ground, and everything that has to happen before the first gavel falls.'},
     {n:'Anvika',r:'Delegate Affairs',g:'Core Secretariat',b:'Looks after the delegates themselves — allocations, queries, and the experience of the weekend.'},
     {n:'Urvi',r:'USG · Finance',g:'Under-Secretaries-General',b:'Holds the budget: fees, costs, and keeping the conference solvent from first plan to final receipt.'},
     {n:'Vaishnavi',r:'USG · Policy',g:'Under-Secretaries-General',b:'Shapes the agendas and the substance — what each committee debates and how deep it goes.'},
     {n:'Aayaan & Yogita',r:'USG · Design',g:'Under-Secretaries-General',b:'Everything the conference looks like: placards, guides, the brand, and this website.'},
-    {n:'Pranav (Grade 10) & Surarchit',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Gets the word out and keeps it interesting — campaigns, socials, and the conference’s public voice.'},
+    {n:'Pranav (Grade 10) & Surarchit',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Gets the word out and keeps it interesting — campaigns, socials, and the conference\'s public voice.'},
     {n:'Dhegan & Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in — invitations, delegations, and the relationships behind them.'},
     {n:'Lipika & Aadya',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Finds the partners who make the conference possible and looks after them once they say yes.'},
     {n:'David & Gauthami',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Rooms, timings, materials, and the hundred moving parts that have to land in the right place.'}],
@@ -1061,7 +1113,7 @@ const artBG=i=>`background:radial-gradient(rgba(10,6,8,.3) 22%,transparent 23%) 
   linear-gradient(${140+i*11}deg,hsl(${352+(i%5)*2} 74% ${23+(i%3)*7}%),#0c0c10)`;
 
 /* ===================== RENDER ===================== */
-qs('#ticker').innerHTML=[...DATA.announcements,...DATA.announcements].map(a=>`<span>${a}</span>`).join('');
+
 qs('#stats').innerHTML=DATA.stats.map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
 qs('#pillars').innerHTML=DATA.pillars.map((p,i)=>
   `<article class="panel pillar"><div class="n">${String(i+1).padStart(2,'0')}</div><h4>${p.h}</h4><p>${p.p}</p></article>`).join('');
@@ -1070,10 +1122,11 @@ qs('#tl').insertAdjacentHTML('beforeend',DATA.timeline.map(t=>
 qs('#track').innerHTML=DATA.committees.map(c=>
   `<div class="cmt" role="button" tabindex="0" aria-label="${c.c} — flip for details"><div class="cmt-inner">
      <article class="panel cmt-face cmt-front">
-       <div class="medal"${c.logo?` data-logo-k="${c.k}"`:''}>${c.s
-         ? `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"
+       <div class="medal${c.logo?' has-logo':''}">${c.logo
+         ? `<img src="${c.logo}" alt="${c.c}" loading="lazy">`
+         : (c.s ? `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${c.s}</svg>`
-         : c.c.slice(0,2).toUpperCase()}</div>
+         : c.c.slice(0,2).toUpperCase())}</div>
        <div class="code">${c.c}</div>
        ${c.f?`<div class="full">${c.f}</div>`:''}
        <div class="lvl">${c.lv}</div>
@@ -1105,8 +1158,9 @@ qsa('[data-logo-k]').forEach(m=>{ const src='logos/'+m.dataset.logoK+'.png';
 qs('#gal').innerHTML=DATA.gallery.map((g,i)=>
   `<figure class="panel gitem${g.tall?' tall':''}" data-i="${i}"><span class="gart" style="${artBG(i)}"></span>
    <span class="gsfx">${g.s}</span><figcaption class="gcap">${g.t}</figcaption></figure>`).join('');
-qs('#res').innerHTML=DATA.resources.map(r=>
-  `<a class="panel res" href="${r.u}" target="_blank" rel="noopener"><h4>${r.h}</h4><p>${r.p}</p><div class="meta">${r.m} ▶</div></a>`).join('');
+qs('#res').innerHTML=DATA.resources.map(r=>{
+  const safe=/^https?:\/\//i.test(r.u)?r.u:'#';
+  return `<a class="panel res" href="${safe}" target="_blank" rel="noopener"><h4>${r.h}</h4><p>${r.p}</p><div class="meta">${r.m} ▶</div></a>`;}).join('');
 qs('#faq').innerHTML=DATA.faq.map(f=>
   `<div class="panel q"><button class="q-head">${f.q}<i>+</i></button><div class="q-body"><div><p>${f.a}</p></div></div></div>`).join('');
 qsa('.q-head').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
@@ -1157,12 +1211,11 @@ let fbGo=null;
     <span class="cv-issue">Keystone School</span><span class="cv-logo">The<br>Secretariat</span>
     <span class="cv-tag">Model United Nations</span>`,true);
   P.forEach((p,i)=>{
-    add('',`<span class="pf-sfx">${SFX[i%SFX.length]}</span>
-      <div class="pf-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
-      <div class="pf-cap">${p.g}</div><span class="pgn">${i*2+2}</span>`);
-    add('',`<div class="pf-role">${String(i+1).padStart(2,'0')} · ${p.r}</div>
-      <div class="pf-name">${p.n}</div><div class="pf-bub">${p.b}</div>
-      <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${i*2+3}</span>`);
+    add('pf-solo',`<div class="pf-solo-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
+      <div class="pf-role">${String(i+1).padStart(2,'0')} · ${p.r}</div>
+      <div class="pf-name">${p.n}</div>
+      <p class="pf-bio">${p.b}</p>
+      <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${i+2}</span>`);
   });
   add('pf-cover',`<span class="cv-logo" style="font-size:clamp(1.2rem,2.6vw,2rem)">The End</span>
     <span class="cv-tag">…for now</span>`,true);
@@ -1193,13 +1246,11 @@ let fbGo=null;
   }
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
 
-  const SPREADS=N+2;                       // cover + one per officer + end
-  /* the pinned run has to grow with the board — one screen to enter, then a
-     scroll-length per spread. Pure vh, so it works while the page is hidden. */
-  pin.style.height=(100+(SPREADS-1)*110)+'vh';
-  const pageOf=s=>s<=0?0:Math.min((pf?pf.getPageCount():16)-1,s*2-1);
+  const PAGES=N+2;                          // cover + one per officer + end
+  pin.style.height=(100+(PAGES-1)*110)+'vh';
+  const pageOf=s=>Math.max(0,Math.min((pf?pf.getPageCount():N+2)-1,s));
   let cur=0,busy=false;
-  function goSpread(s){ s=Math.max(0,Math.min(SPREADS-1,s));
+  function goSpread(s){ s=Math.max(0,Math.min(PAGES-1,s));
     if(s===cur||busy||!pf)return;
     s=cur+(s>cur?1:-1);
     cur=s; busy=true;
@@ -1218,7 +1269,7 @@ let fbGo=null;
   };
   function onScroll(){ const total=pin.offsetHeight-innerHeight; if(total<=0)return;
     const p=Math.max(0,Math.min(1,-pin.getBoundingClientRect().top/total));
-    goSpread(Math.round(p*(SPREADS-1))); }
+    goSpread(Math.round(p*(PAGES-1))); }
   addEventListener('scroll',onScroll,{passive:true});   // pin height is pure CSS (600vh)
 
   /* once the wheel settles, glide to the nearest officer so you always land on a spread */
@@ -1230,7 +1281,7 @@ let fbGo=null;
       const total=pin.offsetHeight-innerHeight; if(total<=0)return;
       const top=pin.offsetTop, rel=scrollY-top;
       if(rel<-40||rel>total+40)return;                 // outside the book, leave it alone
-      const step=total/(SPREADS-1);
+      const step=total/(PAGES-1);
       const target=Math.round(top+Math.round(rel/step)*step);
       if(Math.abs(target-scrollY)>6){
         if(lenis) lenis.scrollTo(target,{duration:0.8}); else scrollTo({top:target,behavior:'smooth'});
@@ -1239,10 +1290,10 @@ let fbGo=null;
   },{passive:true});
 
   const dw=qs('#fbDots');
-  for(let s=0;s<SPREADS;s++){ const b=document.createElement('button');
+  for(let s=0;s<PAGES;s++){ const b=document.createElement('button');
     b.setAttribute('aria-label',s===0?'Cover':'Officer '+s);
     b.addEventListener('click',()=>{ const total=pin.offsetHeight-innerHeight;
-      const y=pin.offsetTop+total*(s/(SPREADS-1));
+      const y=pin.offsetTop+total*(s/(PAGES-1));
       lenis?lenis.scrollTo(y,{duration:1}):scrollTo({top:y,behavior:'smooth'}); });
     dw.appendChild(b); }
   qsa('#fbDots button')[0].classList.add('active');
