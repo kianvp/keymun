@@ -456,13 +456,15 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .pf-static .st-name{font-family:var(--serif);font-size:1.5rem;color:var(--paper);margin:.25rem 0 .6rem}
 .pf-static .st-bio{font-size:.85rem;color:var(--muted)}
 /* ============ GALLERY ============ */
-.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:.5rem;margin-top:2.4rem}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:.5rem;margin-top:2.4rem}
 .gitem:nth-child(1){grid-column:span 2;grid-row:span 2}
-.gitem:nth-child(3){grid-row:span 2}
-.gitem:nth-child(6){grid-column:span 2}
-@media(max-width:700px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}}
+.gitem:nth-child(2){grid-row:span 2}
+.gitem:nth-child(5){grid-row:span 2}
+@media(max-width:700px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+.gitem:nth-child(1){grid-column:span 2;grid-row:span 1}
+.gitem:nth-child(2),.gitem:nth-child(5){grid-row:span 1}}
 .gitem{position:relative;cursor:pointer;overflow:hidden}
-.gart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.gart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .gitem .gcap{position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);
   font-family:var(--display);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
   padding:.55rem .8rem;border-top:2px solid var(--red);z-index:2}
@@ -1114,9 +1116,9 @@ const DATA={
     {committee:'JCC',chair:'TBA',vice:'TBA'},
     {committee:'IP',chair:'TBA',vice:'TBA'}],
   gallery:[
-    {src:'photos/gallery-3.jpg'},
-    {src:'photos/gallery-4.jpg'},{src:'photos/gallery-5.jpg'},{src:'photos/gallery-6.jpg'},
-    {src:'photos/gallery-7.jpg'},{src:'photos/gallery-8.jpg'},{src:'photos/gallery-9.jpg'}],
+    {src:'photos/gallery-5.jpg'},{src:'photos/gallery-3.jpg'},
+    {src:'photos/gallery-7.jpg'},{src:'photos/gallery-9.jpg'},{src:'photos/gallery-4.jpg'},
+    {src:'photos/gallery-8.jpg'},{src:'photos/gallery-6.jpg'}],
   schedule:[
     {day:'Day One · 2 Oct',slots:[
       {t:'08:30',h:'Registration & Check-in',p:'Placards, delegate kits and committee assignments.',g:'All'},
