@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Keystone Model United Nations</title>
 <meta name="description" content="Keystone School, Hyderabad — Model United Nations. Annual Session, 2–4 October 2026." />
+
+<meta property="og:title" content="KeyMUN — Keystone Model United Nations" />
+<meta property="og:description" content="Three days. Six committees. Annual session, 2–4 October 2026 at Keystone School, Hyderabad." />
+<meta property="og:image" content="https://kianvp.github.io/keymun/logo.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://www.google.com https://docs.google.com; img-src 'self' data:; connect-src 'self'" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,12 +28,12 @@
   --ember:#E11224;   /* was orange - now pure red */
   --text:#EDEDF0;
   --muted:#9b9ba3;
-  --muted-2:#6c6c74;
+  --muted-2:#8a8a92;
   --line:rgba(176,31,47,0.30);
   --line-soft:rgba(176,31,47,0.16);
   --comic:'Archivo Black',Impact,sans-serif;
   --serif:'Playfair Display',Georgia,serif;
-  --display:'Archivo Black',Impact,sans-serif;
+  --display:'Inter',system-ui,sans-serif;
   --sans:'Inter',system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
   --float:cubic-bezier(.16,1,.3,1);
@@ -416,7 +422,6 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 #fbBook{align-self:center;justify-self:center;display:flex;align-items:center;justify-content:center;
   width:100%;filter:drop-shadow(10px 12px 0 rgba(8,8,10,.6))}
 #fbBook .stf__parent{margin:0 auto!important}
-#fbBook .stf__parent{margin:0 auto}
 .fb-hint{font-family:var(--display);font-size:.58rem;letter-spacing:.28em;
   text-transform:uppercase;color:var(--muted-2)}
 .fb-dots{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;max-width:70vw}
@@ -457,7 +462,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .gitem:nth-child(6){grid-column:span 2}
 @media(max-width:700px){.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}}
 .gitem{position:relative;cursor:pointer;overflow:hidden}
-.gart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .gitem .gcap{position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);
   font-family:var(--display);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
   padding:.55rem .8rem;border-top:2px solid var(--red);z-index:2}
@@ -517,7 +522,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .f input,.f select,.f textarea{width:100%;background:var(--paper);color:var(--ink);
   border:var(--ink-b) solid var(--ink);padding:.7rem .8rem;font-family:var(--sans);font-size:.92rem;
   box-shadow:var(--sh-sm);transition:.2s}
-.f input:focus,.f select:focus,.f textarea:focus{outline:none;transform:translate(-2px,-2px);box-shadow:var(--sh)}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--ember);outline-offset:2px;transform:translate(-2px,-2px);box-shadow:var(--sh)}
 .f textarea{min-height:88px;resize:vertical}
 .submit{width:100%;font-family:var(--display);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;
   background:var(--red);color:var(--paper);border:var(--ink-b) solid var(--ink);box-shadow:var(--sh);padding:1rem;transition:.2s}
@@ -652,6 +657,16 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 @media(max-width:980px){.nav-links,.nav-cta{display:none}.burger{display:block}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}
   [data-rev]{opacity:1!important;transform:none!important}.snap{scroll-snap-type:none}}
+.stat span,.tl-day,.cmt .full,.cmt .ag b,.pf-cap,.pf-role,.pf-static .st-role,
+.gitem .gcap,.lb-cap,.f-col h5,.railbar,.fb-btn,.day-btn,.slot .tag,.res .meta,
+.pf-cover .cbar,.pf-cover .cv-issue,.pf-cover .cv-tag,.ci .lb,.f label,.submit,
+.adm-err,.adm-stat span,.adm-table th,.fee-table th,.eb-label,.reg-meta,
+.fb-hint,.fb-counter,.pf-page .pgn,.q-head{font-weight:600}
+.pillar h4,.tl-item h4,.slot h4,.reg-note h4{font-weight:700}
+.cmt .lvl,.cmt .flipcue,.pf-tag,.f-credit{font-weight:500}
+.nav-links a:focus-visible,.nav-cta:focus-visible,.btn:focus-visible,.fb-btn:focus-visible,
+.day-btn:focus-visible,.q-head:focus-visible,.gitem:focus-visible,
+.lb-close:focus-visible,.fb-dots button:focus-visible,.submit:focus-visible{outline:3px solid var(--ember);outline-offset:4px}
 </style>
 </head>
 <body class="loading">
@@ -1177,7 +1192,7 @@ qsa('[data-logo-k]').forEach(m=>{ const src='logos/'+m.dataset.logoK+'.png';
   const im=new Image(); im.onload=()=>{ m.classList.add('has-logo');
     m.innerHTML=`<img src="${src}" alt="">`; }; im.src=src; });
 qs('#gal').innerHTML=DATA.gallery.map((g,i)=>
-  `<figure class="panel gitem" data-i="${i}"><img class="gart" src="${g.src}" alt="Gallery photo ${i+1}" loading="lazy"></figure>`).join('');
+  `<figure class="panel gitem" data-i="${i}"><img class="gart" src="${g.src}" alt="Gallery photo ${i+1}" loading="lazy" onerror="this.style.display='none'"></figure>`).join('');
 qs('#res').innerHTML=DATA.resources.map(r=>{
   const safe=/^https?:\/\//i.test(r.u)?r.u:'#';
   return `<a class="panel res" href="${safe}" target="_blank" rel="noopener"><h4>${r.h}</h4><p>${r.p}</p><div class="meta">${r.m} ▶</div></a>`;}).join('');
@@ -1294,11 +1309,12 @@ let fbGo=null;
 
 /* ===================== GALLERY LIGHTBOX ===================== */
 const lb=qs('#lightbox');
+function closeLb(){lb.classList.remove('open');document.documentElement.classList.remove('lock');}
 qsa('.gitem').forEach(g=>g.addEventListener('click',()=>{ const i=+g.dataset.i,d=DATA.gallery[i];
-  qs('#lbArt').innerHTML='<img src="'+d.src+'" alt="" style="width:100%;height:100%;object-fit:contain">'; qs('#lbCap').textContent='Photo '+(i+1); lb.classList.add('open'); }));
-qs('#lbClose').addEventListener('click',()=>lb.classList.remove('open'));
-lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open');});
-addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open');});
+  qs('#lbArt').innerHTML='<img src="'+d.src+'" alt="" style="width:100%;height:100%;object-fit:contain">'; qs('#lbCap').textContent='Photo '+(i+1); lb.classList.add('open');document.documentElement.classList.add('lock'); }));
+qs('#lbClose').addEventListener('click',()=>closeLb());
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
 
 /* ===================== SCHEDULE ===================== */
 (function(){ const dv=qs('#days'),sv=qs('#slots');
@@ -1433,7 +1449,7 @@ qsa('[data-r],[data-form]').forEach(a=>a.addEventListener('click',()=>closeMobil
       t.push(['Contact','Email address','Confirm the real MUN inbox']);
     if(!MUN_PHOTOS.some(u=>!/^https?:\/\/images\.unsplash/.test(u)))
       t.push(['Intro','Nine photos','Replace the stock images in MUN_PHOTOS']);
-    t.push(['Gallery','Eight photos','Real photos for the gallery panels']);
+    if(DATA.gallery.length<1) t.push(['Gallery','Photos','Add real gallery photos']);
     return t;
   }
 
