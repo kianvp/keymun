@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Keystone Model United Nations</title>
-<meta name="description" content="Keystone School, Hyderabad — Model United Nations. Annual Session, 2–4 October 2026." />
+<meta name="description" content="Keystone School, Hyderabad  -  Model United Nations. Annual Session, 2–4 October 2026." />
 
-<meta property="og:title" content="KeyMUN — Keystone Model United Nations" />
+<meta property="og:title" content="KeyMUN  -  Keystone Model United Nations" />
 <meta property="og:description" content="Three days. Seven committees. Annual session, 2–4 October 2026 at Keystone School, Hyderabad." />
 <meta property="og:image" content="https://kianvp.github.io/keymun/logo.png" />
 <meta property="og:type" content="website" />
@@ -166,7 +166,7 @@ img,svg{display:block;max-width:100%}
   border:var(--ink-b) solid var(--ink);display:grid;place-items:center;overflow:hidden;
   box-shadow:var(--sh-sm);transform:rotate(-4deg)}
 .brand .bmark svg,.brand .bmark img{width:100%;height:100%;object-fit:contain;display:block}
-/* the real emblem is detailed and sits on white — give it a light chip, no tilt */
+/* the real emblem is detailed and sits on white  -  give it a light chip, no tilt */
 .brand .bmark.has-logo{width:50px;height:50px;flex-basis:50px;background:transparent;
   padding:2px;transform:none;border:none;box-shadow:none}
 .brand b{font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:.08em;color:var(--red)}
@@ -202,7 +202,7 @@ main{position:relative;z-index:3}
 .pagetop{padding-top:clamp(6rem,11vh,8rem)}
 .sec{padding:clamp(3.5rem,8vh,6rem) 0;position:relative}
 
-/* caption slab — the comic narration box */
+/* caption slab  -  the comic narration box */
 .cap{display:inline-block;background:var(--red);color:#fff;border:2px solid var(--red-deep);
   box-shadow:var(--sh-sm);padding:.4em .85em;font-family:var(--sans);font-weight:600;font-size:.66rem;
   letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.2rem;transform:rotate(-1deg)}
@@ -310,7 +310,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .cmt-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:1.7rem 1.4rem;text-align:center;overflow:hidden}
-/* the hover-lift on .panel would cancel the 3D transform — pin both faces */
+/* the hover-lift on .panel would cancel the 3D transform  -  pin both faces */
 .cmt-front,.cmt-front:hover{transform:none}
 .cmt-back,.cmt-back:hover{transform:rotateY(180deg)}
 .cmt:hover .cmt-front{box-shadow:var(--sh-lg)}
@@ -336,12 +336,12 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2)}
 .cmt:hover .flipcue{color:var(--ember)}
 /* back face */
-.cmt-back{background:linear-gradient(160deg,rgba(139,26,26,.95),rgba(90,15,15,.98));justify-content:flex-start}
-.cmt-back .bk-code{font-family:var(--comic);font-size:1.05rem;color:var(--ember);
-  -webkit-text-stroke:1.1px var(--ink);paint-order:stroke fill;margin-bottom:.7rem}
-.cmt .blurb{font-size:.86rem;line-height:1.6;color:var(--text)}
+.cmt-back{background:linear-gradient(160deg,rgba(200,140,140,.35),rgba(180,120,120,.4));justify-content:flex-start}
+.cmt-back .bk-code{font-family:var(--comic);font-size:1.05rem;color:var(--red);
+  -webkit-text-stroke:0;paint-order:normal;margin-bottom:.7rem}
+.cmt .blurb{font-size:.86rem;line-height:1.6;color:var(--ink)}
 .cmt .ag{margin-top:1rem;padding-top:.9rem;border-top:2px solid var(--line-soft);
-  font-size:.8rem;color:var(--muted)}
+  font-size:.8rem;color:var(--ink-2)}
 .cmt .ag b{display:block;font-family:var(--display);font-size:.55rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--ember);margin-bottom:.3rem}
 .railbar{position:absolute;left:0;right:0;bottom:clamp(1.2rem,4vh,2.4rem);padding:0 clamp(1rem,4vw,2.6rem);
@@ -350,6 +350,17 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .railbar .bar{position:relative;flex:1;height:3px;background:var(--line-soft);max-width:320px}
 .railbar .bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:var(--red)}
 
+
+/* duo layout for paired secretariat pages */
+.pf-duo{display:flex;gap:6%;align-items:flex-start;justify-content:center;width:100%;padding:0 2%}
+.pf-duo-person{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pf-duo-art{width:72%;aspect-ratio:3/4;border:2px solid var(--ink);position:relative;overflow:hidden;
+  margin:0 auto .4em;box-shadow:4px 4px 0 rgba(0,0,0,.4)}
+.pf-duo-art b{font-family:var(--comic);font-size:1.2rem;color:var(--paper);
+  position:absolute;bottom:8%;left:50%;transform:translateX(-50%);text-shadow:1px 1px 2px rgba(0,0,0,.6)}
+.pf-duo-role{font-family:var(--display);font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-top:.2em}
+.pf-duo-name{font-family:var(--serif);font-size:clamp(.8rem,2vw,1.1rem);color:var(--paper);margin-top:.1em}
 /* ============ THE BOOK'S PAGES (StPageFlip) ============
    StPageFlip forces display:block on the page roots and controls their
    visibility, so the page element keeps its own layout and all content
@@ -416,7 +427,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   margin:.15em 0 .4em;-webkit-text-stroke:0;paint-order:normal;text-transform:none}
 .pf-bio{font-size:clamp(.74rem,1.05vw,.86rem);line-height:1.6;color:#3a3a42;text-align:center;padding:0 6%}
 
-/* ============ SECRETARIAT — pinned, scroll-driven StPageFlip ============ */
+/* ============ SECRETARIAT  -  pinned, scroll-driven StPageFlip ============ */
 .fb-pin{position:relative}
 .fb-stage{display:grid;grid-template-rows:auto 1fr auto;
   align-items:center;justify-items:center;gap:.7rem;padding:clamp(5rem,10vh,7rem) 1rem 2rem;min-height:90svh}
@@ -742,7 +753,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <span class="l"><span class="w" data-h>United</span></span>
         <span class="l"><span class="w" data-h>Nations</span></span>
       </h1>
-      <p class="sub" data-h>Three days. Seven committees. One room where the world gets argued over — and rewritten.</p>
+      <p class="sub" data-h>Three days. Seven committees. One room where the world gets argued over  -  and rewritten.</p>
       <div class="hero-cta" data-h>
         <a class="btn btn-red" data-form target="_blank" rel="noopener">Register for Delegation Now ▶</a>
         <a href="#/committees" class="btn btn-paper" data-r="committees">Explore Committees</a>
@@ -764,9 +775,9 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <div>
       <span class="cap" data-rev>Our Conference</span>
       <h2 class="h2" data-rev>What is <em>KeyMUN?</em></h2>
-      <p data-rev>KeyMUN is the Model United Nations conference of Keystone School, Hyderabad — three days in which the school becomes a working simulation of the United Nations, run entirely by its students.</p>
+      <p data-rev>KeyMUN is the Model United Nations conference of Keystone School, Hyderabad  -  three days in which the school becomes a working simulation of the United Nations, run entirely by its students.</p>
       <p data-rev>Delegates take on the seat of a country or a figure they have never been, argue a crisis they did not create, and try to get a resolution past a room that has every reason to say no. Seven committees run at once, from disarmament to a joint crisis cabinet.</p>
-      <div class="pull" data-rev>"We prepare students not merely to <em>win the room</em> — but to understand it."</div>
+      <div class="pull" data-rev>"We prepare students not merely to <em>win the room</em>  -  but to understand it."</div>
       <p data-rev>It is our proudest tradition: a weekend where learning to listen matters as much as learning to speak, and where delegates leave arguing better than they arrived.</p>
     </div>
     <div class="tl" id="tl" data-rev><div class="tl-fill" id="tlFill"></div></div>
@@ -785,7 +796,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     </div></div>
   </div>
 
-  <!-- SECRETARIAT — flippable comic book -->
+  <!-- SECRETARIAT  -  flippable comic book -->
   <div class="page" id="p-secretariat">
     <div class="fb-pin" id="fbPin"><div class="fb-stage">
       <div class="fb-head">
@@ -808,7 +819,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   <div class="page pagetop" id="p-eb"><section class="sec"><div class="wrap">
     <span class="cap" data-rev>The Chairs</span>
     <h2 class="h2" data-rev>Executive <em>Board</em></h2>
-    <p class="lede" data-rev>The chairs and vice-chairs who run each committee — trained on procedure, marking and debate.</p>
+    <p class="lede" data-rev>The chairs and vice-chairs who run each committee  -  trained on procedure, marking and debate.</p>
     <div class="eb-grid" id="ebGrid"></div>
   </div></section></div>
 
@@ -816,7 +827,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   <div class="page pagetop" id="p-gallery"><section class="sec"><div class="wrap">
     <span class="cap" data-rev>From the Archives</span>
     <h2 class="h2" data-rev>The <em>Gallery</em></h2>
-    <p class="lede" data-rev>Moments from past sessions — opening ceremony, committee floor, crisis night, and awards. Click any panel to enlarge.</p>
+    <p class="lede" data-rev>Moments from past sessions  -  opening ceremony, committee floor, crisis night, and awards. Click any panel to enlarge.</p>
     <div class="gal" id="gal"></div>
   </div></section></div>
 
@@ -833,7 +844,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   <div class="page pagetop" id="p-resources"><section class="sec"><div class="wrap">
     <span class="cap" data-rev>The Delegate's Desk</span>
     <h2 class="h2" data-rev>Conference <em>Resources</em></h2>
-    <p class="lede" data-rev>Guides, schedules and procedure — everything a delegate needs before the gavel falls.</p>
+    <p class="lede" data-rev>Guides, schedules and procedure  -  everything a delegate needs before the gavel falls.</p>
     <div class="res-grid" id="res"></div>
     <span class="cap" style="margin-top:3rem" data-rev>Common Questions</span>
     <h2 class="h2" data-rev><em>FAQ</em></h2>
@@ -844,7 +855,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   <div class="page pagetop" id="p-register"><section class="sec"><div class="wrap">
     <span class="cap" data-rev>Take Your Seat</span>
     <h2 class="h2" data-rev><em>Register</em> a Delegation</h2>
-    <p class="lede" data-rev>Registration runs through our Google Form. Have your committee preferences ready — it takes about five minutes.</p>
+    <p class="lede" data-rev>Registration runs through our Google Form. Have your committee preferences ready  -  it takes about five minutes.</p>
     <div class="reg">
       <div class="panel reg-cta" data-rev>
         <div class="reg-mark">▶</div>
@@ -865,9 +876,9 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
             <tr><td>Round 2</td><td>₹1,400</td></tr>
             <tr><td>On-Spot</td><td>₹1,600</td></tr>
           </table>
-          <p style="margin-top:.6rem;font-size:.82rem;color:var(--muted)">Group rates for delegations of 15+. Fee waivers available on request — no student is turned away for cost.</p></div>
+          <p style="margin-top:.6rem;font-size:.82rem;color:var(--muted)">Group rates for delegations of 15+. Fee waivers available on request  -  no student is turned away for cost.</p></div>
         <div class="panel reg-note"><h4>Deadline</h4>
-          <p>Registration closes two weeks before the conference, or once committees are full — whichever comes first.</p></div>
+          <p>Registration closes two weeks before the conference, or once committees are full  -  whichever comes first.</p></div>
       </div>
     </div>
   </div></section></div>
@@ -892,7 +903,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     </div>
   </div></section></div>
 
-  <!-- ADMIN — unlisted route. Reach it at #/admin or with Ctrl+Shift+K -->
+  <!-- ADMIN  -  unlisted route. Reach it at #/admin or with Ctrl+Shift+K -->
   <div class="page pagetop" id="p-admin"><section class="sec"><div class="wrap">
     <div id="adminLock">
       <span class="cap">Restricted</span>
@@ -918,7 +929,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
           <button class="btn btn-paper adm-btn" id="admOut">Sign out</button>
         </div>
       </div>
-      <p class="adm-note">Registrations go straight to Google Forms — responses live in the form's
+      <p class="adm-note">Registrations go straight to Google Forms  -  responses live in the form's
         Responses tab and its linked sheet, not on this site. To change where the Register buttons
         point, edit <code>formUrl</code> at the top of the DATA block in index.html.</p>
 
@@ -960,7 +971,7 @@ setTimeout(function(){ if(window.__ready)return;
 },9000);
 </script>
 
-<!-- StPageFlip — the maintained, jQuery-free equivalent of turn.js (real page bending + shadows) -->
+<!-- StPageFlip  -  the maintained, jQuery-free equivalent of turn.js (real page bending + shadows) -->
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
 
 <script type="importmap">
@@ -978,17 +989,17 @@ const qsa=(s,r=document)=>[...r.querySelectorAll(s)];
 const FLOAT='outExpo';
 const D=ms=>RM?Math.min(ms,150):ms;
 
-/* ===================== DATA — edit everything here ===================== */
+/* ===================== DATA  -  edit everything here ===================== */
 const DATA={
-  /* ▶ THE REGISTRATION FORM LIVES HERE — change this one line and every
+  /* ▶ THE REGISTRATION FORM LIVES HERE  -  change this one line and every
        "Register" button on the site follows it. */
   formUrl:'https://docs.google.com/forms/d/e/1FAIpQLScXBT_zgpbrE0dbws1MC3DEDz2syAjaNr4nEBRCWp68lywCIQ/viewform',
   announcements:[],
   stats:[['2–4','October 2026'],['7','Committees'],['2026','Annual Session']],
   pillars:[
     {h:'Committees With Real Stakes',p:'No filler committees. Every one runs a live agenda with a crisis arc, so debate has consequences instead of running out of steam.'},
-    {h:'A Board That Actually Chairs',p:'Our executive board is trained before the gavel falls — on procedure, marking, and drawing out the quiet delegate.'},
-    {h:'Recognition That Travels',p:'Awards judged on research, diplomacy and resolutions — not volume. Certificates you can put on an application.'},
+    {h:'A Board That Actually Chairs',p:'Our executive board is trained before the gavel falls  -  on procedure, marking, and drawing out the quiet delegate.'},
+    {h:'Recognition That Travels',p:'Awards judged on research, diplomacy and resolutions  -  not volume. Certificates you can put on an application.'},
     {h:'Prepared, Not Thrown In',p:'Guides, a rules primer and a first-timers briefing go out well before the conference.'}],
   timeline:[
     {d:'Day Zero',h:'Delegate Registration',p:'Placards issued, position papers submitted, and the first handshakes of a long weekend.'},
@@ -1010,7 +1021,7 @@ const DATA={
         <circle cx="32" cy="30" r="13" stroke-width="2"/>
         <path d="M25 22l7 16 7-16" stroke-width="2"/>
         <path d="M25 38l7-16 7 16" stroke-width="2"/>`,
-     b:'The First Committee of the General Assembly. Non-proliferation, emerging weapons, and the fragile logic of deterrence — argued by delegates who have to make security sound survivable.',
+     b:'The First Committee of the General Assembly. Non-proliferation, emerging weapons, and the fragile logic of deterrence  -  argued by delegates who have to make security sound survivable.',
      a:'Yet to be released.'},
     {c:'Lok Sabha',k:'loksabha',logo:'circle-badges/lok-sabha.png',f:'House of the People · Parliament of India',lv:'Intermediate',
      s:`<path d="M32 8v4" stroke-width="2"/>
@@ -1033,7 +1044,7 @@ const DATA={
         <ellipse cx="32" cy="28" rx="7" ry="16" stroke-width="1.5"/>
         <path d="M16 28h32" stroke-width="1.5"/>
         <path d="M18 21h28M18 35h28" stroke-width="1.2"/>`,
-     b:'The arbiter of global commerce. Tariffs, trade disputes and the rulebook that decides who trades what — and at what price.',
+     b:'The arbiter of global commerce. Tariffs, trade disputes and the rulebook that decides who trades what  -  and at what price.',
      a:'Yet to be released.'},
     {c:'TFI',k:'tfi',logo:'circle-badges/film-committee.png',f:'Telugu Film Industry',lv:'Beginner–Intermediate',
      s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
@@ -1053,7 +1064,7 @@ const DATA={
         <circle cx="42" cy="31" r="1.5" fill="currentColor" stroke="none"/>
         <circle cx="42" cy="37" r="1.5" fill="currentColor" stroke="none"/>
         <circle cx="42" cy="43" r="1.5" fill="currentColor" stroke="none"/>`,
-     b:'Hyderabad\'s own industry, put in committee. Producers, directors, actors and studios argue over what gets made, who gets paid, and who gets remembered — the lightest room to speak in, and the hardest to win.',
+     b:'Hyderabad\'s own industry, put in committee. Producers, directors, actors and studios argue over what gets made, who gets paid, and who gets remembered  -  the lightest room to speak in, and the hardest to win.',
      a:'Yet to be released.'},
     {c:'UNHRC',k:'unhrc',logo:'circle-badges/hrc-flame.png',f:'United Nations Human Rights Council',lv:'Intermediate–Advanced',
      s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
@@ -1079,7 +1090,7 @@ const DATA={
         <path d="M22 16c3 4 5 8 5 12s-2 8-5 12" stroke-width="1.3"/>
         <path d="M42 16c-3 4-5 8-5 12s2 8 5 12" stroke-width="1.3"/>
         <ellipse cx="32" cy="28" rx="4" ry="12" stroke-width="1.2"/>`,
-     b:'Two linked cabinets, one escalating crisis. Every directive passed in one room lands in the other — so a win here can become a disaster there.',
+     b:'Two linked cabinets, one escalating crisis. Every directive passed in one room lands in the other  -  so a win here can become a disaster there.',
      a:'Yet to be released.'},
     {c:'IP',k:'ip',logo:'circle-badges/international-press.png',f:'International Press',lv:'All Levels',
      s:`<path d="M10 58c-2-8-2-16 2-23s6-12 12-16" stroke-width="1.8"/>
@@ -1091,28 +1102,28 @@ const DATA={
         <path d="M26 20h12M26 25h12M26 30h10M26 35h8" stroke-width="1.3"/>
         <path d="M40 12l-4 18" stroke-width="1.8"/>
         <path d="M40 12l1-2 2 1-1 2z" stroke-width="1"/>`,
-     b:'The press corps of the conference. Reporters cover every committee, file stories, conduct interviews and hold delegates accountable — the lens through which the conference tells its own story.',
+     b:'The press corps of the conference. Reporters cover every committee, file stories, conduct interviews and hold delegates accountable  -  the lens through which the conference tells its own story.',
      a:'Yet to be released.'}],
   /* The Secretariat. n = name(s) · r = role · g = core team or under-secretaries
      · b = what the role does. Chairs and vice-chairs sit on the Executive Board,
      not here, so they are listed separately when their names are confirmed. */
   people:[
-    {n:'Pranav',r:'Secretary-General',g:'Core Secretariat',b:'Presides over the conference and the secretariat — the ceremonial and executive head of the session.'},
+    {n:'Pranav',r:'Secretary-General',g:'Core Secretariat',b:'Presides over the conference and the secretariat  -  the ceremonial and executive head of the session.'},
     {n:'Lasya',r:'Secretary-General',g:'Core Secretariat',b:'Co-leads the conference alongside the Secretary-General, steering the session from opening gavel to close.'},
     {n:'Darsheel',r:'Director-General',g:'Core Secretariat',b:'Guardian of academic quality: background guides, chair training, and the rules of procedure.'},
-    {n:'Brihati',r:'Chargé d\'Affaires',g:'Core Secretariat',b:'The bridge between delegates and the secretariat — hospitality and diplomacy off the committee floor.'},
+    {n:'Brihati',r:'Chargé d\'Affaires',g:'Core Secretariat',b:'The bridge between delegates and the secretariat  -  hospitality and diplomacy off the committee floor.'},
     {n:'Tanushya',r:'Chargé d\'Affaires',g:'Core Secretariat',b:'Works alongside the Chargé to ensure every delegate feels heard and every query is answered.'},
     {n:'Saqib',r:'Head of Organising Committee',g:'Core Secretariat',b:'Runs the conference on the ground, and everything that has to happen before the first gavel falls.'},
-    {n:'Kevin',r:'Head of Organising Committee',g:'Core Secretariat',b:'Co-leads the organising committee — turning plans into a three-day reality.'},
-    {n:'Anvika',r:'Delegate Affairs',g:'Core Secretariat',b:'Looks after the delegates themselves — allocations, queries, and the experience of the weekend.'},
+    {n:'Kevin',r:'Head of Organising Committee',g:'Core Secretariat',b:'Co-leads the organising committee  -  turning plans into a three-day reality.'},
+    {n:'Anvika',r:'Delegate Affairs',g:'Core Secretariat',b:'Looks after the delegates themselves  -  allocations, queries, and the experience of the weekend.'},
     {n:'Urvi',r:'USG · Finance',g:'Under-Secretaries-General',b:'Holds the budget: fees, costs, and keeping the conference solvent from first plan to final receipt.'},
-    {n:'Vaishnavi',r:'USG · Policy',g:'Under-Secretaries-General',b:'Shapes the agendas and the substance — what each committee debates and how deep it goes.'},
+    {n:'Vaishnavi',r:'USG · Policy',g:'Under-Secretaries-General',b:'Shapes the agendas and the substance  -  what each committee debates and how deep it goes.'},
     {n:'Aayaan',r:'USG · Design',g:'Under-Secretaries-General',b:'Everything the conference looks like: placards, guides, the brand, and this website.'},
-    {n:'Yogita',r:'USG · Design',g:'Under-Secretaries-General',b:'Shapes the visual identity of KeyMUN — from the logo to the delegate kit.'},
-    {n:'Pranav',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Gets the word out and keeps it interesting — campaigns and the conference\'s public voice.'},
+    {n:'Yogita',r:'USG · Design',g:'Under-Secretaries-General',b:'Shapes the visual identity of KeyMUN  -  from the logo to the delegate kit.'},
+    {n:'Pranav',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Gets the word out and keeps it interesting  -  campaigns and the conference\'s public voice.'},
     {n:'Surarchit',r:'USG · Marketing',g:'Under-Secretaries-General',b:'Runs social media and outreach campaigns that put KeyMUN on every school\'s radar.'},
-    {n:'Dhegan',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in — invitations, delegations, and the relationships behind them.'},
-    {n:'Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Builds and maintains the delegate pipeline — from first contact to confirmed registration.'},
+    {n:'Dhegan',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in  -  invitations, delegations, and the relationships behind them.'},
+    {n:'Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Builds and maintains the delegate pipeline  -  from first contact to confirmed registration.'},
     {n:'Lipika',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Finds the partners who make the conference possible and looks after them once they say yes.'},
     {n:'Aadya',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Manages sponsor relationships and ensures every partner sees the value they were promised.'},
     {n:'David',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Rooms, timings, materials, and the hundred moving parts that have to land in the right place.'},
@@ -1141,22 +1152,22 @@ const DATA={
       {t:'11:00',h:'Crisis Break',p:'Directives drop. Cabinets convene.',g:'JCC'},
       {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
       {t:'14:00',h:'Committee Session IV',p:'Draft resolutions, sponsors and signatories.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'18:00',h:'Socials',p:'Delegate mixer, games and informal networking — the part everyone remembers.',g:'All'}]},
+      {t:'18:00',h:'Socials',p:'Delegate mixer, games and informal networking  -  the part everyone remembers.',g:'All'}]},
     {day:'Day Three · 4 Oct',slots:[
       {t:'09:00',h:'Committee Session V',p:'Amendments and final debate.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
       {t:'11:30',h:'Voting Procedure',p:'The floor divides. Resolutions rise or fall.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
       {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
       {t:'14:30',h:'Closing Ceremony & Awards',p:'Final gavel and recognition of the weekend\'s finest.',g:'All'}]}],
   resources:[
-    {h:'Background Guides',p:'Committee-by-committee study guides — context, key questions and bloc positions.',m:'Google Doc · per committee',u:'https://docs.google.com/document/d/REPLACE_GUIDES'},
-    {h:'Rules of Procedure',p:'The parliamentary rulebook — motions, points and the choreography of debate.',m:'PDF · rulebook',u:'https://docs.google.com/document/d/REPLACE_ROP'}],
+    {h:'Background Guides',p:'Committee-by-committee study guides  -  context, key questions and bloc positions.',m:'Google Doc · per committee',u:'https://docs.google.com/document/d/REPLACE_GUIDES'},
+    {h:'Rules of Procedure',p:'The parliamentary rulebook  -  motions, points and the choreography of debate.',m:'PDF · rulebook',u:'https://docs.google.com/document/d/REPLACE_ROP'}],
   faq:[
-    {q:'Who can attend?',a:'Any student in grades 8–12 from any school. Both first-timers and veterans are welcome — committees are graded by difficulty so you can pick your level.'},
+    {q:'Who can attend?',a:'Any student in grades 8–12 from any school. Both first-timers and veterans are welcome  -  committees are graded by difficulty so you can pick your level.'},
     {q:'Do I need experience?',a:'No. Several committees are explicitly beginner-friendly, and every registered delegate gets a rules primer plus an optional first-timers briefing before the conference.'},
     {q:'What should I bring?',a:'Formal western or traditional attire, a notebook and pen, a printed copy of your position paper, and a laptop if you have one. Placards and delegate kits are provided.'},
-    {q:'What is the registration fee?',a:'Fees depend on when you register: Early Bird ₹1,000, Round 1 ₹1,200, Round 2 ₹1,400, On-Spot ₹1,600. Group rates for delegations of 15+. Fee waivers available on request — no student is turned away for cost.'},
+    {q:'What is the registration fee?',a:'Fees depend on when you register: Early Bird ₹1,000, Round 1 ₹1,200, Round 2 ₹1,400, On-Spot ₹1,600. Group rates for delegations of 15+. Fee waivers available on request  -  no student is turned away for cost.'},
     {q:'How are allocations decided?',a:'You rank committee preferences at registration. Allocations balance experience level and delegation size, and go out with the country matrix roughly three weeks before.'},
-    {q:'Are awards given?',a:'Yes — Best Delegate, High Commendation and Special Mention per committee, plus Best Position Paper. Judged on research, diplomacy and resolution quality.'}]
+    {q:'Are awards given?',a:'Yes  -  Best Delegate, High Commendation and Special Mention per committee, plus Best Position Paper. Judged on research, diplomacy and resolution quality.'}]
 };
 
 /* ===================== HELPERS ===================== */
@@ -1181,7 +1192,7 @@ qs('#pillars').innerHTML=DATA.pillars.map((p,i)=>
 qs('#tl').insertAdjacentHTML('beforeend',DATA.timeline.map(t=>
   `<div class="tl-item"><span class="tl-dot"></span><div class="tl-day">${t.d}</div><h4>${t.h}</h4><p>${t.p}</p></div>`).join(''));
 qs('#track').innerHTML=DATA.committees.map(c=>
-  `<div class="cmt" role="button" tabindex="0" aria-label="${c.c} — flip for details"><div class="cmt-inner">
+  `<div class="cmt" role="button" tabindex="0" aria-label="${c.c}  -  flip for details"><div class="cmt-inner">
      <article class="panel cmt-face cmt-front">
        <div class="medal${c.logo?' has-logo':''}">${c.logo
          ? `<img src="${c.logo}" alt="${c.c}" loading="lazy">`
@@ -1242,13 +1253,16 @@ let fbGo=null;
 
   function flat(){
     pin.classList.add('fb-flat');
-    host.innerHTML=P.map((p,i)=>
-      `<article class="panel pf-static">
-         <div class="st-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
-         <div class="st-role">${String(i+1).padStart(2,'0')} · ${p.r}</div>
-         <div class="st-name">${p.n}</div>
-         <p class="st-bio">${p.b}</p>
-       </article>`).join('');
+    const FP=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17],[18,19]];
+    host.innerHTML=FP.map(pair=>{
+      const a=P[pair[0]],b2=P[pair[1]];
+      return `<article class="panel pf-static" style="display:flex;gap:1.2rem;align-items:flex-start">
+        <div style="flex:1;text-align:center"><div class="st-art" style="${artBG(pair[0]+2)}"><span class="halo"></span><b>${ini(a.n)}</b></div>
+          <div class="st-role">${a.r}</div><div class="st-name">${a.n}</div></div>
+        ${b2?`<div style="flex:1;text-align:center"><div class="st-art" style="${artBG(pair[1]+2)}"><span class="halo"></span><b>${ini(b2.n)}</b></div>
+          <div class="st-role">${b2.r}</div><div class="st-name">${b2.n}</div></div>`:''}
+      </article>`;
+    }).join('');
     fbGo=()=>{};
   }
   if(!window.St){ flat(); return; }
@@ -1261,12 +1275,18 @@ let fbGo=null;
     <div class="cbar"><span>Keystone Comics</span><span>The Board</span></div>
     <span class="cv-issue">Keystone School</span><span class="cv-logo">The<br>Secretariat</span>
     <span class="cv-tag">Model United Nations</span>`,true);
-  P.forEach((p,i)=>{
-    add('pf-solo',`<div class="pf-solo-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
-      <div class="pf-role">${String(i+1).padStart(2,'0')} · ${p.r}</div>
-      <div class="pf-name">${p.n}</div>
-      <p class="pf-bio">${p.b}</p>
-      <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${i+2}</span>`);
+  const PAIRS=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17],[18,19]];
+  PAIRS.forEach((pair,pi)=>{
+    const a=P[pair[0]], b2=P[pair[1]];
+    if(!a)return;
+    const html=`<div class="pf-duo">
+      <div class="pf-duo-person"><div class="pf-duo-art" style="${artBG(pair[0]+2)}"><span class="halo"></span><b>${ini(a.n)}</b></div>
+        <div class="pf-duo-role">${a.r}</div><div class="pf-duo-name">${a.n}</div></div>
+      ${b2?`<div class="pf-duo-person"><div class="pf-duo-art" style="${artBG(pair[1]+2)}"><span class="halo"></span><b>${ini(b2.n)}</b></div>
+        <div class="pf-duo-role">${b2.r}</div><div class="pf-duo-name">${b2.n}</div></div>`:''}
+    </div>
+    <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${pi+2}</span>`;
+    add('pf-solo',html);
   });
   add('pf-cover',`<span class="cv-logo" style="font-size:clamp(1.2rem,2.6vw,2rem)">The End</span>
     <span class="cv-tag">…for now</span>`,true);
@@ -1294,7 +1314,7 @@ let fbGo=null;
   }
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
 
-  const PAGES=N+2;
+  const PAGES=12;
   let cur=0;
   const prevBtn=qs('#fbPrev'),nextBtn=qs('#fbNext'),counter=qs('#fbCount');
 
@@ -1373,12 +1393,30 @@ let railRefresh=null;
     if(bar)bar.style.transform=`scaleX(${p})`;
     if(idx)idx.textContent=String(Math.min(cards.length,Math.round(p*(cards.length-1))+1)).padStart(2,'0'); }
   railRefresh=()=>{measure();update();
-    /* with five cards the rail often fits on screen — say the useful thing instead */
+    /* with five cards the rail often fits on screen  -  say the useful thing instead */
     if(hint)hint.textContent = travel>20 ? (isTouch?'Keep scrolling':'Keep scrolling →')
                                          : 'Click a card to flip'; };
   addEventListener('scroll',update,{passive:true}); addEventListener('resize',railRefresh);
   if('ResizeObserver' in window) new ResizeObserver(railRefresh).observe(track);
   railRefresh();
+})();
+
+/* ---- touch swipe for committee rail on mobile ---- */
+(function(){
+  const pin=qs('#pin'),track=qs('#track');
+  if(!pin||!track||!isTouch)return;
+  let sx=0,st=0,swiping=false;
+  track.addEventListener('touchstart',function(e){
+    if(e.touches.length!==1)return;
+    sx=e.touches[0].clientX; st=window.scrollY; swiping=true;
+  },{passive:true});
+  track.addEventListener('touchmove',function(e){
+    if(!swiping||e.touches.length!==1)return;
+    const dx=sx-e.touches[0].clientX;
+    const ratio=(pin.offsetHeight-innerHeight)/(track.scrollWidth-innerWidth||1);
+    window.scrollTo(0,st+dx*ratio);
+  },{passive:true});
+  track.addEventListener('touchend',function(){swiping=false;},{passive:true});
 })();
 
 /* ===================== REVEALS ===================== */
@@ -1397,7 +1435,7 @@ inView(qs('.stats'),()=>{ if(RM)return;
   animate('.stat',{opacity:[0,1],translateY:[20,0],duration:D(800),delay:stagger(D(70)),ease:FLOAT}); },0.2);
 
 /* ===================== ROUTER ===================== */
-/* 'admin' is deliberately absent from the nav — it's reachable only by typing
+/* 'admin' is deliberately absent from the nav  -  it's reachable only by typing
    #/admin or pressing Ctrl+Shift+K. */
 const ROUTES=['home','about','committees','secretariat','eb','gallery','schedule','resources','register','contact','admin'];
 let shown=false,heroDone=false,firstDelay=0;
@@ -1439,7 +1477,7 @@ qsa('[data-r],[data-form]').forEach(a=>a.addEventListener('click',()=>closeMobil
 
 /* ===================== ADMIN CONSOLE =====================
    NOTE ON SECURITY: this is a static file with no server, so the gate below is a
-   lock on the door of a glass house — it keeps casual visitors out of the console,
+   lock on the door of a glass house  -  it keeps casual visitors out of the console,
    but anyone who opens View Source can read this script. Don't put anything here
    you'd mind a delegate seeing. Real protection needs a server-side login. */
 (function(){
@@ -1455,7 +1493,7 @@ qsa('[data-r],[data-form]').forEach(a=>a.addEventListener('click',()=>closeMobil
   const isIn=()=>{ try{ return sessionStorage.getItem(SKEY)==='1'; }catch(e){ return false; } };
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-  /* what still looks like placeholder content — recomputed on every unlock */
+  /* what still looks like placeholder content  -  recomputed on every unlock */
   function todos(){
     const t=[];
     DATA.people.forEach((p,i)=>{ if(/^[A-Z]\.\s*Delegate$/i.test(p.n))
@@ -1490,7 +1528,7 @@ qsa('[data-r],[data-form]').forEach(a=>a.addEventListener('click',()=>closeMobil
     qs('#admTable').innerHTML= t.length
       ? `<thead><tr><th>Section</th><th>Item</th><th>What's needed</th></tr></thead><tbody>`+
         t.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')+`</tbody>`
-      : `<tbody><tr><td class="empty">Nothing outstanding — every placeholder has been filled in.</td></tr></tbody>`;
+      : `<tbody><tr><td class="empty">Nothing outstanding  -  every placeholder has been filled in.</td></tr></tbody>`;
   }
   function open(){ lock.hidden=true; body.hidden=false; draw(); }
   function shut(){ lock.hidden=false; body.hidden=true; qs('#admPass').value=''; }
@@ -1533,7 +1571,7 @@ function closeLoader(){ if(!loader||loader.dataset.done)return; loader.dataset.d
 /* ══════════════════════════ INTRO ══════════════════════════
    ▶ YOUR MUN PHOTOS GO HERE. Drop the image files next to index.html
      (or in a photos/ folder) and list nine of them below. Local paths like
-     'photos/mun1.jpg' work fine — the URLs below are stand-ins. Any panel
+     'photos/mun1.jpg' work fine  -  the URLs below are stand-ins. Any panel
      whose photo is missing falls back to the red/black stripe automatically. */
 const MUN_PHOTOS = [
   "photos/gallery-3.jpg","photos/gallery-4.jpg","photos/gallery-5.jpg",
@@ -1541,7 +1579,7 @@ const MUN_PHOTOS = [
   "photos/gallery-9.jpg",
 ];
 
-/* TIMING (ms) — each value controls the step named in the comment */
+/* TIMING (ms)  -  each value controls the step named in the comment */
 const T = {
   SLAT_STAGGER:    85,   // gap between each panel drop
   SLAT_DROP:      400,   // how long one panel takes to land
@@ -1553,7 +1591,7 @@ const T = {
   BURST:         3700,   // halftone burst expands
   FADE:          4600,   // whole overlay fades into the site
   FADE_DUR:       850,   // duration of that final fade
-  SAFETY:        7000,   // hard cap — the overlay always comes off
+  SAFETY:        7000,   // hard cap  -  the overlay always comes off
 };
 
 (function runIntro(){
@@ -1582,7 +1620,7 @@ const T = {
   qs('#skip-btn').addEventListener('click',closeLoader);
   setTimeout(closeLoader,T.SAFETY);                        // safety net
 
-  /* 1 — panels drop in, staggered, with a small settle */
+  /* 1  -  panels drop in, staggered, with a small settle */
   slats.forEach((s,i)=>setTimeout(()=>{
     s.style.transition=`transform ${T.SLAT_DROP}ms cubic-bezier(.2,.65,.35,1)`;
     s.style.transform='translateY(0) scaleY(1.05)';
@@ -1592,12 +1630,12 @@ const T = {
     },T.SLAT_DROP);
   },i*T.SLAT_STAGGER));
 
-  /* 2 — photos breathe once every panel has landed */
+  /* 2  -  photos breathe once every panel has landed */
   setTimeout(()=>slats.forEach(s=>{ const img=s.querySelector('img');
     if(img) img.style.transform='scale(1.02)'; }),
     8*T.SLAT_STAGGER+T.SLAT_DROP+260);
 
-  /* 3 — title card in, one line at a time */
+  /* 3  -  title card in, one line at a time */
   setTimeout(()=>{
     titleCard.style.transition='opacity 450ms ease';
     titleCard.style.opacity='1';
@@ -1607,20 +1645,20 @@ const T = {
     },i*T.LINE_GAP));
   },T.TITLE_IN);
 
-  /* 4 — title out + speed lines flash */
+  /* 4  -  title out + speed lines flash */
   setTimeout(()=>{
     titleCard.style.transition='opacity 280ms ease'; titleCard.style.opacity='0';
     speedLines.style.transition='opacity 200ms ease'; speedLines.style.opacity='.7';
     setTimeout(()=>{ speedLines.style.opacity='0'; },300);
   },T.TITLE_OUT);
 
-  /* 5 — panels split, left half up, right half down */
+  /* 5  -  panels split, left half up, right half down */
   setTimeout(()=>slats.forEach((s,i)=>{
     s.style.transition='transform 560ms cubic-bezier(.55,0,.45,1)';
     s.style.transform=`translateY(${i<5?'-120%':'120%'})`;
   }),T.SPLIT);
 
-  /* 6 — halftone burst dives through */
+  /* 6  -  halftone burst dives through */
   setTimeout(()=>{
     const size=Math.hypot(innerWidth,innerHeight)*2.4;
     burst.style.opacity='1';
@@ -1629,7 +1667,7 @@ const T = {
     burstCircle.style.width=size+'px'; burstCircle.style.height=size+'px';
   },T.BURST);
 
-  /* 7 — hand off to the site */
+  /* 7  -  hand off to the site */
   setTimeout(closeLoader,T.FADE);
 })();
 
