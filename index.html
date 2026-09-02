@@ -260,13 +260,13 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 
 
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid rgba(139,26,26,.2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid rgba(139,26,26,.2)}
 .stat{padding:1.6rem 1rem;text-align:center;border-left:2px solid rgba(139,26,26,.15);background:rgba(139,26,26,.04)}
 .stat:first-child{border-left:none}
 .stat b{display:block;font-family:var(--comic);font-size:clamp(1.7rem,4vw,2.7rem);color:var(--red);
   -webkit-text-stroke:0;paint-order:normal}
 .stat span{font-family:var(--display);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:none}}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr 1fr}.stat:nth-child(3){border-left:none}}
 
 /* pillars */
 .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.3rem;margin-top:2.5rem}
