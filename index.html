@@ -260,7 +260,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 
 
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid rgba(139,26,26,.2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid rgba(139,26,26,.2);border-bottom:2px solid rgba(139,26,26,.2)}
 .stat{padding:1.6rem 1rem;text-align:center;border-left:2px solid rgba(139,26,26,.15);background:rgba(139,26,26,.04)}
 .stat:first-child{border-left:none}
 .stat b{display:block;font-family:var(--comic);font-size:clamp(1.7rem,4vw,2.7rem);color:var(--red);
@@ -298,12 +298,15 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 
 /* ============ COMMITTEES (pinned rail) ============ */
 .pin{position:relative}
-.stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-.track{display:flex;gap:1.4rem;width:max-content;padding:0 clamp(1rem,4vw,2.6rem);will-change:transform}
+.stage{position:relative;min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:2rem 0}
+.track{display:flex;gap:1.4rem;padding:0 clamp(1rem,4vw,2.6rem);
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;
+  scrollbar-width:none;-ms-overflow-style:none}
+.track::-webkit-scrollbar{display:none}
 
 /* ── flip card: front is the emblem, back is the short description ── */
 .cmt{flex:0 0 auto;width:clamp(248px,25vw,310px);perspective:1500px;cursor:pointer;
-  background:none;border:none;box-shadow:none}
+  background:none;border:none;box-shadow:none;scroll-snap-align:start}
 .cmt-inner{position:relative;width:100%;height:clamp(370px,60vh,460px);
   transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.25,1)}
 .cmt.flipped .cmt-inner{transform:rotateY(180deg)}
@@ -347,6 +350,12 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .railbar{position:absolute;left:0;right:0;bottom:clamp(1.2rem,4vh,2.4rem);padding:0 clamp(1rem,4vw,2.6rem);
   display:flex;align-items:center;gap:1.2rem;font-family:var(--display);font-size:.58rem;
   letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2)}
+
+.rail-arrows{display:flex;gap:.6rem}
+.rail-arrow{width:36px;height:36px;border:2px solid var(--red);background:#fff;color:var(--red);
+  display:grid;place-items:center;font-size:1rem;cursor:pointer;border-radius:50%;transition:.2s}
+.rail-arrow:hover{background:var(--red);color:#fff}
+.rail-arrow:disabled{opacity:.3;cursor:default;background:#fff;color:var(--red)}
 .railbar .bar{position:relative;flex:1;height:3px;background:var(--line-soft);max-width:320px}
 .railbar .bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:var(--red)}
 
@@ -361,6 +370,13 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .pf-duo-role{font-family:var(--display);font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;
   color:rgba(255,255,255,.55);margin-top:.2em}
 .pf-duo-name{font-family:var(--serif);font-size:clamp(.8rem,2vw,1.1rem);color:var(--paper);margin-top:.1em}
+@media(max-width:600px){
+  .cmt-back{padding:1.2rem 1rem}
+  .cmt .blurb{font-size:.78rem;line-height:1.5}
+  .cmt .ag{font-size:.72rem}
+  .cmt-inner{height:clamp(340px,55vh,420px)}
+}
+
 /* ============ THE BOOK'S PAGES (StPageFlip) ============
    StPageFlip forces display:block on the page roots and controls their
    visibility, so the page element keeps its own layout and all content
@@ -731,14 +747,14 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <a href="#/resources" data-r="resources">Resources</a>
     <a href="#/contact" data-r="contact">Contact</a>
   </div>
-  <a class="nav-cta" data-form target="_blank" rel="noopener">Register ▶</a>
+  <a class="nav-cta" href="#/register" data-r="register">Register ▶</a>
   <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile" id="mobile">
   <a href="#/home" data-r="home">Home</a><a href="#/about" data-r="about">About</a>
   <a href="#/committees" data-r="committees">Committees</a><a href="#/secretariat" data-r="secretariat">Secretariat</a>
   <a href="#/eb" data-r="eb">Executive Board</a><a href="#/gallery" data-r="gallery">Gallery</a><a href="#/schedule" data-r="schedule">Schedule</a>
-  <a href="#/resources" data-r="resources">Resources</a><a data-form target="_blank" rel="noopener">Register</a>
+  <a href="#/resources" data-r="resources">Resources</a><a href="#/register" data-r="register">Register</a>
   <a href="#/contact" data-r="contact">Contact</a>
 </div>
 
@@ -755,7 +771,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       </h1>
       <p class="sub" data-h>Three days. Seven committees. One room where the world gets argued over  -  and rewritten.</p>
       <div class="hero-cta" data-h>
-        <a class="btn btn-red" data-form target="_blank" rel="noopener">Register for Delegation Now ▶</a>
+        <a href="#/register" class="btn btn-red" data-r="register">Register for Delegation Now ▶</a>
         <a href="#/committees" class="btn btn-paper" data-r="committees">Explore Committees</a>
       </div>
       <div class="scrollcue" data-h>Scroll ▼</div>
@@ -779,6 +795,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       <p data-rev>Delegates take on the seat of a country or a figure they have never been, argue a crisis they did not create, and try to get a resolution past a room that has every reason to say no. Seven committees run at once, from disarmament to a joint crisis cabinet.</p>
       <div class="pull" data-rev>"We prepare students not merely to <em>win the room</em>  -  but to understand it."</div>
       <p data-rev>It is our proudest tradition: a weekend where learning to listen matters as much as learning to speak, and where delegates leave arguing better than they arrived.</p>
+      <div class="about-social" data-rev><a href="https://instagram.com/keymun.2026" target="_blank" rel="noopener" class="btn btn-red">Follow us on Instagram</a></div>
     </div>
     <div class="tl" id="tl" data-rev><div class="tl-fill" id="tlFill"></div></div>
   </div></section></div>
@@ -792,7 +809,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     </div></section>
     <div class="pin" id="pin"><div class="stage">
       <div class="track" id="track"></div>
-      <div class="railbar"><span id="railHint">Keep scrolling</span><span class="bar"><i id="railBar"></i></span><span><b id="railIdx">01</b> / <span id="railTot">08</span></span></div>
+      <div class="railbar"><div class="rail-arrows"><button class="rail-arrow" id="railPrev">&#9664;</button><button class="rail-arrow" id="railNext">&#9654;</button></div><span class="bar"><i id="railBar"></i></span><span><b id="railIdx">01</b> / <span id="railTot">08</span></span></div>
     </div></div>
   </div>
 
@@ -860,6 +877,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       <div class="panel reg-cta" data-rev>
         <div class="reg-mark">▶</div>
         <h3>Registration Form</h3>
+        <p style="color:var(--red);font-weight:700;margin-bottom:.5rem">Round 1 is now open!</p>
         <p>Opens on Google Forms in a new tab. You'll need to be signed in to a Google account to submit.</p>
         <a class="btn btn-red" data-form target="_blank" rel="noopener">Open the Form ▶</a>
         <div class="reg-meta">Google Forms · about 5 minutes</div>
@@ -1142,27 +1160,27 @@ const DATA={
     {src:'photos/gallery-8.jpg'},{src:'photos/gallery-6.jpg'}],
   schedule:[
     {day:'Day One · 2 Oct',slots:[
-      {t:'08:30',h:'Registration & Check-in',p:'Placards, delegate kits and committee assignments.',g:'All'},
-      {t:'10:00',h:'Opening Ceremony',p:'Address from the Secretary-General beneath the assembly of flags.',g:'All'},
-      {t:'11:30',h:'Committee Session I',p:'Roll call, setting the agenda, opening speeches.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
-      {t:'14:00',h:'Committee Session II',p:'Moderated and unmoderated caucus begins.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'}]},
+      {t:'08:30 - 10:00',h:'Registration & Check-in',p:'Placards, delegate kits and committee assignments.',g:'All'},
+      {t:'10:00 - 11:30',h:'Opening Ceremony',p:'Address from the Secretary-General beneath the assembly of flags.',g:'All'},
+      {t:'11:30 - 13:00',h:'Committee Session I',p:'Roll call, setting the agenda, opening speeches.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
+      {t:'13:00 - 14:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
+      {t:'14:00 - 17:00',h:'Committee Session II',p:'Moderated and unmoderated caucus begins.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'}]},
     {day:'Day Two · 3 Oct',slots:[
-      {t:'09:00',h:'Committee Session III',p:'Working papers and bloc formation.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'11:00',h:'Crisis Break',p:'Directives drop. Cabinets convene.',g:'JCC'},
-      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
-      {t:'14:00',h:'Committee Session IV',p:'Draft resolutions, sponsors and signatories.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'18:00',h:'Socials',p:'Delegate mixer, games and informal networking  -  the part everyone remembers.',g:'All'}]},
+      {t:'09:00 - 11:00',h:'Committee Session III',p:'Working papers and bloc formation.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
+      {t:'11:00 - 13:00',h:'Crisis Break',p:'Directives drop. Cabinets convene.',g:'JCC'},
+      {t:'13:00 - 14:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
+      {t:'14:00 - 18:00',h:'Committee Session IV',p:'Draft resolutions, sponsors and signatories.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
+      {t:'18:00 - 20:00',h:'Socials',p:'Delegate mixer, games and informal networking  -  the part everyone remembers.',g:'All'}]},
     {day:'Day Three · 4 Oct',slots:[
-      {t:'09:00',h:'Committee Session V',p:'Amendments and final debate.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'11:30',h:'Voting Procedure',p:'The floor divides. Resolutions rise or fall.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'13:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
-      {t:'14:30',h:'Closing Ceremony & Awards',p:'Final gavel and recognition of the weekend\'s finest.',g:'All'}]}],
+      {t:'09:00 - 11:30',h:'Committee Session V',p:'Amendments and final debate.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
+      {t:'11:30 - 13:00',h:'Voting Procedure',p:'The floor divides. Resolutions rise or fall.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
+      {t:'13:00 - 14:30',h:'Lunch',p:'Served in the main hall.',g:'All'},
+      {t:'14:30 - 17:00',h:'Closing Ceremony & Awards',p:'Final gavel and recognition of the weekend\'s finest.',g:'All'}]}],
   resources:[
     {h:'Background Guides',p:'Committee-by-committee study guides  -  context, key questions and bloc positions.',m:'Google Doc · per committee',u:'https://docs.google.com/document/d/REPLACE_GUIDES'},
     {h:'Rules of Procedure',p:'The parliamentary rulebook  -  motions, points and the choreography of debate.',m:'PDF · rulebook',u:'https://docs.google.com/document/d/REPLACE_ROP'}],
   faq:[
-    {q:'Who can attend?',a:'Any student in grades 8–12 from any school. Both first-timers and veterans are welcome  -  committees are graded by difficulty so you can pick your level.'},
+    {q:'Who can attend?',a:'Any student in grades 7–12 from any school. Both first-timers and veterans are welcome  -  committees are graded by difficulty so you can pick your level.'},
     {q:'Do I need experience?',a:'No. Several committees are explicitly beginner-friendly, and every registered delegate gets a rules primer plus an optional first-timers briefing before the conference.'},
     {q:'What should I bring?',a:'Formal western or traditional attire, a notebook and pen, a printed copy of your position paper, and a laptop if you have one. Placards and delegate kits are provided.'},
     {q:'What is the registration fee?',a:'Fees depend on when you register: Early Bird ₹1,000, Round 1 ₹1,200, Round 2 ₹1,400, On-Spot ₹1,600. Group rates for delegations of 15+. Fee waivers available on request  -  no student is turned away for cost.'},
@@ -1295,17 +1313,17 @@ let fbGo=null;
   function mount(){
     if(!host.offsetParent) return false;
     if(pf){ try{ pf.update(); }catch(e){} return true; }
-    const portrait = innerWidth < 900;
+    const portrait = false;
     const availH = Math.max(320, innerHeight - 250);
     const pageW  = Math.round(Math.min(
       availH/1.4,
-      portrait ? innerWidth*0.86 : innerWidth*0.42,
+      innerWidth*0.42,
       560));
     try{
       pf = new St.PageFlip(host,{
         width:pageW, height:Math.round(pageW*1.4), size:'fixed',
         showCover:true, drawShadow:true, maxShadowOpacity:0.55,
-        flippingTime:700, usePortrait:portrait, mobileScrollSupport:false
+        flippingTime:700, usePortrait:false, mobileScrollSupport:false
       });
       pf.loadFromHTML(host.querySelectorAll('.pf-page'));
       pf.on('flip',(e)=>{ cur=e.data; updateUI(); });
@@ -1377,47 +1395,32 @@ let lenis=null;
 if(!RM){ lenis=new Lenis({duration:1.05,easing:t=>1-Math.pow(1-t,3),smoothWheel:true});
   lenis.on('scroll',runScrubs); const raf=t=>{lenis.raf(t);requestAnimationFrame(raf);}; requestAnimationFrame(raf); lenis.stop(); }
 
-/* ===================== COMMITTEE PINNED RAIL ===================== */
+/* ===================== COMMITTEE SLIDER ===================== */
 let railRefresh=null;
-(function(){ const pin=qs('#pin'),track=qs('#track'),bar=qs('#railBar'),idx=qs('#railIdx'),hint=qs('#railHint');
-  if(!pin||!track)return; const cards=qsa('.cmt',track); let travel=0;
-  function measure(){ if(!pin.offsetParent&&pin.offsetHeight===0)return;
-    if(innerWidth<2||innerHeight<2)return; const w=track.scrollWidth; if(w<2)return;
-    const pad=parseFloat(getComputedStyle(track).paddingLeft)||0;
-    travel=Math.max(0,w-innerWidth+pad);
-    const h=Math.round(innerHeight+travel);
-    if(Math.abs(parseFloat(pin.style.height||0)-h)>1) pin.style.height=h+'px'; }
-  function update(){ const total=pin.offsetHeight-innerHeight; if(total<=0)return;
-    const p=Math.max(0,Math.min(1,-pin.getBoundingClientRect().top/total));
-    track.style.transform=`translate3d(${(-p*travel).toFixed(2)}px,0,0)`;
+(function(){
+  const track=qs('#track'),bar=qs('#railBar'),idx=qs('#railIdx');
+  const prevBtn=qs('#railPrev'),nextBtn=qs('#railNext');
+  if(!track)return; const cards=qsa('.cmt',track);
+  function update(){
+    const max=track.scrollWidth-track.clientWidth;
+    const p=max>0?track.scrollLeft/max:0;
     if(bar)bar.style.transform=`scaleX(${p})`;
-    if(idx)idx.textContent=String(Math.min(cards.length,Math.round(p*(cards.length-1))+1)).padStart(2,'0'); }
-  railRefresh=()=>{measure();update();
-    /* with five cards the rail often fits on screen  -  say the useful thing instead */
-    if(hint)hint.textContent = travel>20 ? (isTouch?'Keep scrolling':'Keep scrolling →')
-                                         : 'Click a card to flip'; };
-  addEventListener('scroll',update,{passive:true}); addEventListener('resize',railRefresh);
-  if('ResizeObserver' in window) new ResizeObserver(railRefresh).observe(track);
-  railRefresh();
+    if(idx)idx.textContent=String(Math.min(cards.length,Math.round(p*(cards.length-1))+1)).padStart(2,'0');
+    if(prevBtn)prevBtn.disabled=track.scrollLeft<5;
+    if(nextBtn)nextBtn.disabled=track.scrollLeft>=max-5;
+  }
+  track.addEventListener('scroll',update,{passive:true});
+  function scrollByCard(dir){
+    const card=cards[0]; if(!card)return;
+    const w=card.offsetWidth+parseFloat(getComputedStyle(track).gap||14);
+    track.scrollBy({left:dir*w,behavior:'smooth'});
+  }
+  if(prevBtn)prevBtn.addEventListener('click',()=>scrollByCard(-1));
+  if(nextBtn)nextBtn.addEventListener('click',()=>scrollByCard(1));
+  railRefresh=update;
+  update();
 })();
 
-/* ---- touch swipe for committee rail on mobile ---- */
-(function(){
-  const pin=qs('#pin'),track=qs('#track');
-  if(!pin||!track||!isTouch)return;
-  let sx=0,st=0,swiping=false;
-  track.addEventListener('touchstart',function(e){
-    if(e.touches.length!==1)return;
-    sx=e.touches[0].clientX; st=window.scrollY; swiping=true;
-  },{passive:true});
-  track.addEventListener('touchmove',function(e){
-    if(!swiping||e.touches.length!==1)return;
-    const dx=sx-e.touches[0].clientX;
-    const ratio=(pin.offsetHeight-innerHeight)/(track.scrollWidth-innerWidth||1);
-    window.scrollTo(0,st+dx*ratio);
-  },{passive:true});
-  track.addEventListener('touchend',function(){swiping=false;},{passive:true});
-})();
 
 /* ===================== REVEALS ===================== */
 qsa('[data-rev]').forEach(el=>{ utils.set(el,{opacity:0,translateY:32});
