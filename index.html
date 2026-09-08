@@ -773,7 +773,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       </h1>
       <p class="sub" data-h>Three days. Seven committees. One room where the world gets argued over  -  and rewritten.</p>
       <div class="hero-cta" data-h>
-        <a href="#/register" class="btn btn-red" data-r="register">Register for Delegation Now ▶</a>
+        <a href="#/register" class="btn btn-red" data-r="register">Register Now ▶</a>
         <a href="#/committees" class="btn btn-paper" data-r="committees">Explore Committees</a>
       </div>
       <div class="scrollcue" data-h>Scroll ▼</div>
@@ -800,7 +800,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     </div>
     <div class="tl" id="tl" data-rev><div class="tl-fill" id="tlFill"></div></div>
   </div>
-  <div class="about-social" data-rev style="margin-top:2.5rem;padding:0 clamp(1.2rem,4vw,3rem)"><a href="https://instagram.com/keymun.2026" target="_blank" rel="noopener" class="btn btn-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Follow us on Instagram</a></div>
+  <div class="wrap" style="margin-top:2.5rem;text-align:center"><a href="https://instagram.com/keymun.2026" target="_blank" rel="noopener" class="btn btn-red" style="font-size:1rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Follow us on Instagram</a></div>
   </section></div>
 
   <!-- COMMITTEES -->
@@ -874,15 +874,18 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   <!-- REGISTER -->
   <div class="page pagetop" id="p-register"><section class="sec"><div class="wrap">
     <span class="cap" data-rev>Take Your Seat</span>
-    <h2 class="h2" data-rev><em>Register</em> a Delegation</h2>
+    <h2 class="h2" data-rev><em>Register</em></h2>
     <p class="lede" data-rev>Registration runs through our Google Form. Have your committee preferences ready  -  it takes about five minutes.</p>
     <div class="reg">
       <div class="panel reg-cta" data-rev>
-        <div class="reg-mark">▶</div>
-        <h3>Registration Form</h3>
-        <p style="color:var(--red);font-weight:700;margin-bottom:.5rem">Round 1 is now open!</p>
-        <p>Opens on Google Forms in a new tab. You'll need to be signed in to a Google account to submit.</p>
-        <a class="btn btn-red" data-form target="_blank" rel="noopener">Open the Form ▶</a>
+        <p style="color:var(--red);font-weight:700;margin-bottom:.8rem;font-size:1.05rem">Round 1 is now open!</p>
+        <h3>Individual Registration</h3>
+        <p>Register as an individual delegate. Opens on Google Forms in a new tab.</p>
+        <a class="btn btn-red" data-form target="_blank" rel="noopener">Individual Registration ▶</a>
+        <div style="margin-top:1.6rem;padding-top:1.4rem;border-top:2px solid var(--line-soft)"></div>
+        <h3>Delegation Registration</h3>
+        <p>Register as a school delegation or group. Opens on Google Forms in a new tab.</p>
+        <a class="btn btn-red" data-form target="_blank" rel="noopener">Delegation Registration ▶</a>
         <div class="reg-meta">Google Forms · about 5 minutes</div>
       </div>
       <div class="reg-side" data-rev>
@@ -1345,13 +1348,16 @@ let fbGo=null;
 
   function goPage(idx){
     idx=Math.max(0,Math.min(PAGES-1,idx));
-    if(idx===cur||!pf) return;
+    if(!pf) return;
     try{ pf.flip(idx); }catch(e){}
-    cur=idx; updateUI();
   }
 
-  if(prevBtn) prevBtn.addEventListener('click',()=>goPage(cur-1));
-  if(nextBtn) nextBtn.addEventListener('click',()=>goPage(cur+1));
+  if(prevBtn) prevBtn.addEventListener('click',()=>{
+    if(pf) try{ pf.flipPrev('top'); }catch(e){}
+  });
+  if(nextBtn) nextBtn.addEventListener('click',()=>{
+    if(pf) try{ pf.flipNext('top'); }catch(e){}
+  });
 
   fbGo=()=>{
     if(!mount()) requestAnimationFrame(()=>mount());
