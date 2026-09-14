@@ -31,10 +31,10 @@
   --muted-2:#7a6e6e;
   --line:rgba(139,26,26,0.25);
   --line-soft:rgba(139,26,26,0.12);
-  --comic:'Times New Roman',Times,Georgia,serif;
-  --serif:'Times New Roman',Times,Georgia,serif;
-  --display:'Times New Roman',Times,Georgia,serif;
-  --sans:'Times New Roman',Times,Georgia,serif;
+  --comic:'Playfair Display',Georgia,serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --display:'Inter',system-ui,-apple-system,sans-serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
   --float:cubic-bezier(.16,1,.3,1);
   --maxw:1320px;
@@ -54,14 +54,6 @@ img,svg{display:block;max-width:100%}
 ::selection{background:var(--red);color:#fff}
 
 /* ============ BACKDROP ============ */
-.bg-halftone{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(139,26,26,.06) 22%,transparent 23%);
-  background-size:8px 8px;opacity:.4}
-.bg-rays{position:fixed;inset:-25%;z-index:0;pointer-events:none;
-  background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(139,26,26,.02) 0deg 1.1deg,transparent 1.1deg 5.5deg);
-  -webkit-mask:radial-gradient(circle,transparent 22%,#000 66%);mask:radial-gradient(circle,transparent 22%,#000 66%);
-  animation:slowspin 120s linear infinite}
-@keyframes slowspin{to{transform:rotate(360deg)}}
 .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(70% 60% at 50% 34%,rgba(139,26,26,.06),transparent 62%)}
 .grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;mix-blend-mode:multiply;
@@ -353,9 +345,10 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   margin:0 auto .4em;box-shadow:4px 4px 0 rgba(0,0,0,.4)}
 .pf-duo-art b{font-family:var(--comic);font-size:1.2rem;color:var(--paper);
   position:absolute;bottom:8%;left:50%;transform:translateX(-50%);text-shadow:1px 1px 2px rgba(0,0,0,.6)}
+.pf-duo-art img,.st-art img{width:100%;height:100%;object-fit:cover;display:block}
 .pf-duo-role{font-family:var(--display);font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.55);margin-top:.2em}
-.pf-duo-name{font-family:var(--serif);font-size:clamp(.8rem,2vw,1.1rem);color:var(--paper);margin-top:.1em}
+  color:rgba(8,8,10,.5);margin-top:.2em}
+.pf-duo-name{font-family:var(--serif);font-size:clamp(.8rem,2vw,1.1rem);color:var(--ink);margin-top:.1em}
 @media(max-width:600px){
   .cmt-back{padding:1.2rem 1rem}
   .cmt .blurb{font-size:.78rem;line-height:1.5}
@@ -702,8 +695,6 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 <body class="loading">
 
 <div class="bg-glow"></div>
-<div class="bg-halftone"></div>
-<div class="bg-rays"></div>
 <div class="grain"></div>
 <div id="progress"></div>
 
@@ -874,6 +865,10 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <h3>Delegation Registration</h3>
         <p>Register as a school delegation or group. Opens on Google Forms in a new tab.</p>
         <a class="btn btn-red" data-form target="_blank" rel="noopener">Delegation Registration ▶</a>
+        <div style="margin-top:1.6rem;padding-top:1.4rem;border-top:2px solid var(--line-soft)"></div>
+        <h3>International Press Registration</h3>
+        <p>Register for the International Press (IP) committee. Opens on Google Forms in a new tab.</p>
+        <a class="btn btn-red" data-form-ip target="_blank" rel="noopener">IP Registration ▶</a>
         <div class="reg-meta">Google Forms · about 5 minutes</div>
       </div>
       <div class="reg-side" data-rev>
@@ -963,7 +958,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
       </div>
     </div>
     <div class="f-bot"><span>© <span id="yr"></span> Keystone School · Model United Nations</span><span>Keystone School · Hyderabad</span></div>
-    <div class="f-credit">Made by Kian Veer and Yashashwin Reddy · Grade 9A</div>
+    <div class="f-credit">Made by Kian Veer · Grade 9A</div>
   </div></footer>
 </main>
 
@@ -1003,7 +998,8 @@ const D=ms=>RM?Math.min(ms,150):ms;
 const DATA={
   /* ▶ THE REGISTRATION FORM LIVES HERE  -  change this one line and every
        "Register" button on the site follows it. */
-  formUrl:'https://docs.google.com/forms/d/e/1FAIpQLScXBT_zgpbrE0dbws1MC3DEDz2syAjaNr4nEBRCWp68lywCIQ/viewform',
+  formUrl:'https://docs.google.com/forms/d/e/1FAIpQLScMfEBifeyq2paKOxf50lzVLRRzbgd5E2s7sT1GtK6aYZSCBQ/viewform',
+  ipFormUrl:'https://docs.google.com/forms/d/e/1FAIpQLSc-1fgJTj7w5a03sJ8uGcpkBTtSkCsJwiZTTlXYh9e3-dkBxg/viewform',
   announcements:[],
   stats:[['2–4','October 2026'],['7','Committees'],['2026','Annual Session']],
   pillars:[
@@ -1128,8 +1124,6 @@ const DATA={
     {n:'Dhegan',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Brings the other schools in  -  invitations, delegations, and the relationships behind them.'},
     {n:'Varun',r:'USG · Outreach',g:'Under-Secretaries-General',b:'Builds and maintains the delegate pipeline  -  from first contact to confirmed registration.'},
     {n:'Lipika',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Finds the partners who make the conference possible and looks after them once they say yes.'},
-    {n:'Aadya',r:'USG · Sponsorship',g:'Under-Secretaries-General',b:'Manages sponsor relationships and ensures every partner sees the value they were promised.'},
-    {n:'David',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Rooms, timings, materials, and the hundred moving parts that have to land in the right place.'},
     {n:'Gauthami',r:'USG · Logistics',g:'Under-Secretaries-General',b:'Coordinates the behind-the-scenes operations that keep every session running on time.'}],
   eb:[
     {committee:'DISEC',chair:'TBA',vice:'TBA'},
@@ -1141,7 +1135,7 @@ const DATA={
     {committee:'IP',chair:'TBA',vice:'TBA'}],
   gallery:[
     {src:'photos/gallery-9.jpg'},{src:'photos/gallery-6.jpg'},
-    {src:'photos/gallery-2.jpg'},{src:'photos/gallery-5.jpg'},{src:'photos/gallery-8.jpg'},
+    {src:'photos/gallery-2.jpg'},{src:'photos/gallery-5.jpg'},
     {src:'photos/gallery-1.jpg'},{src:'photos/gallery-7.jpg'}],
   schedule:[
     {day:'Day One · 2 Oct',slots:[
@@ -1221,6 +1215,7 @@ qs('#track').innerHTML=DATA.committees.map(c=>
 qs('#railTot').textContent=String(DATA.committees.length).padStart(2,'0');
 /* every Register button points at the one URL in DATA.formUrl */
 qsa('[data-form]').forEach(a=>{a.href=DATA.formUrl;});
+if(DATA.ipFormUrl) qsa('[data-form-ip]').forEach(a=>{a.href=DATA.ipFormUrl;});
 /* To use a real committee logo instead of the drawn emblem: save the image as
    logos/<k>.png (e.g. logos/disec.png) and add  logo:true  to that committee in
    DATA. It stays off by default so the page isn't chasing files that don't exist. */
@@ -1258,15 +1253,23 @@ let fbGo=null;
   const ini=n=>n.replace(/\(.*?\)/g,'').split(/[\s.&,]+/).filter(Boolean)
                 .slice(0,2).map(w=>w[0].toUpperCase()).join('');
 
+  const NOIMG=new Set([12,13]);
+  const secImg=i=>NOIMG.has(i)?null:'photos/sec-'+P[i].n.toLowerCase()+'.png';
+  function artEl(idx,name,cls){
+    const src=secImg(idx);
+    if(src)return '<div class="'+cls+'"><img src="'+src+'" alt="'+name+'"></div>';
+    return '<div class="'+cls+'" style="'+artBG(idx+2)+'"><span class="halo"></span><b>'+ini(name)+'</b></div>';
+  }
+
   function flat(){
     pin.classList.add('fb-flat');
-    const FP=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17],[18,19]];
+    const FP=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17]];
     host.innerHTML=FP.map(pair=>{
       const a=P[pair[0]],b2=P[pair[1]];
       return `<article class="panel pf-static" style="display:flex;gap:1.2rem;align-items:flex-start">
-        <div style="flex:1;text-align:center"><div class="st-art" style="${artBG(pair[0]+2)}"><span class="halo"></span><b>${ini(a.n)}</b></div>
+        <div style="flex:1;text-align:center">${artEl(pair[0],a.n,'st-art')}
           <div class="st-role">${a.r}</div><div class="st-name">${a.n}</div></div>
-        ${b2?`<div style="flex:1;text-align:center"><div class="st-art" style="${artBG(pair[1]+2)}"><span class="halo"></span><b>${ini(b2.n)}</b></div>
+        ${b2?`<div style="flex:1;text-align:center">${artEl(pair[1],b2.n,'st-art')}
           <div class="st-role">${b2.r}</div><div class="st-name">${b2.n}</div></div>`:''}
       </article>`;
     }).join('');
@@ -1282,14 +1285,14 @@ let fbGo=null;
     <div class="cbar"><span>Keystone Comics</span><span>The Board</span></div>
     <span class="cv-issue">Keystone School</span><span class="cv-logo">The<br>Secretariat</span>
     <span class="cv-tag">Model United Nations</span>`,true);
-  const PAIRS=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17],[18,19]];
+  const PAIRS=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17]];
   PAIRS.forEach((pair,pi)=>{
     const a=P[pair[0]], b2=P[pair[1]];
     if(!a)return;
     const html=`<div class="pf-duo">
-      <div class="pf-duo-person"><div class="pf-duo-art" style="${artBG(pair[0]+2)}"><span class="halo"></span><b>${ini(a.n)}</b></div>
+      <div class="pf-duo-person">${artEl(pair[0],a.n,'pf-duo-art')}
         <div class="pf-duo-role">${a.r}</div><div class="pf-duo-name">${a.n}</div></div>
-      ${b2?`<div class="pf-duo-person"><div class="pf-duo-art" style="${artBG(pair[1]+2)}"><span class="halo"></span><b>${ini(b2.n)}</b></div>
+      ${b2?`<div class="pf-duo-person">${artEl(pair[1],b2.n,'pf-duo-art')}
         <div class="pf-duo-role">${b2.r}</div><div class="pf-duo-name">${b2.n}</div></div>`:''}
     </div>
     <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${pi+2}</span>`;
@@ -1464,7 +1467,7 @@ const burger=qs('#burger'),mob=qs('#mobile');
 function closeMobile(){burger.classList.remove('open');mob.classList.remove('open'); if(lenis&&shown)lenis.start();}
 burger.addEventListener('click',()=>{const o=burger.classList.toggle('open');mob.classList.toggle('open',o);
   if(lenis)o?lenis.stop():(shown&&lenis.start());});
-qsa('[data-r],[data-form]').forEach(a=>a.addEventListener('click',()=>closeMobile()));
+qsa('[data-r],[data-form],[data-form-ip]').forEach(a=>a.addEventListener('click',()=>closeMobile()));
 
 /* ===================== ADMIN CONSOLE =====================
    NOTE ON SECURITY: this is a static file with no server, so the gate below is a
@@ -1566,7 +1569,7 @@ function closeLoader(){ if(!loader||loader.dataset.done)return; loader.dataset.d
      whose photo is missing falls back to the red/black stripe automatically. */
 const MUN_PHOTOS = [
   "photos/gallery-3.jpg","photos/gallery-4.jpg","photos/gallery-5.jpg",
-  "photos/gallery-6.jpg","photos/gallery-7.jpg","photos/gallery-8.jpg",
+  "photos/gallery-6.jpg","photos/gallery-7.jpg",
   "photos/gallery-9.jpg",
 ];
 
@@ -1588,6 +1591,8 @@ const T = {
 (function runIntro(){
   if(!loader) return;
   if(RM){ closeLoader(); return; }
+  try{if(sessionStorage.getItem('kmI')){loader.remove();reveal();return}}catch(e){}
+  try{sessionStorage.setItem('kmI','1')}catch(e){}
 
   /* ── build the nine panels ── */
   const slatsEl=qs('#slats');
