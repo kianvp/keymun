@@ -10,3 +10,6 @@ Thumbs.db
 desktop.ini
 .DS_Store
 .claude/
+
+.vercel
+photos/_sec_originals/
