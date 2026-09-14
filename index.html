@@ -567,17 +567,17 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .fee-table td{padding:.45rem .5rem;color:var(--muted);border-bottom:1px solid rgba(139,26,26,.1)}
 .fee-table tr:last-child td{border-bottom:none}
 /* ============ EXECUTIVE BOARD ============ */
-.eb-grid{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));margin-top:2rem}
-.eb-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
-.eb-photo{aspect-ratio:3/4;overflow:hidden;background:var(--paper-2);position:relative;
-  display:flex;align-items:center;justify-content:center}
-.eb-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.eb-photo svg{width:48%;opacity:.18;color:var(--muted)}
-.eb-info{padding:1rem 1.1rem 1.2rem;text-align:center;display:flex;flex-direction:column;gap:.25rem}
-.eb-name{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:var(--text)}
-.eb-role{font-family:var(--display);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2)}
-.eb-com{font-family:var(--comic);font-size:.95rem;color:var(--red);margin-top:.1rem;
-  -webkit-text-stroke:0;paint-order:normal}
+#ebGrid{display:flex;flex-direction:column;gap:3rem;margin-top:2rem}
+.eb-group{}
+.eb-group-h{font-family:var(--comic);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--red);
+  border-bottom:2px solid rgba(139,26,26,.2);padding-bottom:.6rem;margin-bottom:1.4rem;
+  -webkit-text-stroke:0;paint-order:normal;text-transform:uppercase;letter-spacing:.05em}
+.eb-group-grid{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.eb-card{padding:1.4rem 1.4rem 1.5rem;overflow:hidden;display:flex;flex-direction:column;gap:.35rem}
+.eb-info{text-align:left;display:flex;flex-direction:column;gap:.3rem}
+.eb-name{font-family:var(--sans);font-size:1.15rem;font-weight:700;color:var(--text)}
+.eb-role{font-family:var(--display);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.eb-bio{font-family:var(--sans);font-size:.85rem;line-height:1.6;color:var(--muted);margin-top:.7rem}
 .eb-label{font-family:var(--display);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
 @media(max-width:900px){.reg{grid-template-columns:1fr}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-9px)}75%{transform:translateX(7px)}}
@@ -1141,13 +1141,44 @@ const DATA={
     {n:'Hrishikesh',r:'UDG · Marketing',g:'Under-Directors-General',b:'Amplifies the campaigns and keeps the conference visible across every channel.'},
     {n:'Rohan',r:'MUN Coordinator',g:'Faculty',b:'Guides the student secretariat and anchors the conference from the faculty side.'}],
   eb:[
-    {committee:'DISEC',chair:'TBA',vice:'TBA'},
-    {committee:'Lok Sabha',chair:'TBA',vice:'TBA'},
-    {committee:'WTO',chair:'TBA',vice:'TBA'},
-    {committee:'TFI',chair:'TBA',vice:'TBA'},
-    {committee:'UNHRC',chair:'TBA',vice:'TBA'},
-    {committee:'JCC',chair:'TBA',vice:'TBA'},
-    {committee:'IP',chair:'TBA',vice:'TBA'}],
+    {committee:'DISEC',members:[
+      {name:'Eswar Chava',role:'Chair',bio:'A renowned face in MUNs across the country, Eswar first discovered his passion for debate and diplomacy in college. He believes \'Life is what begins at the end of your comfort zone.\' With a wealth of experience across UN committees, he\'s especially respected in military committees. Off-duty: gaming or music.'},
+      {name:'Prabir Sharan',role:'Vice Chair',bio:'First-year BBA LLB student at SVKM\'s NMIMS Mumbai. Sharp analytical perspective and a passion for structured discourse. Cricket enthusiast and die-hard CSK supporter. Committed to fostering rigorous debate, mutual respect, and meaningful diplomacy.'},
+      {name:'Vrishin Reddy',role:'Rapporteur',bio:'A sharp advocate from The Gaudium School with a fierce passion for international law and diplomacy. Combines intellectual rigor with the disciplined precision of a boxer. Anticipates every move and counters with calculated force.'},
+    ]},
+    {committee:'IP',members:[
+      {name:'Neha Kolluri',role:'Head',bio:'MBBS student whose curiosity bridges medicine and global politics. 6+ years in the Model UN circuit as delegate, EB member, and IP. Track athlete, equestrian show jumper, and golf enthusiast. Known for charisma and approachability.'},
+      {name:'Aadya Shrothi',role:'Director of Photography',bio:'Photojournalists do much more than click candids; they express ideas that might otherwise be missed. As DOP, Aadya wants each of you to use your lens to showcase creativity, ingenuity, and an eye for visual aesthetics.'},
+      {name:'Anusha Khanduri',role:'Editor-in-Chief',bio:'A high school student who has spent time around conferences, most of it in journalism. Having seen conferences from both the press box and the organising team, she enjoys the fast-paced nature and the people they bring together.'},
+    ]},
+    {committee:'WTO',members:[
+      {name:'Vishal Chowdary',role:'Chair',bio:'Law graduate from Jindal Global Law School with a deep interest in international relations. Letters of recommendation from a former Swedish diplomat and from UNITAR. Attended the World Congress on Enforced Disappearances, visited UN HQ in New York, and observed treaty-body proceedings at the OHCHR. Over a decade of MUN experience, including two terms as Secretary-General.'},
+      {name:'Rusheel Alla',role:'Vice Chair',bio:'Sophomore BBA LLB (Hons.) student at Jindal Global Law School, aspiring to be an advocate. Believes in doing things for the love of it. Cinema and arts enjoyer, taekwondo black belt who has represented his State, and runs a clothing business on the side.'},
+      {name:'Sushant',role:'Rapporteur',bio:'Enthusiastic thinker and communicator who thrives on diving deep into global issues through debate, deliberation, and MUN simulations. Curious and analytical, he approaches every debate with passion, rigour, and a commitment to collaborative problem-solving.'},
+    ]},
+    {committee:'TFI',members:[
+      {name:'Harshith Kosaraju',role:'Chair',bio:'Student at VNR VJIET with a strong passion for debating, politics, and academic learning. 40+ MUN conferences as delegate and EB. STEM enthusiast, Max Verstappen supporter in F1, and a devoted admirer of NTR.'},
+      {name:'Aadya Kathyayini',role:'Vice Chair',bio:'Currently doing AS-Levels centred around law, aspiring to pursue public policy and constitutional law. Has always had a love for TFI/IFI committees. Favourite Telugu song: \'Dil Se\'. Favourite movie: \'Meet Joe Black\'.'},
+      {name:'Varun Challa',role:'Rapporteur',bio:'AS Level student who lives and breathes cinema, with a massive passion for the Telugu Film Industry alongside basketball and music. Sharp attention to detail and dedication, ensuring every debate and key discussion is captured smoothly.'},
+    ]},
+    {committee:'UNHRC',members:[
+      {name:'Sai Preethi Polu',role:'Chair',bio:'Avid MUNner who has attended over 100 MUNs across circuits. B.Tech in Information Technology; her passion for MUNs keeps her current with world affairs. Known for her experience in the International Press with an affinity towards humanitarian committees.'},
+      {name:'La Verna Chand',role:'Vice Chair',bio:'First-year B.Sc Applied Psychology student at NMIMS. Interested in psychology, arts and design, business studies, and English. Often busy trying new things out (especially food!). Sketches, cooks, and jams to music in her free time.'},
+      {name:'Sri Harsha',role:'Rapporteur',bio:'Bio coming soon.'},
+    ]},
+    {committee:'Lok Sabha',members:[
+      {name:'Aaron Mirza',role:'Chair',bio:'Law Graduate with an interdisciplinary masters in International Relations, International Law and Global Business. Passionate debater since 2011 with a niche reputation in MUNs across Asia. Former Assistant Professor of Political Science and International Law at St. Joseph\'s College of Law, Bangalore. National Spokesperson of a political party\'s youth wing, freelance political consultant, and Principal of a rural Karnataka school. Managed successful campaigns in India and East Africa.'},
+      {name:'Nishanth Venkat',role:'Vice Chair',bio:'Third-year Computer Science Engineering student at Vasavi College of Engineering. Avid MUNer specialising in Indian committees such as Lok Sabha and AIPPM. Believes these forums demand sensibility, research, and constructive deliberation over loud debate.'},
+      {name:'Nishika Chaudary',role:'Rapporteur',bio:'Bio coming soon.'},
+    ]},
+    {committee:'JCC',members:[
+      {name:'Mohil Mehra',role:'Director',bio:'Over seven years in the MUN circuit, serving in various capacities. Finding comfort in the tension of the committees, Mohil now helps others cultivate a sense of awareness and diplomacy.'},
+      {name:'Bhawesh Kushwaha',role:'Vice Chair',bio:'Pursuing CA and CS alongside a BBA from IIM Udaipur, while exploring international relations. Passionate debater, football fan, and proud FC Bayern Munich supporter. Enjoys music and art in his free time.'},
+      {name:'Shini',role:'Vice Chair',bio:'AS-Level student in the MUN circuit since 2022. Balances academics with a love for economics, politics, and research papers on public policy; aspires to pursue PPE. Trained in Kathak up to her Junior Diploma; contributes to her NGO, Blueprint.'},
+      {name:'Dhanush Malhotra',role:'Moderator',bio:'Law Student at ICFAI, Hyderabad. Law school has revived his interest in debates, BPDs, APDs, MUNs, politics, and international policy. A growing name in the circuit, having served on the Executive Board of 30+ conferences.'},
+      {name:'Shyam Jagadeesh Dukkipati',role:'Moderator',bio:'Graduate in Mechanical Engineering with honours in Robotics, headed to NTU. Occasionally MUNs, excels in them, and trains students in diplomacy and international law. 75+ MUNs of experience.'},
+    ]},
+  ],
   gallery:[
     {src:'photos/gallery-9.jpg'},{src:'photos/gallery-6.jpg'},
     {src:'photos/gallery-2.jpg'},{src:'photos/gallery-5.jpg'},
@@ -1245,19 +1276,19 @@ qs('#res').innerHTML=DATA.resources.map(r=>{
 qs('#faq').innerHTML=DATA.faq.map(f=>
   `<div class="panel q"><button class="q-head">${f.q}<i>+</i></button><div class="q-body"><div><p>${f.a}</p></div></div></div>`).join('');
 qsa('.q-head').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
-qs('#ebGrid').innerHTML=DATA.eb.flatMap(e=>[
-  {name:e.chair,role:'Chairperson',com:e.committee,img:e.chairImg||''},
-  {name:e.vice,role:'Vice-Chairperson',com:e.committee,img:e.viceImg||''}
-]).map(p=>{
-  const svg='<svg viewBox="0 0 80 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="28" r="10"/><path d="M40 38v28"/><path d="M40 46l-16 14"/><path d="M40 46l16 14"/><path d="M40 66l-12 24"/><path d="M40 66l12 24"/></svg>';
-  const photo=p.img?`<img src="${p.img}" alt="${p.name}">`:(svg);
-  return `<div class="panel eb-card" data-rev>
-    <div class="eb-photo">${photo}</div>
-    <div class="eb-info">
-      <div class="eb-name">${p.name}</div>
-      <div class="eb-role">${p.role}</div>
-      <div class="eb-com">${p.com}</div>
-    </div></div>`;}).join('');
+qs('#ebGrid').innerHTML=DATA.eb.map(c=>`
+  <div class="eb-group" data-rev>
+    <h3 class="eb-group-h">${c.committee}</h3>
+    <div class="eb-group-grid">${c.members.map(m=>`
+      <div class="panel eb-card">
+        <div class="eb-info">
+          <div class="eb-name">${m.name}</div>
+          <div class="eb-role">${m.role}</div>
+          <p class="eb-bio">${m.bio}</p>
+        </div>
+      </div>
+    `).join('')}</div>
+  </div>`).join('');
 qs('#yr').textContent=new Date().getFullYear();
 
 /* ===================== SECRETARIAT ===================== */
@@ -1437,6 +1468,7 @@ function revealGroup(box,sel,y=38,step=80){ const b=qs(box); if(!b)return; const
   utils.set(k,{opacity:0,translateY:y});
   inView(b,()=>animate(k,{opacity:[0,1],translateY:[y,0],duration:D(1100),delay:stagger(D(step)),ease:FLOAT}),0.04); }
 revealGroup('#pillars','.pillar'); revealGroup('#gal','.gitem',40,70);
+revealGroup('#ebGrid','.eb-group',60,90);
 revealGroup('#res','.res'); revealGroup('#faq','.q',26,60); revealGroup('#track','.cmt',42,75);
 inView(qs('.stats'),()=>{ if(RM)return;
   animate('.stat',{opacity:[0,1],translateY:[20,0],duration:D(800),delay:stagger(D(70)),ease:FLOAT}); },0.2);
