@@ -346,6 +346,8 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .pf-duo-art b{font-family:var(--comic);font-size:1.2rem;color:var(--paper);
   position:absolute;bottom:8%;left:50%;transform:translateX(-50%);text-shadow:1px 1px 2px rgba(0,0,0,.6)}
 .pf-duo-art img,.st-art img{width:100%;height:100%;object-fit:cover;display:block}
+.pf-portrait .pf-in{padding:0;align-items:stretch}
+.pf-portrait .pf-in>img{flex:1;width:100%;min-height:0;object-fit:cover}
 .pf-duo-role{font-family:var(--display);font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;
   color:rgba(8,8,10,.5);margin-top:.2em}
 .pf-duo-name{font-family:var(--serif);font-size:clamp(.8rem,2vw,1.1rem);color:var(--ink);margin-top:.1em}
@@ -1285,18 +1287,16 @@ let fbGo=null;
     <div class="cbar"><span>Keystone Comics</span><span>The Board</span></div>
     <span class="cv-issue">Keystone School</span><span class="cv-logo">The<br>Secretariat</span>
     <span class="cv-tag">Model United Nations</span>`,true);
-  const PAIRS=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17]];
-  PAIRS.forEach((pair,pi)=>{
-    const a=P[pair[0]], b2=P[pair[1]];
-    if(!a)return;
-    const html=`<div class="pf-duo">
-      <div class="pf-duo-person">${artEl(pair[0],a.n,'pf-duo-art')}
-        <div class="pf-duo-role">${a.r}</div><div class="pf-duo-name">${a.n}</div></div>
-      ${b2?`<div class="pf-duo-person">${artEl(pair[1],b2.n,'pf-duo-art')}
-        <div class="pf-duo-role">${b2.r}</div><div class="pf-duo-name">${b2.n}</div></div>`:''}
-    </div>
-    <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${pi+2}</span>`;
-    add('pf-solo',html);
+  P.forEach((p,i)=>{
+    const src=secImg(i);
+    if(src){
+      add('pf-portrait',`<img src="${src}" alt="${p.n}"><span class="pgn">${i+2}</span>`);
+    } else {
+      add('pf-solo',`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="pf-duo-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
+        <div class="pf-duo-role">${p.r}</div><div class="pf-duo-name">${p.n}</div></div>
+        <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${i+2}</span>`);
+    }
   });
   add('pf-cover',`<span class="cv-logo" style="font-size:clamp(1.2rem,2.6vw,2rem)">The End</span>
     <span class="cv-tag">…for now</span>`,true);
@@ -1324,7 +1324,7 @@ let fbGo=null;
   }
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
 
-  const PAGES=12;
+  const PAGES=host.querySelectorAll('.pf-page').length;
   let cur=0;
   const prevBtn=qs('#fbPrev'),nextBtn=qs('#fbNext'),counter=qs('#fbCount');
 
