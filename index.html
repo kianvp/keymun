@@ -350,7 +350,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .pf-duo-art img,.st-art img{width:100%;height:100%;object-fit:cover;display:block}
 .pf-page.pf-portrait{border:none;background:#2a2a2c}
 .pf-portrait .pf-in{padding:0;display:block;overflow:hidden}
-.pf-portrait .pf-in>img{position:absolute;top:-2%;left:-2%;width:104%;height:104%;object-fit:cover;display:block;image-rendering:high-quality}
+.pf-portrait .pf-in>img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;display:block;image-rendering:high-quality}
 .pf-duo-role{font-family:var(--display);font-size:.42rem;letter-spacing:.18em;text-transform:uppercase;
   color:rgba(8,8,10,.5);margin-top:.2em}
 .pf-duo-name{font-family:var(--serif);font-size:clamp(.8rem,2vw,1.1rem);color:var(--ink);margin-top:.1em}
@@ -1315,12 +1315,12 @@ let fbGo=null;
     const portrait = false;
     const availH = Math.max(320, innerHeight - 250);
     const pageW  = Math.round(Math.min(
-      availH/1.4,
+      availH/1.25,
       innerWidth*0.42,
       560));
     try{
       pf = new St.PageFlip(host,{
-        width:pageW, height:Math.round(pageW*1.4), size:'fixed',
+        width:pageW, height:Math.round(pageW*1.25), size:'fixed',
         showCover:true, drawShadow:true, maxShadowOpacity:0.55,
         flippingTime:700, usePortrait:false, mobileScrollSupport:false
       });
