@@ -13,3 +13,7 @@ desktop.ini
 
 .vercel
 photos/_sec_originals/
+
+node_modules/
+package.json
+package-lock.json
