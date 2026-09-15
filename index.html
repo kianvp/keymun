@@ -745,7 +745,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <a href="#/home" data-r="home">Home</a>
     <a href="#/about" data-r="about">About</a>
     <a href="#/committees" data-r="committees">Committees</a>
-    <a href="#/secretariat" data-r="secretariat">Secretariat</a>
+    
     <a href="#/eb" data-r="eb">Executive Board</a>
     <a href="#/gallery" data-r="gallery">Gallery</a>
     <a href="#/schedule" data-r="schedule">Schedule</a>
@@ -757,7 +757,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 </nav>
 <div class="mobile" id="mobile">
   <a href="#/home" data-r="home">Home</a><a href="#/about" data-r="about">About</a>
-  <a href="#/committees" data-r="committees">Committees</a><a href="#/secretariat" data-r="secretariat">Secretariat</a>
+  <a href="#/committees" data-r="committees">Committees</a>
   <a href="#/eb" data-r="eb">Executive Board</a><a href="#/gallery" data-r="gallery">Gallery</a><a href="#/schedule" data-r="schedule">Schedule</a>
   <a href="#/resources" data-r="resources">Resources</a><a href="#/register" data-r="register">Register</a>
   <a href="#/contact" data-r="contact">Contact</a>
@@ -816,25 +816,6 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <div class="pin" id="pin"><div class="stage">
       <div class="track" id="track"></div>
       <div class="railbar"><div class="rail-arrows"><button class="rail-arrow" id="railPrev">&#9664;</button><button class="rail-arrow" id="railNext">&#9654;</button></div><span class="bar"><i id="railBar"></i></span><span><b id="railIdx">01</b> / <span id="railTot">08</span></span></div>
-    </div></div>
-  </div>
-
-  <!-- SECRETARIAT — flippable comic book -->
-  <div class="page" id="p-secretariat">
-    <div class="fb-pin" id="fbPin"><div class="fb-stage">
-      <div class="fb-head">
-        <span class="cap">Meet the Board</span>
-        <h2 class="h2">The <em>Secretariat</em></h2>
-      </div>
-      <div id="fbBook"></div>
-      <div class="fb-foot">
-        <div class="fb-nav">
-          <button class="fb-btn" id="fbPrev">&#9664; Prev</button>
-          <span class="fb-counter" id="fbCount"></span>
-          <button class="fb-btn" id="fbNext">Next &#9654;</button>
-        </div>
-        <div class="fb-dots" id="fbDots"></div>
-      </div>
     </div></div>
   </div>
 
@@ -976,7 +957,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <p>A student-led simulation of the United Nations, hosted annually at Keystone School, Hyderabad.</p>
       </div>
       <div class="f-cols">
-        <div class="f-col"><h5>Conference</h5><a href="#/about" data-r="about">About</a><a href="#/committees" data-r="committees">Committees</a><a href="#/secretariat" data-r="secretariat">Secretariat</a><a href="#/eb" data-r="eb">Executive Board</a><a href="#/schedule" data-r="schedule">Schedule</a></div>
+        <div class="f-col"><h5>Conference</h5><a href="#/about" data-r="about">About</a><a href="#/committees" data-r="committees">Committees</a><a href="#/eb" data-r="eb">Executive Board</a><a href="#/schedule" data-r="schedule">Schedule</a></div>
         <div class="f-col"><h5>Delegates</h5><a href="#/resources" data-r="resources">Guides &amp; FAQ</a><a href="#/gallery" data-r="gallery">Gallery</a><a href="#/register" data-r="register">Register</a><a href="#/contact" data-r="contact">Contact</a></div>
         <div class="f-col"><h5>Connect</h5><a href="mailto:keymun@keystoneeducation.in">Email</a><a href="https://instagram.com/keymun.2026" target="_blank" rel="noopener">Instagram</a></div>
       </div>
@@ -1307,144 +1288,6 @@ qs('#ebGrid').innerHTML=DATA.eb.map(c=>`
   </div>`).join('');
 qs('#yr').textContent=new Date().getFullYear();
 
-/* ===================== SECRETARIAT ===================== */
-let fbGo=null;
-(function(){
-  const host=qs('#fbBook'), pin=qs('#fbPin'); if(!host)return;
-  const P=DATA.people, N=P.length;
-  const ini=n=>n.replace(/\(.*?\)/g,'').split(/[\s.&,]+/).filter(Boolean)
-                .slice(0,2).map(w=>w[0].toUpperCase()).join('');
-
-  const NOIMG=new Set();
-  const secImg=i=>NOIMG.has(i)?null:'photos/sec-'+P[i].n.toLowerCase()+'.png';
-  function artEl(idx,name,cls){
-    const src=secImg(idx);
-    if(src)return '<div class="'+cls+'"><img src="'+src+'" alt="'+name+'"></div>';
-    return '<div class="'+cls+'" style="'+artBG(idx+2)+'"><span class="halo"></span><b>'+ini(name)+'</b></div>';
-  }
-
-  function flat(){
-    pin.classList.add('fb-flat');
-    const FP=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17],[18,19]];
-    host.innerHTML=FP.map(pair=>{
-      const a=P[pair[0]],b2=P[pair[1]];
-      return `<article class="panel pf-static" style="display:flex;gap:1.2rem;align-items:flex-start">
-        <div style="flex:1;text-align:center">${artEl(pair[0],a.n,'st-art')}
-          <div class="st-role">${a.r}</div><div class="st-name">${a.n}</div></div>
-        ${b2?`<div style="flex:1;text-align:center">${artEl(pair[1],b2.n,'st-art')}
-          <div class="st-role">${b2.r}</div><div class="st-name">${b2.n}</div></div>`:''}
-      </article>`;
-    }).join('');
-    fbGo=()=>{};
-  }
-  if(!window.St){ flat(); return; }
-  const add=(cls,html,hard)=>{ const d=document.createElement('div');
-    d.className='pf-page'+(cls?' '+cls:''); if(hard)d.setAttribute('data-density','hard');
-    d.innerHTML='<div class="pf-in">'+html+'</div>'; host.appendChild(d); };
-
-  add('pf-cover pf-cover-img',`<img class="cv-img" src="cover.png" alt="The Secretariat"
-    onerror="var p=this.closest('.pf-cover-img');this.remove();if(p)p.classList.remove('pf-cover-img')">
-    <div class="cbar"><span>Keystone Comics</span><span>The Board</span></div>
-    <span class="cv-issue">Keystone School</span><span class="cv-logo">The<br>Secretariat</span>
-    <span class="cv-tag">Model United Nations</span>`,true);
-  P.forEach((p,i)=>{
-    const src=secImg(i);
-    if(src){
-      add('pf-portrait',`<img src="${src}" alt="${p.n}"><span class="pgn">${i+2}</span>`);
-    } else {
-      add('pf-solo',`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
-        <div class="pf-duo-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
-        <div class="pf-duo-role">${p.r}</div><div class="pf-duo-name">${p.n}</div></div>
-        <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${i+2}</span>`);
-    }
-  });
-  add('pf-cover',`<span class="cv-logo" style="font-size:clamp(1.2rem,2.6vw,2rem)">The End</span>
-    <span class="cv-tag">…for now</span>`,true);
-
-  let pf=null;
-  function mount(){
-    if(!host.offsetParent) return false;
-    if(pf){ try{ pf.update(); }catch(e){} return true; }
-    const portrait = false;
-    const availH = Math.max(320, innerHeight - 250);
-    const pageW  = Math.round(Math.min(
-      availH/1.25,
-      innerWidth*0.42,
-      560));
-    try{
-      pf = new St.PageFlip(host,{
-        width:pageW, height:Math.round(pageW*1.25), size:'fixed',
-        showCover:true, drawShadow:false, maxShadowOpacity:0,
-        flippingTime:700, usePortrait:false, mobileScrollSupport:false
-      });
-      pf.loadFromHTML(host.querySelectorAll('.pf-page'));
-      pf.on('flip',(e)=>{ cur=e.data; updateUI(); });
-    }catch(e){ pf=null; flat(); return true; }
-    return true;
-  }
-  addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
-
-  const PAGES=host.querySelectorAll('.pf-page').length;
-  let cur=0;
-  const prevBtn=qs('#fbPrev'),nextBtn=qs('#fbNext'),counter=qs('#fbCount');
-
-  function updateUI(){
-    if(counter) counter.textContent=(cur+1)+' / '+PAGES;
-    if(prevBtn) prevBtn.disabled=(cur<=0);
-    if(nextBtn) nextBtn.disabled=(cur>=PAGES-1);
-    qsa('#fbDots button').forEach((d,j)=>d.classList.toggle('active',j===cur));
-  }
-
-  function goPage(idx){
-    idx=Math.max(0,Math.min(PAGES-1,idx));
-    if(!pf) return;
-    try{ pf.flip(idx); }catch(e){}
-  }
-
-  if(prevBtn) prevBtn.addEventListener('click',()=>{
-    if(pf) try{ pf.flipPrev('top'); }catch(e){}
-  });
-  if(nextBtn) nextBtn.addEventListener('click',()=>{
-    if(pf) try{ pf.flipNext('top'); }catch(e){}
-  });
-
-  fbGo=()=>{
-    if(!mount()) requestAnimationFrame(()=>mount());
-    cur=0;
-    requestAnimationFrame(()=>{ mount(); updateUI(); });
-    setTimeout(()=>{ if(!pin.classList.contains('fb-flat') &&
-      (!pf || host.getBoundingClientRect().height < 80)) flat(); },400);
-  };
-
-  const dw=qs('#fbDots');
-  for(let s=0;s<PAGES;s++){ const b=document.createElement('button');
-    b.setAttribute('aria-label',s===0?'Cover':'Officer '+s);
-    b.addEventListener('click',()=>goPage(s));
-    dw.appendChild(b); }
-  qsa('#fbDots button')[0].classList.add('active');
-  updateUI();
-})();
-
-/* ===================== GALLERY LIGHTBOX ===================== */
-const lb=qs('#lightbox');
-function closeLb(){lb.classList.remove('open');document.documentElement.classList.remove('lock');}
-qsa('.gitem').forEach(g=>g.addEventListener('click',()=>{ const i=+g.dataset.i,d=DATA.gallery[i];
-  qs('#lbArt').innerHTML='<img src="'+d.src+'" alt="" style="width:100%;height:100%;object-fit:contain">'; qs('#lbCap').textContent='Photo '+(i+1); lb.classList.add('open');document.documentElement.classList.add('lock'); }));
-qs('#lbClose').addEventListener('click',()=>closeLb());
-lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
-addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
-
-/* ===================== SCHEDULE ===================== */
-(function(){ const dv=qs('#days'),sv=qs('#slots');
-  dv.innerHTML=DATA.schedule.map((d,i)=>`<button class="day-btn${i===0?' active':''}" data-d="${i}">${d.day}</button>`).join('');
-  function draw(i){ sv.innerHTML=DATA.schedule[i].slots.map(s=>
-      `<article class="panel slot"><div class="time">${s.t}</div><div><h4>${s.h}</h4><p>${s.p}</p><span class="tag">${s.g}</span></div></article>`).join('');
-    if(!RM) animate('#slots .slot',{opacity:[0,1],translateY:[22,0],duration:D(700),delay:stagger(D(60)),ease:FLOAT}); }
-  dv.addEventListener('click',e=>{ const b=e.target.closest('.day-btn'); if(!b)return;
-    qsa('.day-btn',dv).forEach(x=>x.classList.toggle('active',x===b)); draw(+b.dataset.d); });
-  draw(0);
-})();
-
 /* ===================== SMOOTH SCROLL ===================== */
 let lenis=null;
 if(!RM){ lenis=new Lenis({duration:1.05,easing:t=>1-Math.pow(1-t,3),smoothWheel:true});
@@ -1492,7 +1335,7 @@ inView(qs('.stats'),()=>{ if(RM)return;
 /* ===================== ROUTER ===================== */
 /* 'admin' is deliberately absent from the nav — it's reachable only by typing
    #/admin or pressing Ctrl+Shift+K. */
-const ROUTES=['home','about','committees','secretariat','eb','gallery','schedule','resources','register','contact','admin'];
+const ROUTES=['home','about','committees','eb','gallery','schedule','resources','register','contact','admin'];
 let shown=false,heroDone=false,firstDelay=0;
 const routeOf=()=>{const h=(location.hash||'').replace(/^#\/?/,'');return ROUTES.includes(h)?h:'home';};
 function heroIn(d=0){
@@ -1507,11 +1350,9 @@ function setHero(){ utils.set('.hero .kick,.hero .sub,.hero-cta,.scrollcue,.nav'
   utils.set('.hero h1 .w',{translateY:'0%',opacity:1}); }
 function showRoute(n){
   ROUTES.forEach(r=>{const p=qs('#p-'+r); if(p)p.classList.toggle('active',r===n);});
-  document.body.classList.toggle('r-secretariat',n==='secretariat');
   qsa('[data-r]').forEach(a=>a.classList.toggle('active',a.dataset.r===n));
   if(lenis)lenis.scrollTo(0,{immediate:true}); scrollTo(0,0);
   qs('#nav').classList.remove('scrolled');
-  if(n==='secretariat'&&fbGo)fbGo();   // reopen the book at the title page
   if(n==='admin'&&window.__adminEnter)window.__adminEnter();
   if(n==='committees'&&railRefresh){requestAnimationFrame(railRefresh);setTimeout(railRefresh,160);}
   if(n==='home'&&!heroDone){heroDone=true; RM?setHero():heroIn(firstDelay);}
