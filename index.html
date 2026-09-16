@@ -1264,8 +1264,10 @@ qsa('[data-logo-k]').forEach(m=>{ const src='logos/'+m.dataset.logoK+'.png';
 qs('#gal').innerHTML=DATA.gallery.map((g,i)=>
   `<figure class="panel gitem" data-i="${i}"><img class="gart" src="${g.src}" alt="Gallery photo ${i+1}" loading="lazy" onerror="this.style.display='none'"></figure>`).join('');
 qs('#res').innerHTML=DATA.resources.map(r=>{
-  const safe=/^https?:\/\//i.test(r.u)?r.u:'#';
-  return `<a class="panel res" href="${safe}" target="_blank" rel="noopener"><h4>${r.h}</h4><p>${r.p}</p><div class="meta">${r.m} ▶</div></a>`;}).join('');
+  const placeholder=/REPLACE_/.test(r.u)||!/^https?:\/\//i.test(r.u);
+  if(placeholder)
+    return `<div class="panel res" style="cursor:default;opacity:.65"><h4>${r.h}</h4><p>${r.p}</p><div class="meta">${r.m} · coming soon</div></div>`;
+  return `<a class="panel res" href="${r.u}" target="_blank" rel="noopener"><h4>${r.h}</h4><p>${r.p}</p><div class="meta">${r.m} ▶</div></a>`;}).join('');
 qs('#faq').innerHTML=DATA.faq.map(f=>
   `<div class="panel q"><button class="q-head">${f.q}<i>+</i></button><div class="q-body"><div><p>${f.a}</p></div></div></div>`).join('');
 qsa('.q-head').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
