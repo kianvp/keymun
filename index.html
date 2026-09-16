@@ -1278,7 +1278,7 @@ qsa('.q-head').forEach(b=>b.addEventListener('click',()=>b.parentElement.classLi
   function renderSlots(){
     const day=DATA.schedule[active];
     slotsEl.innerHTML=day.slots.map(s=>
-      `<article class="panel slot" data-rev>
+      `<article class="panel slot">
         <div class="time">${s.t}</div>
         <div><h4>${s.h}</h4><p>${s.p}</p>${s.g?`<span class="tag">${s.g}</span>`:''}</div>
       </article>`).join('');
