@@ -159,7 +159,7 @@ img,svg{display:block;max-width:100%}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
   gap:1.4rem;padding:1rem clamp(1rem,3.5vw,2.6rem);transition:background .4s,border-color .4s,padding .4s;
   background:#fff;border-bottom:2px solid rgba(139,26,26,.12)}
-.nav.scrolled{background:rgba(139,26,26,.95);border-bottom-color:rgba(90,15,15,.8);padding:.6rem clamp(1rem,3.5vw,2.6rem);
+.nav.scrolled{background:rgb(139,26,26);border-bottom-color:rgba(90,15,15,.8);padding:.6rem clamp(1rem,3.5vw,2.6rem);
   box-shadow:0 3px 8px rgba(0,0,0,.15)}
 .brand{display:flex;align-items:center;gap:.6rem}
 /* Brand mark. Holds an inline emblem by default; drop a logo.png next to
@@ -516,7 +516,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   box-shadow:var(--sh-sm);transition:.2s}
 .day-btn.active{background:var(--red);color:#fff;transform:translate(-2px,-2px);box-shadow:var(--sh)}
 .slots{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
-.slot{display:grid;grid-template-columns:120px 1fr;gap:1.3rem;padding:1.2rem 1.4rem;align-items:start}
+.slot{display:grid;grid-template-columns:120px 1fr;gap:1.3rem;padding:1.2rem 1.4rem;align-items:start;opacity:1!important;transform:none!important}
 .slot .time{font-family:var(--comic);font-size:1.15rem;color:var(--red);-webkit-text-stroke:0;paint-order:normal}
 .slot h4{font-family:var(--display);font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--text)}
 .slot p{font-size:.86rem;color:var(--muted);margin-top:.3rem}
