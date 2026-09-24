@@ -1383,6 +1383,14 @@ function showRoute(n){
   if(n==='committees'&&railRefresh){requestAnimationFrame(railRefresh);setTimeout(railRefresh,160);}
   if(n==='home'&&!heroDone){heroDone=true; RM?setHero():heroIn(firstDelay);}
   requestAnimationFrame(runScrubs);
+  // Force-reveal any elements on the active page that never got observed
+  // (they were display:none at observer-setup time, so IntersectionObserver never fired)
+  const active=qs('#p-'+n);
+  if(active){
+    const sels='[data-rev],.gitem,.eb-group,.res,.q,.pillar,.cmt,.stat';
+    const hidden=qsa(sels,active).filter(el=>parseFloat(getComputedStyle(el).opacity)<0.5);
+    if(hidden.length) animate(hidden,{opacity:[0,1],translateY:[24,0],duration:D(800),delay:stagger(D(45)),ease:FLOAT});
+  }
 }
 addEventListener('hashchange',()=>{closeMobile(); if(shown)showRoute(routeOf());});
 utils.set('.hero .kick,.hero .sub,.hero-cta,.scrollcue',{opacity:0,translateY:26});
