@@ -304,10 +304,15 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 .cmt.flipped .cmt-inner{transform:rotateY(180deg)}
 .cmt-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:1.7rem 1.4rem;text-align:center;overflow:hidden}
+  padding:1.7rem 1.4rem;text-align:center;overflow:hidden;
+  transition:visibility 0s linear .4s}
 /* the hover-lift on .panel would cancel the 3D transform — pin both faces */
-.cmt-front,.cmt-front:hover{transform:none}
-.cmt-back,.cmt-back:hover{transform:rotateY(180deg)}
+/* translateZ helps iOS Safari respect backface-visibility */
+.cmt-front,.cmt-front:hover{transform:translateZ(1px)}
+.cmt-back,.cmt-back:hover{transform:rotateY(180deg) translateZ(1px)}
+/* Belt-and-braces: even if backface-visibility fails on iOS, hide the inactive face. */
+/* The .4s transition delay makes the visibility swap happen mid-flip so it looks natural. */
+.cmt:not(.flipped) .cmt-back,.cmt.flipped .cmt-front{visibility:hidden}
 .cmt:hover .cmt-front{box-shadow:var(--sh-lg)}
 .cmt:focus-visible{outline:3px solid var(--ember);outline-offset:6px}
 
