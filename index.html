@@ -1488,18 +1488,25 @@ let fbGo=null;
     <span class="cv-tag">…for now</span>`,true);
 
   let pf=null;
-  window.__fbDebug=[];
+  function getBox(){
+    // Measure the actual stage that contains the book, not window
+    const stage=host.parentElement;
+    let w=stage?.clientWidth||host.clientWidth||0;
+    let h=stage?.clientHeight||host.clientHeight||0;
+    if(!h) h=Math.max(0,(innerHeight||document.documentElement.clientHeight||0)-250);
+    if(!w) w=innerWidth||document.documentElement.clientWidth||0;
+    return {w,h};
+  }
   function mount(){
-    if(!host.offsetParent){window.__fbDebug.push('no offsetParent');return false;}
+    if(!host.offsetParent) return false;
     if(pf){ try{ pf.update(); }catch(e){} return true; }
-    const iw=innerWidth||document.documentElement.clientWidth||0;
-    const ih=innerHeight||document.documentElement.clientHeight||0;
-    if(iw<100||ih<200){window.__fbDebug.push(`window too small iw=${iw} ih=${ih}`);return false;}
-    const availH = Math.max(320, ih - 250);
-    const pageW  = Math.round(Math.min(availH/1.25, iw*0.42, 560));
-    if(pageW<80){window.__fbDebug.push(`pageW too small ${pageW}`);return false;}
+    const {w:sw,h:sh}=getBox();
+    if(sw<100||sh<200) return false;
+    const availH=Math.max(320, sh);
+    const pageW=Math.round(Math.min(availH/1.25, sw*0.42, 560));
+    if(pageW<80) return false;
     const pageCount=host.querySelectorAll('.pf-page').length;
-    if(pageCount<2){window.__fbDebug.push(`only ${pageCount} pf-page found`);return false;}
+    if(pageCount<2) return false;
     try{
       pf = new St.PageFlip(host,{
         width:pageW, height:Math.round(pageW*1.25), size:'fixed',
@@ -1508,8 +1515,7 @@ let fbGo=null;
       });
       pf.loadFromHTML(host.querySelectorAll('.pf-page'));
       pf.on('flip',(e)=>{ cur=e.data; updateUI(); });
-      window.__fbDebug.push(`SUCCESS pageW=${pageW} pageCount=${pageCount}`);
-    }catch(e){ pf=null; window.__fbDebug.push('EXCEPTION: '+e.message); return false; }
+    }catch(e){ pf=null; return false; }
     return true;
   }
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
@@ -1538,18 +1544,32 @@ let fbGo=null;
     if(pf) try{ pf.flipNext('top'); }catch(e){}
   });
 
+  let fbObs=null;
   fbGo=()=>{
     cur=0;
-    // Retry mount up to 10 times with increasing delay - handles 0-dimension window,
-    // page-transition timing, slow layout, etc.
-    let tries=0;
-    const attempt=()=>{
-      if(pf){ updateUI(); return; }
-      if(mount()){ updateUI(); return; }
-      if(++tries<10) setTimeout(attempt, 200);
+    if(pf){ updateUI(); return; }
+    if(mount()){ updateUI(); return; }
+    // Not ready yet - watch for the stage to gain real dimensions via ResizeObserver
+    if(fbObs){ fbObs.disconnect(); fbObs=null; }
+    let attempts=0;
+    const tryMount=()=>{
+      if(pf) return true;
+      if(mount()){ updateUI(); if(fbObs){fbObs.disconnect();fbObs=null;} return true; }
+      return false;
+    };
+    // Watch host and parent for size changes
+    if('ResizeObserver' in window){
+      fbObs=new ResizeObserver(()=>{ if(tryMount()){/*done*/} });
+      fbObs.observe(host);
+      if(host.parentElement) fbObs.observe(host.parentElement);
+    }
+    // Fallback retry loop - up to 30 attempts * 300ms = 9 seconds
+    const retry=()=>{
+      if(tryMount()) return;
+      if(++attempts<30) setTimeout(retry,300);
       else if(!pin.classList.contains('fb-flat')) flat();
     };
-    attempt();
+    setTimeout(retry,150);
   };
 
   const dw=qs('#fbDots');
