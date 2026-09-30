@@ -1488,19 +1488,18 @@ let fbGo=null;
     <span class="cv-tag">…for now</span>`,true);
 
   let pf=null;
+  window.__fbDebug=[];
   function mount(){
-    if(!host.offsetParent) return false;
+    if(!host.offsetParent){window.__fbDebug.push('no offsetParent');return false;}
     if(pf){ try{ pf.update(); }catch(e){} return true; }
-    // Guard against 0-dimension window (can happen mid-transition or in iframes)
     const iw=innerWidth||document.documentElement.clientWidth||0;
     const ih=innerHeight||document.documentElement.clientHeight||0;
-    if(iw<100||ih<200) return false;
+    if(iw<100||ih<200){window.__fbDebug.push(`window too small iw=${iw} ih=${ih}`);return false;}
     const availH = Math.max(320, ih - 250);
-    const pageW  = Math.round(Math.min(
-      availH/1.25,
-      iw*0.42,
-      560));
-    if(pageW<80) return false;
+    const pageW  = Math.round(Math.min(availH/1.25, iw*0.42, 560));
+    if(pageW<80){window.__fbDebug.push(`pageW too small ${pageW}`);return false;}
+    const pageCount=host.querySelectorAll('.pf-page').length;
+    if(pageCount<2){window.__fbDebug.push(`only ${pageCount} pf-page found`);return false;}
     try{
       pf = new St.PageFlip(host,{
         width:pageW, height:Math.round(pageW*1.25), size:'fixed',
@@ -1509,7 +1508,8 @@ let fbGo=null;
       });
       pf.loadFromHTML(host.querySelectorAll('.pf-page'));
       pf.on('flip',(e)=>{ cur=e.data; updateUI(); });
-    }catch(e){ pf=null; return false; }
+      window.__fbDebug.push(`SUCCESS pageW=${pageW} pageCount=${pageCount}`);
+    }catch(e){ pf=null; window.__fbDebug.push('EXCEPTION: '+e.message); return false; }
     return true;
   }
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
