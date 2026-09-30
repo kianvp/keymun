@@ -344,6 +344,11 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   font-size:.8rem;color:var(--ink-2)}
 .cmt .ag b{display:block;font-family:var(--display);font-size:.55rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--ember);margin-bottom:.3rem}
+.wa-btn{margin-top:1rem;display:inline-block;padding:.55rem .9rem;font-family:var(--display);
+  font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;background:#25d366;
+  color:#fff;border:2px solid #128c47;border-radius:6px;text-decoration:none;
+  box-shadow:var(--sh-sm);transition:.2s;align-self:center}
+.wa-btn:hover{background:#128c47;transform:translate(-2px,-2px);box-shadow:var(--sh)}
 .railbar{position:absolute;left:0;right:0;bottom:clamp(1.2rem,4vh,2.4rem);padding:0 clamp(1rem,4vw,2.6rem);
   display:flex;align-items:center;gap:1.2rem;font-family:var(--display);font-size:.58rem;
   letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2)}
@@ -515,7 +520,13 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
   background:var(--red);border:2px solid var(--red-deep);width:44px;height:44px;box-shadow:var(--sh-sm)}
 
 /* ============ SCHEDULE ============ */
-.days{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem}
+.com-sel{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:2rem;justify-content:center}
+.com-btn{font-family:var(--display);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:.6rem 1rem;border:2px solid rgba(139,26,26,.25);background:transparent;color:var(--muted);
+  cursor:pointer;transition:.2s;border-radius:6px}
+.com-btn.active{background:var(--red);color:#fff;border-color:var(--red-deep)}
+.com-btn:hover:not(.active){border-color:var(--red)}
+.days{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem;justify-content:center}
 .day-btn{font-family:var(--display);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
   padding:.7rem 1.3rem;border:2px solid rgba(139,26,26,.2);background:rgba(139,26,26,.05);color:var(--muted);
   box-shadow:var(--sh-sm);transition:.2s}
@@ -531,6 +542,11 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 
 /* ============ RESOURCES + FAQ ============ */
 .res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem;margin-top:2.4rem}
+.dress-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:2.4rem}
+.dress{padding:1.6rem 1.5rem;display:flex;flex-direction:column;gap:.5rem;text-align:center}
+.dress .d{font-family:var(--display);font-size:.55rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2)}
+.dress h4{font-family:var(--comic);font-size:2rem;color:var(--red);-webkit-text-stroke:0;paint-order:normal;line-height:1}
+.dress p{font-size:.85rem;color:var(--muted);line-height:1.55}
 .res{display:flex;flex-direction:column;gap:.6rem;padding:1.6rem}
 .res h4{font-family:var(--comic);font-size:1.5rem;color:var(--text);-webkit-text-stroke:0;paint-order:normal}
 .res p{font-size:.85rem;color:var(--muted);flex:1}
@@ -763,6 +779,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
 <div class="mobile" id="mobile">
   <a href="#/home" data-r="home">Home</a><a href="#/about" data-r="about">About</a>
   <a href="#/committees" data-r="committees">Committees</a>
+  <a href="#/secretariat" data-r="secretariat">Secretariat</a>
   <a href="#/eb" data-r="eb">Executive Board</a><a href="#/gallery" data-r="gallery">Gallery</a><a href="#/schedule" data-r="schedule">Schedule</a>
   <a href="#/resources" data-r="resources">Resources</a><a href="#/register" data-r="register">Register</a>
   <a href="#/contact" data-r="contact">Contact</a>
@@ -824,6 +841,25 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     </div></div>
   </div>
 
+<!-- SECRETARIAT — flippable comic book -->
+  <div class="page" id="p-secretariat">
+    <div class="fb-pin" id="fbPin"><div class="fb-stage">
+      <div class="fb-head">
+        <span class="cap">Meet the Board</span>
+        <h2 class="h2">The <em>Secretariat</em></h2>
+      </div>
+      <div id="fbBook"></div>
+      <div class="fb-foot">
+        <div class="fb-nav">
+          <button class="fb-btn" id="fbPrev">&#9664; Prev</button>
+          <span class="fb-counter" id="fbCount"></span>
+          <button class="fb-btn" id="fbNext">Next &#9654;</button>
+        </div>
+        <div class="fb-dots" id="fbDots"></div>
+      </div>
+    </div></div>
+  </div>
+
   <!-- EXECUTIVE BOARD -->
   <div class="page pagetop" id="p-eb"><section class="sec"><div class="wrap">
     <span class="cap" data-rev>The Chairs</span>
@@ -845,6 +881,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <span class="cap" data-rev>Three Days</span>
     <h2 class="h2" data-rev>The <em>Schedule</em></h2>
     <p class="lede" data-rev>Session by session, from the opening gavel to the final vote.</p>
+    <div class="com-sel" id="comSel"></div>
     <div class="days" id="days"></div>
     <div class="slots" id="slots"></div>
   </div></section></div>
@@ -855,6 +892,9 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
     <h2 class="h2" data-rev>Conference <em>Resources</em></h2>
     <p class="lede" data-rev>Guides, schedules and procedure — everything a delegate needs before the gavel falls.</p>
     <div class="res-grid" id="res"></div>
+    <span class="cap" style="margin-top:3rem" data-rev>What to Wear</span>
+    <h2 class="h2" data-rev>Dress <em>Code</em></h2>
+    <div class="dress-grid" id="dressGrid"></div>
     <span class="cap" style="margin-top:3rem" data-rev>Common Questions</span>
     <h2 class="h2" data-rev><em>FAQ</em></h2>
     <div class="faq" id="faq"></div>
@@ -962,7 +1002,7 @@ h1,h2,h3,h4{font-family:var(--comic);font-weight:400;line-height:.98;letter-spac
         <p>A student-led simulation of the United Nations, hosted annually at Keystone School, Hyderabad.</p>
       </div>
       <div class="f-cols">
-        <div class="f-col"><h5>Conference</h5><a href="#/about" data-r="about">About</a><a href="#/committees" data-r="committees">Committees</a><a href="#/eb" data-r="eb">Executive Board</a><a href="#/schedule" data-r="schedule">Schedule</a></div>
+        <div class="f-col"><h5>Conference</h5><a href="#/about" data-r="about">About</a><a href="#/committees" data-r="committees">Committees</a><a href="#/secretariat" data-r="secretariat">Secretariat</a><a href="#/eb" data-r="eb">Executive Board</a><a href="#/schedule" data-r="schedule">Schedule</a></div>
         <div class="f-col"><h5>Delegates</h5><a href="#/resources" data-r="resources">Guides &amp; FAQ</a><a href="#/gallery" data-r="gallery">Gallery</a><a href="#/register" data-r="register">Register</a><a href="#/contact" data-r="contact">Contact</a></div>
         <div class="f-col"><h5>Connect</h5><a href="mailto:keymun@keystoneeducation.in">Email</a><a href="https://instagram.com/keymun.2026" target="_blank" rel="noopener">Instagram</a></div>
       </div>
@@ -1182,24 +1222,80 @@ const DATA={
     {src:'photos/gallery-2.jpg'},{src:'photos/gallery-5.jpg'},
     {src:'photos/gallery-1.jpg'},{src:'photos/gallery-7.jpg'}],
   schedule:[
-    {day:'Day One · 2 Oct',slots:[
-      {t:'08:30 - 10:00',h:'Registration & Check-in',p:'Placards, delegate kits and committee assignments.',g:'All'},
-      {t:'10:00 - 11:30',h:'Opening Ceremony',p:'Address from the Secretary-General beneath the assembly of flags.',g:'All'},
-      {t:'11:30 - 13:00',h:'Committee Session I',p:'Roll call, setting the agenda, opening speeches.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'13:00 - 14:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
-      {t:'14:00 - 17:00',h:'Committee Session II',p:'Moderated and unmoderated caucus begins.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'}]},
-    {day:'Day Two · 3 Oct',slots:[
-      {t:'09:00 - 11:00',h:'Committee Session III',p:'Working papers and bloc formation.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'11:00 - 13:00',h:'Crisis Break',p:'Directives drop. Cabinets convene.',g:'JCC'},
-      {t:'13:00 - 14:00',h:'Lunch',p:'Served in the main hall.',g:'All'},
-      {t:'14:00 - 18:00',h:'Committee Session IV',p:'Draft resolutions, sponsors and signatories.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'18:00 - 20:00',h:'Socials',p:'Delegate mixer, games and informal networking — the part everyone remembers.',g:'All'}]},
-    {day:'Day Three · 4 Oct',slots:[
-      {t:'09:00 - 11:30',h:'Committee Session V',p:'Amendments and final debate.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'11:30 - 13:00',h:'Voting Procedure',p:'The floor divides. Resolutions rise or fall.',g:'DISEC · Lok Sabha · WTO · TFI · UNHRC · JCC · IP'},
-      {t:'13:00 - 14:30',h:'Lunch',p:'Served in the main hall.',g:'All'},
-      {t:'14:30 - 17:00',h:'Closing Ceremony & Awards',p:'Final gavel and recognition of the weekend\'s finest.',g:'All'}]}],
+    {committee:'DISEC · Lok Sabha · WTO',days:[
+      {day:'Day One · 2 Oct',slots:[
+        {t:'8:15 - 9:15',h:'Registrations'},
+        {t:'9:15 - 10:15',h:'Opening Ceremony'},
+        {t:'10:15 - 10:30',h:'Break'},
+        {t:'10:30 - 12:30',h:'Committee Session 1'},
+        {t:'12:30 - 13:30',h:'Lunch'},
+        {t:'13:30 - 15:30',h:'Committee Session 2'},
+        {t:'15:30 - 15:45',h:'Break'},
+        {t:'15:45 - 17:00',h:'Committee Session 3'},
+        {t:'17:00',h:'Dispersal'}]},
+      {day:'Day Two · 3 Oct',slots:[
+        {t:'10:00 - 11:00',h:'Committee Session 4'},
+        {t:'11:00 - 11:15',h:'Break'},
+        {t:'11:15 - 12:30',h:'Committee Session 5'},
+        {t:'12:30 - 13:30',h:'Lunch'},
+        {t:'13:30 - 15:45',h:'Committee Session 6'},
+        {t:'15:45 - 16:00',h:'Break'},
+        {t:'16:00 - 17:00',h:'Committee Session 7'},
+        {t:'17:00 - 19:00',h:'Social Night / Sports Night'}]},
+      {day:'Day Three · 4 Oct',slots:[
+        {t:'9:00 - 10:30',h:'Committee Session 8'},
+        {t:'10:30 - 10:45',h:'Break'},
+        {t:'10:45 - 12:30',h:'Committee Session 9'},
+        {t:'12:30 - 13:30',h:'Lunch'},
+        {t:'13:30 - 14:30',h:'Committee Session 10'},
+        {t:'14:30 - 14:45',h:'Break'},
+        {t:'14:45 - 16:00',h:'Committee Session 11'},
+        {t:'16:00 - 18:30',h:'Closing Ceremony'}]}]},
+    {committee:'JCC · TFI · UNHRC',days:[
+      {day:'Day One · 2 Oct',slots:[
+        {t:'8:15 - 9:15',h:'Registrations'},
+        {t:'9:15 - 10:15',h:'Opening Ceremony'},
+        {t:'10:15 - 10:45',h:'Break'},
+        {t:'10:45 - 11:45',h:'Committee Session 1'},
+        {t:'11:45 - 12:00',h:'Break'},
+        {t:'12:00 - 13:30',h:'Committee Session 2'},
+        {t:'13:30 - 14:30',h:'Lunch'},
+        {t:'14:30 - 17:00',h:'Committee Session 3'},
+        {t:'17:00',h:'Dispersal'}]},
+      {day:'Day Two · 3 Oct',slots:[
+        {t:'10:00 - 11:30',h:'Committee Session 4'},
+        {t:'11:30 - 11:45',h:'Break'},
+        {t:'11:45 - 13:30',h:'Committee Session 5'},
+        {t:'13:30 - 14:30',h:'Lunch'},
+        {t:'14:30 - 15:00',h:'Committee Session 6'},
+        {t:'15:30 - 15:45',h:'Break'},
+        {t:'15:45 - 17:00',h:'Committee Session 7'},
+        {t:'17:00 - 19:00',h:'Social Night / Sports Night'}]},
+      {day:'Day Three · 4 Oct',slots:[
+        {t:'9:00 - 10:45',h:'Committee Session 8'},
+        {t:'10:45 - 11:00',h:'Break'},
+        {t:'11:00 - 12:15',h:'Committee Session 9'},
+        {t:'12:15 - 12:30',h:'Break'},
+        {t:'12:30 - 13:30',h:'Committee Session 10'},
+        {t:'13:30 - 14:30',h:'Lunch'},
+        {t:'14:30 - 16:00',h:'Committee Session 11'},
+        {t:'16:00 - 18:30',h:'Closing Ceremony'}]}]}],
+  dressCode:[
+    {day:'Day One',code:'Formals',d:'Business formal — suits, blazers, shirts, ties, formal dresses, closed-toe shoes.'},
+    {day:'Day Two',code:'Traditionals',d:'Ethnic wear — kurtas, sherwanis, sarees, salwar kameez, dhotis. Represent, respectfully.'},
+    {day:'Day Three',code:'Semi-Formals',d:'Smart casual — collared shirts, chinos, midi dresses, neat footwear.'}],
+  allocationMatrix:{url:'REPLACE_ALLOCATION_MATRIX',label:'Delegate Allocation Matrix',m:'Google Sheet · country by country'},
+  whatsappCommunities:{
+    'DISEC':'REPLACE_WA_DISEC',
+    'Lok Sabha':'REPLACE_WA_LOKSABHA',
+    'WTO':'REPLACE_WA_WTO',
+    'TFI':'REPLACE_WA_TFI',
+    'UNHRC':'REPLACE_WA_UNHRC',
+    'JCC':'REPLACE_WA_JCC',
+    'IP':'REPLACE_WA_IP'
+  },
   resources:[
+    {h:'Allocation Matrix',p:'Your country, your committee, your seat — every delegate\'s posting for KeyMUN Chapter 2.',m:'Google Sheet · all committees',u:'REPLACE_ALLOCATION_MATRIX'},
     {h:'Background Guides',p:'Committee-by-committee study guides — context, key questions and bloc positions.',m:'Google Doc · per committee',u:'https://docs.google.com/document/d/REPLACE_GUIDES'},
     {h:'Rules of Procedure',p:'The parliamentary rulebook — motions, points and the choreography of debate.',m:'PDF · rulebook',u:'https://docs.google.com/document/d/REPLACE_ROP'}],
   faq:[
@@ -1246,6 +1342,7 @@ qs('#track').innerHTML=DATA.committees.map(c=>
        <div class="bk-code">${c.c}</div>
        <p class="blurb">${c.b}</p>
        <div class="ag"><b>Agenda</b>${c.a}</div>
+       ${(DATA.whatsappCommunities&&DATA.whatsappCommunities[c.c]&&!/^REPLACE_/.test(DATA.whatsappCommunities[c.c]))?`<a class="wa-btn" href="${DATA.whatsappCommunities[c.c]}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Join WhatsApp Community ▶</a>`:''}
        <div class="flipcue">◂ Click to flip back</div>
      </article>
    </div></div>`).join('');
@@ -1268,6 +1365,8 @@ qsa('[data-logo-k]').forEach(m=>{ const src='logos/'+m.dataset.logoK+'.png';
     m.innerHTML=`<img src="${src}" alt="">`; }; im.src=src; });
 qs('#gal').innerHTML=DATA.gallery.map((g,i)=>
   `<figure class="panel gitem" data-i="${i}"><img class="gart" src="${g.src}" alt="Gallery photo ${i+1}" loading="lazy" onerror="this.style.display='none'"></figure>`).join('');
+if(qs('#dressGrid')&&DATA.dressCode) qs('#dressGrid').innerHTML=DATA.dressCode.map(d=>
+  `<article class="panel dress"><div class="d">${d.day}</div><h4>${d.code}</h4><p>${d.d}</p></article>`).join('');
 qs('#res').innerHTML=DATA.resources.map(r=>{
   const placeholder=/REPLACE_/.test(r.u)||!/^https?:\/\//i.test(r.u);
   if(placeholder)
@@ -1277,28 +1376,42 @@ qs('#faq').innerHTML=DATA.faq.map(f=>
   `<div class="panel q"><button class="q-head">${f.q}<i>+</i></button><div class="q-body"><div><p>${f.a}</p></div></div></div>`).join('');
 qsa('.q-head').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
 
-/* Schedule: day tabs + slots for the active day */
+/* Schedule: committee tabs + day tabs + slots */
 (function(){
-  const daysEl=qs('#days'), slotsEl=qs('#slots');
+  const comsEl=qs('#comSel'), daysEl=qs('#days'), slotsEl=qs('#slots');
   if(!daysEl||!slotsEl||!DATA.schedule||!DATA.schedule.length) return;
-  let active=0;
+  let comIdx=0, dayIdx=0;
+  function renderDays(){
+    const c=DATA.schedule[comIdx];
+    daysEl.innerHTML=c.days.map((d,i)=>
+      `<button class="day-btn${i===dayIdx?' active':''}" data-day="${i}">${d.day}</button>`).join('');
+    renderSlots();
+  }
   function renderSlots(){
-    const day=DATA.schedule[active];
+    const day=DATA.schedule[comIdx].days[dayIdx];
     slotsEl.innerHTML=day.slots.map(s=>
       `<article class="panel slot">
         <div class="time">${s.t}</div>
-        <div><h4>${s.h}</h4><p>${s.p}</p>${s.g?`<span class="tag">${s.g}</span>`:''}</div>
+        <div><h4>${s.h}</h4>${s.p?`<p>${s.p}</p>`:''}${s.g?`<span class="tag">${s.g}</span>`:''}</div>
       </article>`).join('');
   }
-  daysEl.innerHTML=DATA.schedule.map((d,i)=>
-    `<button class="day-btn${i===active?' active':''}" data-day="${i}">${d.day}</button>`).join('');
+  if(comsEl){
+    comsEl.innerHTML=DATA.schedule.map((c,i)=>
+      `<button class="com-btn${i===comIdx?' active':''}" data-com="${i}">${c.committee}</button>`).join('');
+    comsEl.addEventListener('click',e=>{
+      const b=e.target.closest('.com-btn'); if(!b) return;
+      comIdx=+b.dataset.com; dayIdx=0;
+      qsa('.com-btn',comsEl).forEach((el,i)=>el.classList.toggle('active',i===comIdx));
+      renderDays();
+    });
+  }
   daysEl.addEventListener('click',e=>{
     const b=e.target.closest('.day-btn'); if(!b) return;
-    active=+b.dataset.day;
-    qsa('.day-btn',daysEl).forEach((el,i)=>el.classList.toggle('active',i===active));
+    dayIdx=+b.dataset.day;
+    qsa('.day-btn',daysEl).forEach((el,i)=>el.classList.toggle('active',i===dayIdx));
     renderSlots();
   });
-  renderSlots();
+  renderDays();
 })();
 window.ebSlug=n=>n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 window.ebSvg='<svg class="eb-ph" viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="32" r="12"/><path d="M18 88c0-14 10-22 22-22s22 8 22 22"/></svg>';
@@ -1318,6 +1431,145 @@ qs('#ebGrid').innerHTML=DATA.eb.map(c=>`
     }).join('')}</div>
   </div>`).join('');
 qs('#yr').textContent=new Date().getFullYear();
+
+/* ===================== SECRETARIAT ===================== */
+/* ===================== SECRETARIAT ===================== */
+let fbGo=null;
+(function(){
+  const host=qs('#fbBook'), pin=qs('#fbPin'); if(!host)return;
+  const P=DATA.people, N=P.length;
+  const ini=n=>n.replace(/\(.*?\)/g,'').split(/[\s.&,]+/).filter(Boolean)
+                .slice(0,2).map(w=>w[0].toUpperCase()).join('');
+
+  const NOIMG=new Set();
+  const secImg=i=>NOIMG.has(i)?null:'photos/sec-'+P[i].n.toLowerCase()+'.png';
+  function artEl(idx,name,cls){
+    const src=secImg(idx);
+    if(src)return '<div class="'+cls+'"><img src="'+src+'" alt="'+name+'"></div>';
+    return '<div class="'+cls+'" style="'+artBG(idx+2)+'"><span class="halo"></span><b>'+ini(name)+'</b></div>';
+  }
+
+  function flat(){
+    pin.classList.add('fb-flat');
+    const FP=[[0,1],[2,4],[3,7],[9,8],[5,6],[10,11],[12,13],[14,15],[16,17],[18,19]];
+    host.innerHTML=FP.map(pair=>{
+      const a=P[pair[0]],b2=P[pair[1]];
+      return `<article class="panel pf-static" style="display:flex;gap:1.2rem;align-items:flex-start">
+        <div style="flex:1;text-align:center">${artEl(pair[0],a.n,'st-art')}
+          <div class="st-role">${a.r}</div><div class="st-name">${a.n}</div></div>
+        ${b2?`<div style="flex:1;text-align:center">${artEl(pair[1],b2.n,'st-art')}
+          <div class="st-role">${b2.r}</div><div class="st-name">${b2.n}</div></div>`:''}
+      </article>`;
+    }).join('');
+    fbGo=()=>{};
+  }
+  if(!window.St){ flat(); return; }
+  const add=(cls,html,hard)=>{ const d=document.createElement('div');
+    d.className='pf-page'+(cls?' '+cls:''); if(hard)d.setAttribute('data-density','hard');
+    d.innerHTML='<div class="pf-in">'+html+'</div>'; host.appendChild(d); };
+
+  add('pf-cover pf-cover-img',`<img class="cv-img" src="cover.png" alt="The Secretariat"
+    onerror="var p=this.closest('.pf-cover-img');this.remove();if(p)p.classList.remove('pf-cover-img')">
+    <div class="cbar"><span>Keystone Comics</span><span>The Board</span></div>
+    <span class="cv-issue">Keystone School</span><span class="cv-logo">The<br>Secretariat</span>
+    <span class="cv-tag">Model United Nations</span>`,true);
+  P.forEach((p,i)=>{
+    const src=secImg(i);
+    if(src){
+      add('pf-portrait',`<img src="${src}" alt="${p.n}"><span class="pgn">${i+2}</span>`);
+    } else {
+      add('pf-solo',`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="pf-duo-art" style="${artBG(i+2)}"><span class="halo"></span><b>${ini(p.n)}</b></div>
+        <div class="pf-duo-role">${p.r}</div><div class="pf-duo-name">${p.n}</div></div>
+        <div class="pf-tag">Keystone Model United Nations</div><span class="pgn">${i+2}</span>`);
+    }
+  });
+  add('pf-cover',`<span class="cv-logo" style="font-size:clamp(1.2rem,2.6vw,2rem)">The End</span>
+    <span class="cv-tag">…for now</span>`,true);
+
+  let pf=null;
+  function mount(){
+    if(!host.offsetParent) return false;
+    if(pf){ try{ pf.update(); }catch(e){} return true; }
+    const portrait = false;
+    const availH = Math.max(320, innerHeight - 250);
+    const pageW  = Math.round(Math.min(
+      availH/1.25,
+      innerWidth*0.42,
+      560));
+    try{
+      pf = new St.PageFlip(host,{
+        width:pageW, height:Math.round(pageW*1.25), size:'fixed',
+        showCover:true, drawShadow:false, maxShadowOpacity:0,
+        flippingTime:700, usePortrait:false, mobileScrollSupport:false
+      });
+      pf.loadFromHTML(host.querySelectorAll('.pf-page'));
+      pf.on('flip',(e)=>{ cur=e.data; updateUI(); });
+    }catch(e){ pf=null; flat(); return true; }
+    return true;
+  }
+  addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
+
+  const PAGES=host.querySelectorAll('.pf-page').length;
+  let cur=0;
+  const prevBtn=qs('#fbPrev'),nextBtn=qs('#fbNext'),counter=qs('#fbCount');
+
+  function updateUI(){
+    if(counter) counter.textContent=(cur+1)+' / '+PAGES;
+    if(prevBtn) prevBtn.disabled=(cur<=0);
+    if(nextBtn) nextBtn.disabled=(cur>=PAGES-1);
+    qsa('#fbDots button').forEach((d,j)=>d.classList.toggle('active',j===cur));
+  }
+
+  function goPage(idx){
+    idx=Math.max(0,Math.min(PAGES-1,idx));
+    if(!pf) return;
+    try{ pf.flip(idx); }catch(e){}
+  }
+
+  if(prevBtn) prevBtn.addEventListener('click',()=>{
+    if(pf) try{ pf.flipPrev('top'); }catch(e){}
+  });
+  if(nextBtn) nextBtn.addEventListener('click',()=>{
+    if(pf) try{ pf.flipNext('top'); }catch(e){}
+  });
+
+  fbGo=()=>{
+    if(!mount()) requestAnimationFrame(()=>mount());
+    cur=0;
+    requestAnimationFrame(()=>{ mount(); updateUI(); });
+    setTimeout(()=>{ if(!pin.classList.contains('fb-flat') &&
+      (!pf || host.getBoundingClientRect().height < 80)) flat(); },400);
+  };
+
+  const dw=qs('#fbDots');
+  for(let s=0;s<PAGES;s++){ const b=document.createElement('button');
+    b.setAttribute('aria-label',s===0?'Cover':'Officer '+s);
+    b.addEventListener('click',()=>goPage(s));
+    dw.appendChild(b); }
+  qsa('#fbDots button')[0].classList.add('active');
+  updateUI();
+})();
+
+/* ===================== GALLERY LIGHTBOX ===================== */
+const lb=qs('#lightbox');
+function closeLb(){lb.classList.remove('open');document.documentElement.classList.remove('lock');}
+qsa('.gitem').forEach(g=>g.addEventListener('click',()=>{ const i=+g.dataset.i,d=DATA.gallery[i];
+  qs('#lbArt').innerHTML='<img src="'+d.src+'" alt="" style="width:100%;height:100%;object-fit:contain">'; qs('#lbCap').textContent='Photo '+(i+1); lb.classList.add('open');document.documentElement.classList.add('lock'); }));
+qs('#lbClose').addEventListener('click',()=>closeLb());
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+
+/* ===================== SCHEDULE ===================== */
+(function(){ const dv=qs('#days'),sv=qs('#slots');
+  dv.innerHTML=DATA.schedule.map((d,i)=>`<button class="day-btn${i===0?' active':''}" data-d="${i}">${d.day}</button>`).join('');
+  function draw(i){ sv.innerHTML=DATA.schedule[i].slots.map(s=>
+      `<article class="panel slot"><div class="time">${s.t}</div><div><h4>${s.h}</h4><p>${s.p}</p><span class="tag">${s.g}</span></div></article>`).join('');
+    if(!RM) animate('#slots .slot',{opacity:[0,1],translateY:[22,0],duration:D(700),delay:stagger(D(60)),ease:FLOAT}); }
+  dv.addEventListener('click',e=>{ const b=e.target.closest('.day-btn'); if(!b)return;
+    qsa('.day-btn',dv).forEach(x=>x.classList.toggle('active',x===b)); draw(+b.dataset.d); });
+  draw(0);
+})();
 
 /* ===================== SMOOTH SCROLL ===================== */
 let lenis=null;
@@ -1366,7 +1618,7 @@ inView(qs('.stats'),()=>{ if(RM)return;
 /* ===================== ROUTER ===================== */
 /* 'admin' is deliberately absent from the nav — it's reachable only by typing
    #/admin or pressing Ctrl+Shift+K. */
-const ROUTES=['home','about','committees','eb','gallery','schedule','resources','register','contact','admin'];
+const ROUTES=['home','about','committees','secretariat','eb','gallery','schedule','resources','register','contact','admin'];
 let shown=false,heroDone=false,firstDelay=0;
 const routeOf=()=>{const h=(location.hash||'').replace(/^#\/?/,'');return ROUTES.includes(h)?h:'home';};
 function heroIn(d=0){
@@ -1386,6 +1638,7 @@ function showRoute(n){
   qs('#nav').classList.remove('scrolled');
   if(n==='admin'&&window.__adminEnter)window.__adminEnter();
   if(n==='committees'&&railRefresh){requestAnimationFrame(railRefresh);setTimeout(railRefresh,160);}
+  if(n==='secretariat'&&fbGo)fbGo();
   if(n==='home'&&!heroDone){heroDone=true; RM?setHero():heroIn(firstDelay);}
   requestAnimationFrame(runScrubs);
   // Force-reveal any elements on the active page that never got observed
