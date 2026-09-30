@@ -1560,17 +1560,6 @@ qs('#lbClose').addEventListener('click',()=>closeLb());
 lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
 
-/* ===================== SCHEDULE ===================== */
-(function(){ const dv=qs('#days'),sv=qs('#slots');
-  dv.innerHTML=DATA.schedule.map((d,i)=>`<button class="day-btn${i===0?' active':''}" data-d="${i}">${d.day}</button>`).join('');
-  function draw(i){ sv.innerHTML=DATA.schedule[i].slots.map(s=>
-      `<article class="panel slot"><div class="time">${s.t}</div><div><h4>${s.h}</h4><p>${s.p}</p><span class="tag">${s.g}</span></div></article>`).join('');
-    if(!RM) animate('#slots .slot',{opacity:[0,1],translateY:[22,0],duration:D(700),delay:stagger(D(60)),ease:FLOAT}); }
-  dv.addEventListener('click',e=>{ const b=e.target.closest('.day-btn'); if(!b)return;
-    qsa('.day-btn',dv).forEach(x=>x.classList.toggle('active',x===b)); draw(+b.dataset.d); });
-  draw(0);
-})();
-
 /* ===================== SMOOTH SCROLL ===================== */
 let lenis=null;
 if(!RM){ lenis=new Lenis({duration:1.05,easing:t=>1-Math.pow(1-t,3),smoothWheel:true});
