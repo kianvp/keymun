@@ -1488,29 +1488,32 @@ let fbGo=null;
     <span class="cv-tag">…for now</span>`,true);
 
   let pf=null;
-  function getBox(){
-    const stage=host.parentElement;
-    const sources=[
-      [stage?.clientWidth||0, stage?.clientHeight||0],
-      [host.clientWidth||0, host.clientHeight||0],
-      [document.body.clientWidth||0, document.body.clientHeight||0],
-      [document.documentElement.clientWidth||0, document.documentElement.clientHeight||0],
-      [innerWidth||0, innerHeight||0]
-    ];
-    let w=0,h=0;
-    for(const [sw,sh] of sources){ if(sw>w) w=sw; if(sh>h) h=sh; }
-    return {w,h};
+  function bestDim(){
+    // Try many sources so we always get a real number on real browsers.
+    return Math.max(
+      innerWidth||0,
+      document.documentElement.clientWidth||0,
+      document.body.clientWidth||0,
+      host.parentElement?.getBoundingClientRect().width||0,
+      host.getBoundingClientRect().width||0
+    );
+  }
+  function bestHeight(){
+    return Math.max(
+      innerHeight||0,
+      document.documentElement.clientHeight||0,
+      document.body.clientHeight||0,
+      host.parentElement?.getBoundingClientRect().height||0,
+      screen.height||0
+    );
   }
   function mount(){
     if(!host.offsetParent) return false;
     if(pf){ try{ pf.update(); }catch(e){} return true; }
-    let {w:sw,h:sh}=getBox();
-    // Bulletproof fallback: even if measurements fail, use sane defaults so
-    // StPageFlip can at least try - better than falling back to flat forever.
-    if(sw<100) sw=Math.max(sw, 320);
-    if(sh<200) sh=Math.max(sh, 560);
-    const availH=Math.max(320, sh);
-    const pageW=Math.round(Math.min(availH/1.25, sw*0.42, 560));
+    // Sensible defaults so the book always renders at a usable size
+    const sw=Math.max(bestDim(), 900);   // if all measurements fail, assume desktop
+    const sh=Math.max(bestHeight()-250, 500);
+    const pageW=Math.round(Math.min(sh/1.25, sw*0.42, 560));
     if(pageW<80) return false;
     const pageCount=host.querySelectorAll('.pf-page').length;
     if(pageCount<2) return false;
