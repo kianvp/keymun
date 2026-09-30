@@ -1491,12 +1491,16 @@ let fbGo=null;
   function mount(){
     if(!host.offsetParent) return false;
     if(pf){ try{ pf.update(); }catch(e){} return true; }
-    const portrait = false;
-    const availH = Math.max(320, innerHeight - 250);
+    // Guard against 0-dimension window (can happen mid-transition or in iframes)
+    const iw=innerWidth||document.documentElement.clientWidth||0;
+    const ih=innerHeight||document.documentElement.clientHeight||0;
+    if(iw<100||ih<200) return false;
+    const availH = Math.max(320, ih - 250);
     const pageW  = Math.round(Math.min(
       availH/1.25,
-      innerWidth*0.42,
+      iw*0.42,
       560));
+    if(pageW<80) return false;
     try{
       pf = new St.PageFlip(host,{
         width:pageW, height:Math.round(pageW*1.25), size:'fixed',
@@ -1505,7 +1509,7 @@ let fbGo=null;
       });
       pf.loadFromHTML(host.querySelectorAll('.pf-page'));
       pf.on('flip',(e)=>{ cur=e.data; updateUI(); });
-    }catch(e){ pf=null; flat(); return true; }
+    }catch(e){ pf=null; return false; }
     return true;
   }
   addEventListener('resize',()=>{ if(pf){ try{ pf.update(); }catch(e){} } });
@@ -1535,11 +1539,17 @@ let fbGo=null;
   });
 
   fbGo=()=>{
-    if(!mount()) requestAnimationFrame(()=>mount());
     cur=0;
-    requestAnimationFrame(()=>{ mount(); updateUI(); });
-    // Safety net: only fall back to flat if StPageFlip truly failed (pf never created)
-    setTimeout(()=>{ if(!pin.classList.contains('fb-flat') && !pf) flat(); },1500);
+    // Retry mount up to 10 times with increasing delay - handles 0-dimension window,
+    // page-transition timing, slow layout, etc.
+    let tries=0;
+    const attempt=()=>{
+      if(pf){ updateUI(); return; }
+      if(mount()){ updateUI(); return; }
+      if(++tries<10) setTimeout(attempt, 200);
+      else if(!pin.classList.contains('fb-flat')) flat();
+    };
+    attempt();
   };
 
   const dw=qs('#fbDots');
