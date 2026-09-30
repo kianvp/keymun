@@ -1538,8 +1538,8 @@ let fbGo=null;
     if(!mount()) requestAnimationFrame(()=>mount());
     cur=0;
     requestAnimationFrame(()=>{ mount(); updateUI(); });
-    setTimeout(()=>{ if(!pin.classList.contains('fb-flat') &&
-      (!pf || host.getBoundingClientRect().height < 80)) flat(); },400);
+    // Safety net: only fall back to flat if StPageFlip truly failed (pf never created)
+    setTimeout(()=>{ if(!pin.classList.contains('fb-flat') && !pf) flat(); },1500);
   };
 
   const dw=qs('#fbDots');
